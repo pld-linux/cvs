@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	10
+Release:	11
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie wersjami
