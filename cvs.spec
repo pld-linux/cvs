@@ -1,6 +1,6 @@
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
-Summary(fr):	CVS : Concurrent Versioning System
+Summary(fr):	Un système pour maintenir à jour des fichiers
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
@@ -13,18 +13,50 @@ Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.ta
 Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
 Patch2:		cvs-1.10.6-v6-19990629-PLD.patch
+Patch3:		cvs-login.patch
 URL:		http://www.cyclic.com/
 Prereq:		/usr/sbin/fix-info-dir
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
-CVS is a front end to the rcs(1) revision control system which extends the
-notion of revision control from a collection of files in a single directory
-to a hierarchical collection of directories consisting of revision
-controlled files. These directories and files can be combined together to
-form a software release. CVS provides the functions necessary to manage
-these software releases and to control the concurrent editing of source
-files among multiple software developers.
+CVS means Concurrent Version System; it is a version control system which
+can record the history of your files (usually, but not always, source code).
+CVS only stores the differences between versions, instead of every version
+of every file you've ever created. CVS also keeps a log of who, when and why
+changes occurred, among other aspects.
+
+CVS is very helpful for managing releases and controlling the concurrent
+editing of source files among multiple authors. Instead of providing version
+control for a collection of files in a single directory, CVS provides
+version control for a hierarchical collection of directories consisting of
+revision controlled files.
+
+These directories and files can then be combined together to form a software
+release.
+
+Install the cvs package if you need to use a version control system.
+
+%description -l fr
+"CVS" signifie "Concurrent Version System". C'est un système de comparaison
+de versions de fichiers, qui peut garder une trace des changements apportés
+à des fichiers (le plus souvent, les fichiers des sources d'un programme).
+CVS conserve seulement les différences, et non l'intégralité d'un fichier
+récent et d'un fichier plus ancien. A chaque modification d'un fichier, CVS
+garde (entre autres) le nom de la personne ayant fait la modification, la
+raison justifiant cette modification, et la date à laquelle celle-ci a eu
+lieu.
+
+CVS est très utile pour gérer la mise en commun des modifications apportées
+par plusieurs personnes travaillant en parallèle sur les mêmes fichiers. Au
+lieu de garder plusieurs versions des fichiers dans un seul répertoire, CVS
+crée une série de répertoires, chacun contenant une nouvelle version des
+fichiers. Ces répertoires et ces fichiers peuvent ensuite être regroupés
+pour former la version la plus à jour du logiciel.
+
+Installez ce package si vous avez besoin d'utiliser un système de contrôle
+de version.
+
+Vous pouvez également utiliser rcs en lieu et place de cvs.
 
 %description -l de
 CVS ist ein Frontend für das RCS(1)-Revisionskontrollsystem, das den Begriff
@@ -37,13 +69,26 @@ Bearbeitung von Quelldateien durch mehrere Software- Entwickler notwendig
 sind.
 
 %description -l fr
-CVS est un frontal pour le système de contrôle de révision rcs(1) qui étend
-la notion de contrôle de révision d'un ensemble de fichiers placés dans un
-seul répertoire à un ensemble hiérarchisé de répertoires contenant des
-fichiers contrôlés. Ces répertoires et fichiers peuvent être combinés pour
-former une version de logiciel. CVS offre les fonctions nécessaires pour
-gérer ces versions et pour contrôler la modification simultanée des fichiers
-sources entre les différents déeloppeurs.
+"CVS" signifie "Concurrent Version System". C'est un système de comparaison
+de versions de fichiers, qui peut garder une trace des changements apportés
+à des fichiers (le plus souvent, les fichiers des sources d'un programme).
+CVS conserve seulement les différences, et non l'intégralité d'un fichier
+récent et d'un fichier plus ancien. A chaque modification d'un fichier, CVS
+garde (entre autres) le nom de la personne ayant fait la modification, la
+raison justifiant cette modification, et la date à laquelle celle-ci a eu
+lieu.
+
+CVS est très utile pour gérer la mise en commun des modifications apportées
+par plusieurs personnes travaillant en parallèle sur les mêmes fichiers. Au
+lieu de garder plusieurs versions des fichiers dans un seul répertoire, CVS
+crée une série de répertoires, chacun contenant une nouvelle version des
+fichiers. Ces répertoires et ces fichiers peuvent ensuite être regroupés
+pour former la version la plus à jour du logiciel.
+
+Installez ce package si vous avez besoin d'utiliser un système de contrôle
+de version.
+
+Vous pouvez également utiliser rcs en lieu et place de cvs.
 
 %description -l pl
 CVS jest nak³adk± na rcs (Revision Control System, czyli w wolnym
@@ -69,6 +114,7 @@ için gereken iþlevleri saðlar.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 autoconf
