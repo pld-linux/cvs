@@ -178,6 +178,8 @@ Requires(pre):	/usr/sbin/useradd
 Requires(post):	fileutils
 Requires(postun):	/usr/sbin/userdel
 Requires(postun):	/usr/sbin/groupdel
+Provides:	group(cvs)
+Provides:	user(cvs)
 Obsoletes:	cvs-nserver-common
 Obsoletes:	cvs-nserver-nserver
 Obsoletes:	cvs-nserver-pserver
@@ -273,9 +275,8 @@ fi
 
 %postun pserver
 if [ "$1" = "0" ]; then
-	# Remove user and group
-	/usr/sbin/userdel cvs 2>/dev/null
-	/usr/sbin/groupdel cvs 2>/dev/null
+	%userremove cvs
+	%groupremove cvs
 	if [ -f /var/lock/subsys/rc-inetd ]; then
 		/etc/rc.d/init.d/rc-inetd reload
 	fi
