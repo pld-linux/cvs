@@ -1,0 +1,87 @@
+diff -Nru cvs-1.11/contrib/Makefile.in cvs-1.11.new/contrib/Makefile.in
+--- cvs-1.11/contrib/Makefile.in	Fri Sep  8 20:28:02 2000
++++ cvs-1.11.new/contrib/Makefile.in	Thu Sep 21 23:21:55 2000
+@@ -80,18 +80,18 @@
+ 
+ install: all installdirs
+ 	for f in $(CONTRIB_FILES) ; do\
+-		$(INSTALL_DATA) $(srcdir)/$$f $(libdir)/cvs/contrib/$$f; \
++		$(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(libdir)/cvs/contrib/$$f; \
+ 	done
+ 	for f in $(CONTRIB_PROGS) ; do\
+-		$(INSTALL_PROGRAM) $$f $(libdir)/cvs/contrib/$$f; \
++		$(INSTALL_PROGRAM) $$f $(DESTDIR)$(libdir)/cvs/contrib/$$f; \
+ 	done
+ 	for f in $(PROGS) ; do\
+-		$(INSTALL_PROGRAM) $$f $(bindir)/$$f; \
++		$(INSTALL_PROGRAM) $$f $(DESTDIR)$(bindir)/$$f; \
+ 	done
+ .PHONY: install
+ 
+ installdirs:
+-	$(top_srcdir)/mkinstalldirs $(libdir)/cvs/contrib
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(libdir)/cvs/contrib
+ .PHONY: installdirs
+ 
+ tags:
+diff -Nru cvs-1.11/doc/Makefile.in cvs-1.11.new/doc/Makefile.in
+--- cvs-1.11/doc/Makefile.in	Fri Sep  8 20:28:02 2000
++++ cvs-1.11.new/doc/Makefile.in	Thu Sep 21 23:22:42 2000
+@@ -99,11 +99,11 @@
+ install-info: info installdirs
+ 	if test -f cvs.info ; then docdir=.; else docdir=$(srcdir);fi; \
+ 	for i in $$docdir/*.info* ; do \
+-	  $(INSTALL_DATA) $$i $(infodir)/`basename $$i` ; \
++	  $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/`basename $$i` ; \
+ 	done
+ 
+ installdirs: 
+-	$(SHELL) $(top_srcdir)/mkinstalldirs $(infodir)
++	$(SHELL) $(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
+ .PHONY: installdirs
+ 
+ dvi: cvs.dvi cvsclient.dvi
+diff -Nru cvs-1.11/man/Makefile.in cvs-1.11.new/man/Makefile.in
+--- cvs-1.11/man/Makefile.in	Fri Sep  8 20:28:02 2000
++++ cvs-1.11.new/man/Makefile.in	Thu Sep 21 23:23:45 2000
+@@ -39,17 +39,17 @@
+ # install will not fail if $(prefix)/man/man5 does not yet exist.
+ install: all installdirs
+ 	for f in $(MAN1FILES); do \
+-		$(INSTALL_DATA) $(srcdir)/$$f $(man1dir)/$$f; \
++		$(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(man1dir)/$$f; \
+ 	done
+ 	for f in $(MAN5FILES); do \
+-		$(INSTALL_DATA) $(srcdir)/$$f $(man5dir)/$$f; \
++		$(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(man5dir)/$$f; \
+ 	done
+ 	for f in $(MAN8FILES); do \
+-		$(INSTALL_DATA) $(srcdir)/$$f $(man8dir)/$$f; \
++		$(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(man8dir)/$$f; \
+ 	done
+ 
+ installdirs:
+-	$(SHELL) $(top_srcdir)/mkinstalldirs $(man1dir) $(man5dir) $(man8dir)
++	$(SHELL) $(top_srcdir)/mkinstalldirs $(DESTDIR)$(man1dir) $(DESTDIR)$(man5dir) $(DESTDIR)$(man8dir)
+ 
+ .PHONY: install installdirs
+ 
+diff -Nru cvs-1.11/src/Makefile.in cvs-1.11.new/src/Makefile.in
+--- cvs-1.11/src/Makefile.in	Thu Sep 21 23:24:42 2000
++++ cvs-1.11.new/src/Makefile.in	Thu Sep 21 23:24:04 2000
+@@ -87,12 +87,12 @@
+ 
+ install: installdirs
+ 	@for prog in $(PROGS); do \
+-	  echo Installing $$prog in $(bindir); \
+-	  $(INSTALL) $$prog $(bindir)/$$prog ; \
++	  echo Installing $$prog in $(DESTDIR)$(bindir); \
++	  $(INSTALL) $$prog $(DESTDIR)$(bindir)/$$prog ; \
+ 	done
+ 
+ installdirs:
+-	$(SHELL) $(top_srcdir)/mkinstalldirs $(bindir)
++	$(SHELL) $(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 
+ .PHONY: install installdirs
+ 
