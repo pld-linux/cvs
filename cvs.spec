@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	kerberos5	# disable kerberos5 support
-
+#
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
 Summary(es):	Control de versiones en modo concurrente
@@ -13,13 +13,13 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
-Version:	1.11.9
-Release:	2
+Version:	1.11.10
+Release:	1
 License:	GPL
 Group:		Development/Version Control
-# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.1/cvs-1.12.1.tar.bz2
+# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.3/cvs-1.12.3.tar.bz2
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	0e72f5de87f66c5fcd27d58b53fcbf43
+# Source0-md5:	14cccf6230a16a02ac4037c785cd171c
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
