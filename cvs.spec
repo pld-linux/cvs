@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	4
+Release:	5
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
@@ -133,13 +133,7 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
 	doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
-%post
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-
-%postun
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-
-%pre pserver
+%pre
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
@@ -150,16 +144,26 @@ if [ "$1" = 1 ]; then
 	chown -R cvs.cvs /home/cvsroot/CVSROOT
 fi
 
+%post
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+
+%postun
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+
 %post pserver
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd restart
 fi
 
-%postun pserver
+%postun
 if [ "$1" = "0" ]; then
 	# Remove user and group
 	%{_sbindir}/userdel cvs 2>/dev/null
 	%{_sbindir}/groupdel cvs 2>/dev/null
+fi
+
+%postun pserver
+if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/rc-inetd ]; then
 		/etc/rc.d/init.d/rc-inetd restart
 	fi
