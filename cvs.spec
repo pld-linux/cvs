@@ -9,6 +9,7 @@ Release:	11
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie wersjami
+Group(de):	Entwicklung/Versionkontrolle
 Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
@@ -88,6 +89,7 @@ Summary:	rc-inetd config files to run CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie wersjami
+Group(de):	Entwicklung/Versionkontrolle
 Requires:	rc-inetd
 Prereq:		cvs
 
