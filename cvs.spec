@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.4
-Release:     	1d
+Release:     	1
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Wed Jan 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.4-1d]
+  [1.10.4-1]
 - added compressing %doc,
 - added cvs-info.patch,
 - added Group(pl).
