@@ -15,7 +15,7 @@ Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
 Version:	1.11.19
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
