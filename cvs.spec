@@ -131,20 +131,24 @@ install -d $RPM_BUILD_ROOT/home/cvsroot
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 
 gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
-	doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
+	doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
+	contrib/{*.man,README,ChangeLog,intro.doc}
+rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 
 %pre
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
-	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -d /home/cvsroot -u 15 -s /bin/false cvs 2>/dev/null
-	
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d /home/cvsroot -u 15 -s /bin/false cvs 2>/dev/null
+fi
+
+%post 
+if [ "$1" = 1 ]; then
 	# Initialise repository
 	%{_bindir}/cvs -d :local:/home/cvsroot init 
 	chown -R cvs.cvs /home/cvsroot/CVSROOT
 fi
 
-%post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
@@ -172,15 +176,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.gz
-%doc doc/*.ps.gz contrib/*
-
 %attr(755,root,root) %{_bindir}/*
-
+%attr(750,cvs,cvs) %dir /home/cvsroot
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
+%doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.gz
+%doc doc/*.ps.gz contrib
 
 %files pserver
 %defattr(644,root,root,755)
 /etc/sysconfig/rc-inetd/cvs
-%attr(750,cvs,cvs) %dir /home/cvsroot
