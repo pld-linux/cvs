@@ -7,13 +7,13 @@ Summary(pt_BR):	Controle de versões em modo concorrente
 Summary(ru):	óÉÓÔÅÍÁ ÕÐÒÁ×ÌÅÎÉÑ ×ÅÒÓÉÑÍÉ
 Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
-Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS 
+Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.2
-Release:	6
+Release:	7
 License:	GPL
 Group:		Development/Version Control
-Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
@@ -180,8 +180,8 @@ pserver.
 
 %build
 rm -f missing
-aclocal
-autoheader
+%{__aclocal}
+%{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure \
@@ -211,7 +211,7 @@ mv -f $RPM_BUILD_ROOT%{_datadir}/cvs/contrib/rcs2log $RPM_BUILD_ROOT%{_bindir}
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
-	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d %{_cvs_root} -u 52 -s /bin/false cvs 2>/dev/null
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -d %{_cvs_root} -u 52 -s /bin/false cvs 2>/dev/null
 fi
 
 %post pserver
