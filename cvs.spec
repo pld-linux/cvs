@@ -4,8 +4,8 @@ Summary(fr):	CVS : Concurrent Versioning System
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
-Version:	1.10.5
-Release:     	3
+Version:	1.10.6
+Release:     	1
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -71,20 +71,24 @@ için gereken iþlevleri saðlar.
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure %{_target} \
-	--prefix=/usr \
+	--prefix=%{_prefix} \
 	--enable-server \
 	--enable-client
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install prefix=$RPM_BUILD_ROOT/usr
-make install-info prefix=$RPM_BUILD_ROOT/usr
+make install \
+	prefix=$RPM_BUILD_ROOT%{_prefix} \
+	mandir=$RPM_BUILD_ROOT%{_mandir}
+make install-info \
+	prefix=$RPM_BUILD_ROOT%{_prefix} \
+	infodir=$RPM_BUILD_ROOT%{_infodir}
 
 strip $RPM_BUILD_ROOT%{_bindir}/cvs
 
-gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*} doc/*.ps \
-	BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
+gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
+	doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
 %post
 /sbin/install-info %{_infodir}/cvs.info.gz /etc/info-dir
@@ -102,63 +106,15 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.gz
-%doc doc/*.ps.gz
+%doc doc/*.ps.gz contrib/*
 
 %attr(755,root,root) %{_bindir}/*
-%attr(  -,root,root) %{_libdir}/cvs
 
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
 
 %changelog
-* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.5-3]
-- recompiles on new rpm.
-
-* Tue Mar  9 1999 Micha³ Kuratczyk <kura@pld.org.pl>
-  [1.10.5-2]
-- gzipping documentation (instead bzipping)
-
-* Mon Feb 22 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.5-1]
-- removed man group from man pages.
-
-* Wed Jan 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.4-1d]
-- added compressing %doc,
-- added cvs-info.patch,
-- added Group(pl).
-
-* Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.3-3]
-- standarized {un}registering info pages,
-- cvs info pages moved to section "Version Control:",
-- added gzipping man pages.
-
-* Sun Sep  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.1-2]
-- fix race conditions in cvsbug/rcs2log.
-
-* Thu Sep  3 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.1-1]
-- removed "Requires: rcs",
-- added fixed rcs2log.sh script.
-
-* Sat Aug  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.9.29-1]
-- added pl translation,
-- added -q %setup parametr,
-- added URL,
-- Changed Source url,
-- spec file rewritten for using Buildroot,
-- added ChangeLog to %doc,
-- added %clean section,
-- added %defattr and %attr macros in %files (allows building package from
-  non-root account).
-
-* Mon Apr 27 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Wed Oct 29 1997 Otto Hammersmith <otto@redhat.com>
-- added install-info stuff
-- added changelog section
+* Sun May 30 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.10.6-1]
+- based on RH spec,
+- spec rewrited by PLD team.
