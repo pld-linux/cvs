@@ -10,7 +10,7 @@ diff -Nru cvs-1.10.4/doc/cvs.texinfo cvs-1.10.4.new/doc/cvs.texinfo
 -END-INFO-DIR-ENTRY
 +@dircategory Version Control:
 +@direntry
-+* cvs: (cvs)				Concurrent Versions System
++* cvs: (cvs).				Concurrent Versions System
 +@end direntry
  @end format
  @end ifinfo
@@ -26,7 +26,7 @@ diff -Nru cvs-1.10.4/doc/cvsclient.texi cvs-1.10.4.new/doc/cvsclient.texi
 +@format
 +@dircategory Version Control:
 +@direntry
-+* cvsclient: (cvsclient)		The CVS client/server protocol
++* cvsclient: (cvsclient).		The CVS client/server protocol
 +@end direntry
 +@end format
 +@end ifinfo
