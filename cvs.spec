@@ -141,7 +141,7 @@ rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
-	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -M -d /home/cvsroot -u 52 -s /bin/false cvs 2>/dev/null
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d /home/cvsroot -u 52 -s /bin/false cvs 2>/dev/null
 fi
 
 %post pserver
