@@ -13,13 +13,13 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
-Version:	1.11.11
-Release:	3
+Version:	1.11.13
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	e2ceb57c06dc532d0156bdba687073c9
+# Source0-md5:	048abb979dd2317c9cde5a8d30d7f0c9
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -39,7 +39,7 @@ BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_cvs_root	/srv/cvsroot
+%define		_cvs_root	/home/services/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
