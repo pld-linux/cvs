@@ -1,5 +1,3 @@
-# TODO:
-# - http://securitytracker.com/alerts/2004/Aug/1010958.html
 #
 # Conditional build:
 %bcond_without	kerberos5	# disable kerberos5 support
