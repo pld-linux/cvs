@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.11.1p1
-Release:	3
+Release:	4
 License:	GPL
 Group:		Development/Version Control
 Group(de):	Entwicklung/Versionkontrolle
@@ -19,6 +19,7 @@ Patch3:		%{name}-zlib.patch
 Patch4:		%{name}-no_new_am.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -68,9 +69,9 @@ système de contrôle de version.
 CVS jest nak³adk± na rcs (Revision Control System, czyli w wolnym
 t³umaczeniu system kontroli wersji zasobów), który rozszerza
 mo¿liwo¶ci rcs'a z narzêdzia do kontroli zbioru plików w pojedynczym
-katalogu o mo¿liwo¶æ kontroli zbioru hierarhicznie u³o¿onych katalogów
+katalogu o mo¿liwo¶æ kontroli zbioru hierarchicznie u³o¿onych katalogów
 z plikami. Z pomoc± CVS w ³atwy sposób mo¿na zarz±dzaæ kodem ¼ród³owym
-opracowywanym przez nawet bardzo du¿e zespó³y programistów
+opracowywanym przez nawet bardzo du¿e zespo³y programistów
 umo¿liwiaj±c ¶ledzenie i kontrolê wszystkich zmian w trakcie pracy nad
 projektami i wypuszczaniem pe³nych wersji oprogramowania (release).
 
@@ -129,7 +130,7 @@ install -d $RPM_BUILD_ROOT/{etc/sysconfig/rc-inetd,home/cvsroot}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 
 rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
-mv $RPM_BUILD_ROOT%{_datadir}/cvs/contrib/rcs2log $RPM_BUILD_ROOT%{_bindir}
+mv -f $RPM_BUILD_ROOT%{_datadir}/cvs/contrib/rcs2log $RPM_BUILD_ROOT%{_bindir}
 
 gzip -9nf doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
 	contrib/{*.man,README,ChangeLog,intro.doc}
