@@ -16,6 +16,7 @@ Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
 Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.1-20010427-ipv6.patch.gz
 Patch3:		%{name}-zlib.patch
+Patch4:		%{name}-no_new_am.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	zlib-devel
@@ -106,6 +107,7 @@ pserver.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 autoheader
@@ -126,10 +128,11 @@ install -d $RPM_BUILD_ROOT/{etc/sysconfig/rc-inetd,home/cvsroot}
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 
+rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
+mv $RPM_BUILD_ROOT%{_datadir}/cvs/contrib $RPM_BUILD_ROOT%{_bindir}
+
 gzip -9nf doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
 	contrib/{*.man,README,ChangeLog,intro.doc}
-
-rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
