@@ -1,7 +1,7 @@
-diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
---- cvs-1.11.2.org/src/client.c	Mon May 13 22:32:42 2002
-+++ cvs-1.11.2/src/client.c	Mon May 13 23:18:44 2002
-@@ -82,7 +82,7 @@
+diff -urN cvs-1.11.9.org/src/client.c cvs-1.11.9/src/client.c
+--- cvs-1.11.9.org/src/client.c	2003-10-15 19:28:25.000000000 +0200
++++ cvs-1.11.9/src/client.c	2003-10-15 19:28:34.000000000 +0200
+@@ -80,7 +80,7 @@
  /* This is needed for GSSAPI encryption.  */
  static gss_ctx_id_t gcontext;
  
@@ -10,7 +10,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  
  # endif /* HAVE_GSSAPI */
  
-@@ -135,7 +135,7 @@
+@@ -131,7 +131,7 @@
  static size_t try_read_from_server PROTO ((char *, size_t));
  
  static void auth_server PROTO ((cvsroot_t *, struct buffer *, struct buffer *,
@@ -19,7 +19,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  
  /* We need to keep track of the list of directories we've sent to the
     server.  This list, along with the current CVSROOT, will help us
-@@ -3646,30 +3646,6 @@
+@@ -3487,30 +3487,6 @@
  
  
  #if defined (AUTH_CLIENT_SUPPORT) || defined (HAVE_KERBEROS) || defined (HAVE_GSSAPI)
@@ -50,7 +50,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  
  
  
-@@ -3871,34 +3841,59 @@
+@@ -3685,34 +3661,59 @@
      int do_gssapi;
  {
      int sock;
@@ -130,7 +130,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  
      if (verify_only)
      {
-@@ -3930,13 +3925,13 @@
+@@ -3746,13 +3747,13 @@
  
  
  static void
@@ -146,7 +146,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  {
      char *username;			/* the username we use to connect */
      char no_passwd = 0;			/* gets set if no password found */
-@@ -3965,7 +3960,7 @@
+@@ -3782,7 +3783,7 @@
  	    error (1, 0, "gserver currently only enabled for socket connections");
  	}
  
@@ -155,7 +155,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  	{
  	    error (1, 0,
  		    "authorization failed: server %s rejected access to %s",
-@@ -3980,7 +3975,7 @@
+@@ -3798,7 +3799,7 @@
  	char *begin      = NULL;
  	char *password   = NULL;
  	char *end        = NULL;
@@ -164,7 +164,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  	if (verify_only)
  	{
  	    begin = "BEGIN VERIFICATION REQUEST";
-@@ -4117,37 +4112,76 @@
+@@ -3979,37 +3980,76 @@
      int s;
      const char *portenv;
      int port;
@@ -262,7 +262,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  	int laddrlen;
  	KTEXT_ST ticket;
  	MSG_DAT msg_data;
-@@ -4222,10 +4256,10 @@
+@@ -4084,10 +4124,10 @@
   */
  #define BUFSIZE 1024
  static int
@@ -275,7 +275,7 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
  {
      char *str;
      char buf[BUFSIZE];
-@@ -4238,9 +4272,9 @@
+@@ -4100,9 +4140,9 @@
      if (send (sock, str, strlen (str), 0) < 0)
  	error (1, 0, "cannot send: %s", SOCK_STRERROR (SOCK_ERRNO));
  
@@ -287,10 +287,10 @@ diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
      tok_in.length = strlen (buf);
      tok_in.value = buf;
      gss_import_name (&stat_min, &tok_in, GSS_C_NT_HOSTBASED_SERVICE,
-diff -urN cvs-1.11.2.org/src/cvs.h cvs-1.11.2/src/cvs.h
---- cvs-1.11.2.org/src/cvs.h	Mon May 13 22:32:42 2002
-+++ cvs-1.11.2/src/cvs.h	Mon May 13 22:32:57 2002
-@@ -365,6 +365,7 @@
+diff -urN cvs-1.11.9.org/src/cvs.h cvs-1.11.9/src/cvs.h
+--- cvs-1.11.9.org/src/cvs.h	2003-10-15 19:28:25.000000000 +0200
++++ cvs-1.11.9/src/cvs.h	2003-10-15 19:28:34.000000000 +0200
+@@ -366,6 +366,7 @@
  extern int really_quiet, quiet;
  extern int use_editor;
  extern int cvswrite;
@@ -298,9 +298,9 @@ diff -urN cvs-1.11.2.org/src/cvs.h cvs-1.11.2/src/cvs.h
  extern mode_t cvsumask;
  
  
-diff -urN cvs-1.11.2.org/src/main.c cvs-1.11.2/src/main.c
---- cvs-1.11.2.org/src/main.c	Mon May 13 22:32:42 2002
-+++ cvs-1.11.2/src/main.c	Mon May 13 22:32:57 2002
+diff -urN cvs-1.11.9.org/src/main.c cvs-1.11.9/src/main.c
+--- cvs-1.11.9.org/src/main.c	2003-10-15 19:28:25.000000000 +0200
++++ cvs-1.11.9/src/main.c	2003-10-15 19:28:34.000000000 +0200
 @@ -13,6 +13,7 @@
   */
  
@@ -326,7 +326,7 @@ diff -urN cvs-1.11.2.org/src/main.c cvs-1.11.2/src/main.c
      "    (specify --help-options for a list of options)\n",
      "  where command is add, admin, etc.\n",
      "    (specify --help-commands for a list of commands\n",
-@@ -407,7 +409,7 @@
+@@ -406,7 +408,7 @@
      int help = 0;		/* Has the user asked for help?  This
  				   lets us support the `cvs -H cmd'
  				   convention to give help for cmd. */
@@ -335,7 +335,7 @@ diff -urN cvs-1.11.2.org/src/main.c cvs-1.11.2/src/main.c
      static struct option long_options[] =
      {
          {"help", 0, NULL, 'H'},
-@@ -520,6 +522,12 @@
+@@ -519,6 +521,12 @@
  		/* --allow-root */
  		root_allow_add (optarg);
  		break;
@@ -348,10 +348,10 @@ diff -urN cvs-1.11.2.org/src/main.c cvs-1.11.2/src/main.c
  	    case 'Q':
  		really_quiet = 1;
  		/* FALL THROUGH */
-diff -urN cvs-1.11.2.org/src/server.c cvs-1.11.2/src/server.c
---- cvs-1.11.2.org/src/server.c	Mon May 13 22:32:42 2002
-+++ cvs-1.11.2/src/server.c	Mon May 13 22:32:57 2002
-@@ -5895,8 +5895,8 @@
+diff -urN cvs-1.11.9.org/src/server.c cvs-1.11.9/src/server.c
+--- cvs-1.11.9.org/src/server.c	2003-10-15 19:28:25.000000000 +0200
++++ cvs-1.11.9/src/server.c	2003-10-15 19:29:16.000000000 +0200
+@@ -5756,8 +5756,8 @@
  {
      int status;
      char instance[INST_SZ];
@@ -362,7 +362,7 @@ diff -urN cvs-1.11.2.org/src/server.c cvs-1.11.2/src/server.c
      int len;
      KTEXT_ST ticket;
      AUTH_DAT auth;
-@@ -5985,7 +5985,8 @@
+@@ -5834,7 +5834,8 @@
  gserver_authenticate_connection ()
  {
      char hostname[MAXHOSTNAMELEN];
@@ -372,7 +372,7 @@ diff -urN cvs-1.11.2.org/src/server.c cvs-1.11.2/src/server.c
      gss_buffer_desc tok_in, tok_out;
      char buf[1024];
      OM_uint32 stat_min, ret;
-@@ -5995,11 +5996,16 @@
+@@ -5844,11 +5845,16 @@
      gss_OID mechid;
  
      gethostname (hostname, sizeof hostname);
@@ -383,7 +383,7 @@ diff -urN cvs-1.11.2.org/src/server.c cvs-1.11.2/src/server.c
 +    hints.ai_family = af;
 +    hints.ai_socktype = SOCK_STREAM;
 +    hints.ai_flags = AI_CANONNAME;
-+    if (getaddrinfo (hostname, NULL, &hints, &res))
++    if (getaddrinfo (hostname, NULL, &hints, &res0))
  	error (1, 0, "can't get canonical hostname");
  
 -    sprintf (buf, "cvs@%s", hp->h_name);
