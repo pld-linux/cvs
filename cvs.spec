@@ -4,8 +4,8 @@ Summary(fr):	CVS : Concurrent Versioning System
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
-Version:	1.10.4
-Release:     	1d
+Version:	1.10.5
+Release:     	1
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -107,10 +107,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 %attr(  -, root, root) /usr/lib/cvs
 
-%attr(644,root, man) /usr/man/man[158]/*
+/usr/man/man[158]/*
 /usr/info/cvs*
 
 %changelog
+* Mon Feb 22 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.10.5-1]
+- removed man group from man pages.
+
 * Wed Jan 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.10.4-1d]
 - added compressing %doc,
