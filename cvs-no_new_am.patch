@@ -1,0 +1,11 @@
+--- cvs-1.11.1/Makefile.am~	Wed Jan  3 16:50:41 2001
++++ cvs-1.11.1/Makefile.am	Mon Jul 16 16:22:50 2001
+@@ -12,8 +12,6 @@
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ 
+-AUTOMAKE_OPTIONS = 1.4a dist-bzip2
+-
+ ## Subdirectories to run make in for the primary targets.
+ # Unix source subdirs, where we'll want to run lint and etags:
+ # This is a legacy variable from b4 Automake

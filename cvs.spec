@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	kerberos5	# disable kerberos5 support
+%bcond_with	kerberos5	# enable kerberos5 support
 #
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
@@ -13,13 +13,13 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.14
+Version:	1.11.17
 Release:	1
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
-Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	d2212213fec91821ae4443662068d573
+Source0:	http://ccvs.cvshome.org/files/documents/19/191/%{name}-%{version}.tar.bz2
+# Source0-md5:	17cd48888d5571d215a44a7e8d46759c
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -30,16 +30,16 @@ Patch4:		%{name}-home_etc.patch
 Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
-Patch8:		%{name}-ssh.patch
 URL:		http://www.cyclic.com/
-BuildRequires:	autoconf >= 2.58
-BuildRequires:	automake >= 1:1.7.9
+# should be 2.58/1.7.9 resp.
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1.7.6
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_cvs_root	/var/lib/cvs
+%define		_cvs_root	/home/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
@@ -201,7 +201,9 @@ pserver.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
+
+# seems not-so-really needed yet
+%{__perl} -pi -e 's/(AC_PREREQ)\(2\.58\)/$1\(2.57\)/;s/(AM_INIT_AUTOMAKE.*)1\.7\.9/${1}1.7.6/' configure.in
 
 %build
 %{__aclocal}
@@ -275,10 +277,6 @@ if [ "$1" = "0" ]; then
 		/etc/rc.d/init.d/rc-inetd reload
 	fi
 fi
-
-%triggerpostun -- cvs-pserver < 1.1.13-1
-echo "Warning: default cvsroot moved to %{_cvs_root}."
-echo "Check your configration."
 
 %files
 %defattr(644,root,root,755)
