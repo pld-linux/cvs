@@ -4,12 +4,11 @@ Summary(fr): CVS : Concurrent Versioning System
 Summary(pl): Concurrent Versioning System
 Summary(tr): Sürüm denetim sistemi
 Name:        cvs
-Version:     1.10.1
+Version:     1.10.3
 Release:     2
 Copyright:   GPL
 Group:       Development/Version Control
 Source0:     http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:     rcs2log.sh
 Patch:       cvs-tmprace.patch
 URL:         http://www.cyclic.com/
 Prereq:      /sbin/install-info
@@ -65,7 +64,6 @@ için gereken iþlevleri saðlar.
 %prep
 %setup -q
 %patch -p1
-cp -f %{SOURCE1} contrib
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s ./configure \
