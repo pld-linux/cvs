@@ -29,9 +29,10 @@ URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	zlib-devel
+Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define _cvs_root /home/services/cvsroot
+%define		_cvs_root	/home/services/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
@@ -152,6 +153,9 @@ Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
 PreReq:		%{name} = %{version}
 Requires:	rc-inetd
+Obsoletes:	cvs-nserver-common
+Obsoletes:	cvs-nserver-nserver
+Obsoletes:	cvs-nserver-pserver
 
 %description pserver
 Config files for rc-inetd that are necessary to run CVS in pserver
