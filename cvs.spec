@@ -10,7 +10,7 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.8
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.1/cvs-1.12.1.tar.bz2
@@ -27,13 +27,13 @@ Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
 URL:		http://www.cyclic.com/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_cvs_root	/home/services/cvsroot
+%define		_cvs_root	/home/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
