@@ -213,7 +213,7 @@ pserver.
 %configure \
 	--enable-server \
 	--enable-client \
-	%{?with_kerberos5:--with-gssapi} \
+	--with%{!?with_kerberos5:out}-gssapi \
 	--with-tmpdir=/tmp \
 	--with-editor=/bin/vi
 
