@@ -1,18 +1,7 @@
-diff -ur cvs-1.11.1/Makefile.am cvs-1.11.1.zlib/Makefile.am
---- cvs-1.11.1/Makefile.am	Wed Jan  3 16:50:41 2001
-+++ cvs-1.11.1.zlib/Makefile.am	Wed May 30 21:46:41 2001
-@@ -17,7 +17,7 @@
- ## Subdirectories to run make in for the primary targets.
- # Unix source subdirs, where we'll want to run lint and etags:
- # This is a legacy variable from b4 Automake
--USOURCE_SUBDIRS = lib zlib diff src
-+USOURCE_SUBDIRS = lib diff src
- # All other subdirs:
- SUBDIRS = $(USOURCE_SUBDIRS) man doc contrib tools \
- 	windows-NT os2 emx vms
---- cvs-1.11.2/configure.in.orig	Thu Apr 18 17:31:39 2002
-+++ cvs-1.11.2/configure.in	Sat Apr 20 00:05:04 2002
-@@ -336,6 +336,8 @@
+diff -ur cvs-1.11.1/configure.in cvs-1.11.1.zlib/configure.in
+--- cvs-1.11.1/configure.in	Wed Apr 25 23:51:25 2001
++++ cvs-1.11.1.zlib/configure.in	Wed May 30 21:48:59 2001
+@@ -300,6 +300,8 @@
    enable_server=yes
  fi])
  
@@ -21,18 +10,19 @@ diff -ur cvs-1.11.1/Makefile.am cvs-1.11.1.zlib/Makefile.am
  dnl The auth server needs to be able to check passwords against passwd
  dnl file entries, so we only #define AUTH_SERVER_SUPPORT if we can
  dnl find the crypt function. 
-@@ -410,8 +412,7 @@
+@@ -410,8 +410,7 @@
  	  tools/Makefile \
  	  vms/Makefile \
  	  windows-NT/Makefile \
 -	  windows-NT/SCC/Makefile \
 -	  zlib/Makefile],
-+	  windows-NT/SCC/Makefile],
++	  windows-NT/SCC/Makefile]
  	  [chmod +x \
  	  contrib/clmerge \
  	  contrib/cln_hist \
---- cvs-1.11.2/src/Makefile.am.orig	Mon Aug 20 19:52:53 2001
-+++ cvs-1.11.2/src/Makefile.am	Sat Apr 20 00:06:59 2002
+diff -ur cvs-1.11.1/src/Makefile.am cvs-1.11.1.zlib/src/Makefile.am
+--- cvs-1.11.1/src/Makefile.am	Tue Apr 24 20:14:53 2001
++++ cvs-1.11.1.zlib/src/Makefile.am	Wed May 30 21:47:19 2001
 @@ -20,7 +20,7 @@
  # try and remove naming ocnflicts and fix Automake to allow particular includes
  # to be attached only to particular object files.  Short term fix is either or.
@@ -52,3 +42,14 @@ diff -ur cvs-1.11.1/Makefile.am cvs-1.11.1.zlib/Makefile.am
  
  # extra clean targets
  # wish this could be distclean-hdr-local but it's not part of automake
+--- cvs-1.11.2/Makefile.am~	Thu Sep 13 21:08:15 2001
++++ cvs-1.11.2/Makefile.am	Sat May 11 01:30:51 2002
+@@ -17,7 +17,7 @@
+ ## Subdirectories to run make in for the primary targets.
+ # Unix source subdirs, where we'll want to run lint and etags:
+ # This is a legacy variable from b4 Automake
+-USOURCE_SUBDIRS = lib zlib diff src
++USOURCE_SUBDIRS = lib diff src
+ # All other subdirs:
+ SUBDIRS = $(USOURCE_SUBDIRS) man doc contrib tools \
+ 	windows-NT os2 emx vms
