@@ -221,6 +221,7 @@ pserver.
 %configure \
 	--enable-server \
 	--enable-client \
+	--enable-rootcommit \
 	--with%{!?with_kerberos5:out}-gssapi \
 	--with-tmpdir=/tmp \
 	--with-editor=/bin/vi
