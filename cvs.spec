@@ -12,6 +12,7 @@ Group(pl):	Programowanie/Zarz±dzanie Wersjami
 Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
+Patch2:		http://www.misiek.eu.org/ipv6/cvs-ipv6-220200.patch.gz
 URL:		http://www.cyclic.com/
 Prereq:		/usr/sbin/fix-info-dir
 Buildroot:	/tmp/%{name}-%{version}-root
@@ -79,6 +80,7 @@ kontrol etmek için gereken iþlevleri saðlar.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoconf
