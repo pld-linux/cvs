@@ -105,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/*.ps.gz
 
 %attr(755,root,root) %{_bindir}/*
-%attr(  -, root, root) %{_libdir}/cvs
+%attr(  -,root,root) %{_libdir}/cvs
 
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
