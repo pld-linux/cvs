@@ -18,7 +18,7 @@ Release:	1
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
-Source0:	https://ccvs.cvshome.org/files/documents/19/191/%{name}-%{version}.tar.bz2
+Source0:	http://ccvs.cvshome.org/files/documents/19/191/%{name}-%{version}.tar.bz2
 # Source0-md5:	17cd48888d5571d215a44a7e8d46759c
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
