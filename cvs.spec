@@ -9,23 +9,22 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
-Version:	1.11.6
+Version:	1.11.7
 Release:	1
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.1/cvs-1.12.1.tar.bz2
-# Source0-md5:	06a5bbcd93a780a3bbec788deb1cf35b
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	68269c120f8b45a2edb8019b656079d1
 Source1:	%{name}.inetd
-Patch0:		%{name}-info.patch
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
-Patch1:		%{name}-ipv6.patch
-Patch2:		%{name}-zlib.patch
-Patch3:		%{name}-fixed_buffer.patch
-Patch4:		%{name}-cvspass.patch
-Patch5:		%{name}-home_etc.patch
-Patch6:		%{name}-newnline.patch
-Patch7:		%{name}-no_libnsl.patch
+Patch0:		%{name}-ipv6.patch
+Patch1:		%{name}-zlib.patch
+Patch2:		%{name}-fixed_buffer.patch
+Patch3:		%{name}-cvspass.patch
+Patch4:		%{name}-home_etc.patch
+Patch5:		%{name}-newnline.patch
+Patch6:		%{name}-no_libnsl.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -182,7 +181,6 @@ pserver.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 
 %build
 rm -f missing
