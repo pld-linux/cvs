@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	8
+Release:	9
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
@@ -139,7 +139,7 @@ rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
-	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d /home/cvsroot -u 15 -s /bin/false cvs 2>/dev/null
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d /home/cvsroot -u 52 -s /bin/false cvs 2>/dev/null
 fi
 
 %post pserver
