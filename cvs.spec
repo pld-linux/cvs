@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	kerberos5	# disable kerberos5 support
+
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
 Summary(es):	Control de versiones en modo concurrente
@@ -30,7 +34,7 @@ URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	zlib-devel
-BuildRequires:	heimdal-devel
+%{?with_kerberos5:BuildRequires:	heimdal-devel}
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
