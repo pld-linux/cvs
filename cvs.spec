@@ -135,14 +135,17 @@ gzip -9nf doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
 	contrib/{*.man,README,ChangeLog,intro.doc}
 
 %post
-%fix_info_dir
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-%fix_info_dir
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %pre pserver
-GID=52; %groupadd
-UID=52; HOMEDIR=/home/cvsroot; %useradd
+if [ "$1" = 1 ]; then
+	# Add user and group
+	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d /home/cvsroot -u 52 -s /bin/false cvs 2>/dev/null
+fi
 
 %post pserver
 if [ "$1" = 1 ]; then
@@ -150,12 +153,19 @@ if [ "$1" = 1 ]; then
 	%{_bindir}/cvs -d :local:/home/cvsroot init 
 	chown -R cvs.cvs /home/cvsroot/CVSROOT
 fi
-%rc_inetd_post
+if [ -f /var/lock/subsys/rc-inetd ]; then
+	/etc/rc.d/init.d/rc-inetd reload
+fi
 
 %postun pserver
-%userdel
-%groupdel
-%rc_inetd_postun
+if [ "$1" = "0" ]; then
+	# Remove user and group
+	%{_sbindir}/userdel cvs 2>/dev/null
+	%{_sbindir}/groupdel cvs 2>/dev/null
+	if [ -f /var/lock/subsys/rc-inetd ]; then
+		/etc/rc.d/init.d/rc-inetd reload
+	fi
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
