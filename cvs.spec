@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	kerberos5	# disable kerberos5 support
+%bcond_with	kerberos5	# enable kerberos5 support
 #
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
@@ -32,13 +32,13 @@ Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf >= 2.57
-BuildRequires:	automake >= 1.5
+BuildRequires:	automake >= 1.7.5
 BuildRequires:	zlib-devel
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_cvs_root	/home/services/cvsroot
+%define		_cvs_root	/home/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
@@ -201,6 +201,9 @@ pserver.
 %patch6 -p1
 %patch7 -p1
 
+# seems not-so-really needed yet
+%{__perl} -pi -e 's/AC_PREREQ\(2\.58\)/AC_PREREQ\(2.57\)/' configure.in
+
 %build
 %{__aclocal}
 %{__autoheader}
@@ -209,8 +212,9 @@ pserver.
 %configure \
 	--enable-server \
 	--enable-client \
-	--with-gssapi \
+	%{?with_kerberos5:--with-gssapi} \
 	--with-tmpdir=/tmp
+
 %{__make}
 
 %install
