@@ -126,6 +126,7 @@ autoconf
 	--enable-server \
 	--enable-client
 %{__make}
+%{!?_without_tests: %{__make} check }
 
 %install
 rm -rf $RPM_BUILD_ROOT
