@@ -1,0 +1,11 @@
+--- cvs-1.11.5/src/logmsg.c
++++ cvs-1.11.5/src/logmsg.c
+@@ -262,7 +262,7 @@
+     }
+ 
+     (void) fprintf (fp,
+-  "%s----------------------------------------------------------------------\n",
++  "\n%s----------------------------------------------------------------------\n",
+ 		    CVSEDITPREFIX);
+     (void) fprintf (fp,
+   "%sEnter Log.  Lines beginning with `%.*s' are removed automatically\n%s\n",
