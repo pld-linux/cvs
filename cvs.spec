@@ -155,7 +155,7 @@ fi
 %post pserver
 if [ "$1" = 1 ]; then
 	# Initialise repository
-	%{_bindir}/cvs -d :local:%{_cvs_root} init 
+	%{_bindir}/cvs -d :local:%{_cvs_root} init
 	chown -R cvs.cvs %{_cvs_root}/CVSROOT
 fi
 if [ -f /var/lock/subsys/rc-inetd ]; then
