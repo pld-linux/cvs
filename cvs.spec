@@ -4,8 +4,8 @@ Summary(fr):	Un système pour maintenir à jour des fichiers
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
-Version:	1.11
-Release:	4
+Version:	1.11.1
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 Group(de):	Entwicklung/Versionkontrolle
@@ -14,9 +14,8 @@ Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
-Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11-20001103-ipv6.patch.gz
+Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.1-20010427-ipv6.patch.gz
 Patch3:		%{name}-zlib.patch
-Patch4:		%{name}-DESTDIR.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	zlib-devel
@@ -107,10 +106,11 @@ pserver.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 autoheader
+aclocal
+automake
 autoconf
 %configure \
 	--enable-server \
@@ -121,7 +121,7 @@ autoconf
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{etc/sysconfig/rc-inetd,home/cvsroot}
 
-%{__make} install install-info \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
