@@ -9,13 +9,13 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
-Version:	1.11.8
+Version:	1.11.9
 Release:	1
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.1/cvs-1.12.1.tar.bz2
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	e878928d534d7bd9e60e4d97807dd888
+# Source0-md5:	0e72f5de87f66c5fcd27d58b53fcbf43
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -30,6 +30,7 @@ URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	zlib-devel
+BuildRequires:	heimdal-devel
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -192,6 +193,7 @@ pserver.
 %configure \
 	--enable-server \
 	--enable-client \
+	--with-gssapi \
 	--with-tmpdir=/tmp
 %{__make}
 
