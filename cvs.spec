@@ -7,7 +7,7 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Name:		cvs
 Version:	1.11.2
-Release:	3
+Release:	4
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
@@ -20,6 +20,7 @@ Patch4:		%{name}-fixed_buffer.patch
 Patch5:		%{name}-cvspass.patch
 Patch6:		%{name}-libobj.patch
 Patch7:		%{name}-chmod.patch
+Patch8:		%{name}-home_etc.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -146,6 +147,7 @@ pserver.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 rm -f missing
