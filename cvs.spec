@@ -5,17 +5,17 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	6
+Release:	7
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
 Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:	cvs.inetd
-Patch0:		cvs-tmprace.patch
-Patch1:		cvs-info.patch
-Patch2:		http://www.misiek.eu.org/ipv6/cvs-ipv6-220200.patch.gz
-Patch3:		cvs-auth.patch
-Patch4:		cvs-zlib.patch
+Source1:	%{name}.inetd
+Patch0:		%{name}-tmprace.patch
+Patch1:		%{name}-info.patch
+Patch2:		http://www.misiek.eu.org/ipv6/%{name}-ipv6-220200.patch.gz
+Patch3:		%{name}-auth.patch
+Patch4:		%{name}-zlib.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	zlib-devel
@@ -135,41 +135,34 @@ gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
 	contrib/{*.man,README,ChangeLog,intro.doc}
 rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 
-%pre
+%pre pserver
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
 	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d /home/cvsroot -u 15 -s /bin/false cvs 2>/dev/null
 fi
 
-%post 
+%post pserver
 if [ "$1" = 1 ]; then
 	# Initialise repository
 	%{_bindir}/cvs -d :local:/home/cvsroot init 
 	chown -R cvs.cvs /home/cvsroot/CVSROOT
 fi
-
+if [ -f /var/lock/subsys/rc-inetd ]; then
+	/etc/rc.d/init.d/rc-inetd restart
+fi
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%postun
+%postun pserver
 if [ "$1" = "0" ]; then
 	# Remove user and group
 	%{_sbindir}/userdel cvs 2>/dev/null
 	%{_sbindir}/groupdel cvs 2>/dev/null
-fi
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-
-%post pserver
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd restart
-fi
-
-%postun pserver
-if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/rc-inetd ]; then
 		/etc/rc.d/init.d/rc-inetd restart
 	fi
 fi
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
