@@ -173,5 +173,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files pserver
 %defattr(644,root,root,755)
-%attr(750,cvs,cvs) %dir /home/cvsroot
+%attr(770,root,cvs) %dir /home/cvsroot
 /etc/sysconfig/rc-inetd/cvs
