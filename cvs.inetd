@@ -7,4 +7,6 @@ USER=cvs
 GROUP=cvs
 SERVER=tcpd
 DAEMON=/usr/bin/cvs
-DAEMONARGS="-f --allow-root=/home/services/cvsroot pserver"
+DAEMONARGS="-f --allow-root=/var/lib/cvsroot pserver"
+# Example for /srv
+#DAEMONARGS="-f --allow-root=/srv/cvs pserver"

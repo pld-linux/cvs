@@ -39,7 +39,7 @@ BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_cvs_root	/home/services/cvsroot
+%define		_cvs_root	/var/lib/cvs
 
 %description
 CVS means Concurrent Version System; it is a version control system
@@ -275,6 +275,10 @@ if [ "$1" = "0" ]; then
 		/etc/rc.d/init.d/rc-inetd reload
 	fi
 fi
+
+%triggerpostun -- phpMyAdmin < 1.1.13-1
+echo "Warning: default cvsroot moved to /var/lib/cvsroot."
+echo "Check your configration."
 
 %files
 %defattr(644,root,root,755)
