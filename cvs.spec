@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.5
-Release:     	1
+Release:     	2
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -49,10 +49,10 @@ CVS jest nak³adk± na rcs (Revision Control System, czyli w wolnym
 t³umaczeniu system kontroli wersji zasobów), który rozszerza mo¿liwo¶ci
 rcs'a z narzêdzia do kontroli zbioru plików w pojedynczym katalogu o
 mo¿liwo¶æ kontroli zbioru hierarhicznie u³o¿onych katalogów z plikami. Z
-pomoc± CVS w ³atwy sposób mo¿na zarz±dzaæ kodem ¼ród³owym opracowywany przez
+pomoc± CVS w ³atwy sposób mo¿na zarz±dzaæ kodem ¼ród³owym opracowywanym przez
 nawet bardzo du¿e zespó³y programistów umo¿liwiaj±c ¶ledzenie i kontrolê
 wszystkich zmian w trakcie pracy nad projektami i wypuszczaniem pe³nych
-wersji oprogramowania (releas).
+wersji oprogramowania (release).
 
 %description -l tr
 CVS (Concurrent Versioning System), tek bir dizindeki dosya topluluðunun
@@ -84,7 +84,7 @@ make install-info prefix=$RPM_BUILD_ROOT/usr
 strip $RPM_BUILD_ROOT/usr/bin/cvs
 
 gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*} doc/*.ps
-bzip2 -9 BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
+gzip -9nf BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
 %post
 /sbin/install-info /usr/info/cvs.info.gz /etc/info-dir
@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.bz2
+%doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.gz
 %doc doc/*.ps.gz
 
 %attr(755,root,root) /usr/bin/*
@@ -111,6 +111,10 @@ rm -rf $RPM_BUILD_ROOT
 /usr/info/cvs*
 
 %changelog
+* Tue Mar  9 1999 Micha³ Kuratczyk <kura@pld.org.pl>
+  [1.10.5-2]
+- gzipping documentation (instead bzipping)
+
 * Mon Feb 22 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.10.5-1]
 - removed man group from man pages.
