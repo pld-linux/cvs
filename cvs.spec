@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	2
+Release:	4
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
@@ -14,7 +14,11 @@ Source1:	cvs.inetd
 Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
 Patch2:		http://www.misiek.eu.org/ipv6/cvs-ipv6-220200.patch.gz
+Patch3:		cvs-auth.patch
+Patch4:		cvs-zlib.patch
 URL:		http://www.cyclic.com/
+BuildRequires:	autoconf
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -100,8 +104,11 @@ pserver.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
+autoheader
 autoconf
 LDFLAGS="-s"; export LDFLAGS
 %configure \
