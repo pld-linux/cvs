@@ -118,11 +118,11 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install \
+%{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	bindir=$RPM_BUILD_ROOT%{_bindir} \
 	mandir=$RPM_BUILD_ROOT%{_mandir}
-make install-info \
+%{__make} install-info \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	infodir=$RPM_BUILD_ROOT%{_infodir}
 
