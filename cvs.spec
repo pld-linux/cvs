@@ -5,7 +5,7 @@ Summary(pl): Concurrent Versioning System
 Summary(tr): Sürüm denetim sistemi
 Name:        cvs
 Version:     1.10.3
-Release:     2
+Release:     3
 Copyright:   GPL
 Group:       Development/Version Control
 Source0:     http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -66,7 +66,8 @@ için gereken iþlevleri saðlar.
 %patch -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s ./configure \
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
 	--prefix=/usr \
 	--enable-server \
 	--enable-client
@@ -76,18 +77,23 @@ make
 rm -rf $RPM_BUILD_ROOT
 make install prefix=$RPM_BUILD_ROOT/usr
 make install-info prefix=$RPM_BUILD_ROOT/usr
-gzip -9nf $RPM_BUILD_ROOT/usr/info/cvs*
 
 strip $RPM_BUILD_ROOT/usr/bin/cvs
 
+gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*}
+
 %post
-/sbin/install-info /usr/info/cvs.info.gz /usr/info/dir --entry="* cvs: (cvs).          A version control system for multiple developers."
-/sbin/install-info /usr/info/cvsclient.info.gz /usr/info/dir --entry="* cvsclient: (cvsclient).                       The CVS client/server protocol."
+/sbin/install-info /usr/info/cvs.info.gz /etc/info-dir \
+	--entry --section "Version Control:" \
+	"* cvs: (cvs).                                   A version control system for multiple developers."
+/sbin/install-info /usr/info/cvsclient.info.gz /etc/info-dir \
+	--entry --section "Version Control:" \
+	"* cvsclient: (cvsclient).                       The CVS client/server protocol."
 
 %preun
 if [ $1 = 0 ]; then
-	/sbin/install-info --delete /usr/info/cvs.info.gz /usr/info/dir --entry="* cvs: (cvs).		A version control system for multiple developers."
-	/sbin/install-info --delete /usr/info/cvsclient.info.gz /usr/info/dir --entry="* cvsclient: (cvsclient).                       The CVS client/server protocol."
+	/sbin/install-info --delete /usr/info/cvs.info.gz /etc/info-dir
+	/sbin/install-info --delete /usr/info/cvsclient.info.gz /etc/info-dir
 fi
 
 %clean
@@ -102,6 +108,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(  -, root, root) /usr/lib/cvs
 
 %changelog
+* Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.10.3-3]
+- standarized {un}registering info pages,
+- cvs info pages moved to section "Version Control:",
+- added gzipping man pages.
+
 * Sun Sep  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.10.1-2]
 - fix race conditions in cvsbug/rcs2log.
