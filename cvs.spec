@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	kerberos5	# disable kerberos5 support
+%bcond_without	acl		# disable ACL support
 #
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
@@ -13,13 +14,13 @@ Summary(tr):	S¸r¸m denetim sistemi
 Summary(uk):	Û…”‘≈Õ¡ À≈“’◊¡ŒŒ— ◊≈“”¶—Õ…
 Summary(zh_CN):	≤¢∑¢µƒ∞Ê±æπ‹¿ÌœµÕ≥CVS
 Name:		cvs
-Version:	1.11.17
-Release:	4
+Version:	1.11.18
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
-Source0:	http://ccvs.cvshome.org/files/documents/19/191/%{name}-%{version}.tar.bz2
-# Source0-md5:	17cd48888d5571d215a44a7e8d46759c
+Source0:	http://ccvs.cvshome.org/files/documents/19/534/%{name}-%{version}.tar.bz2
+# Source0-md5:	1dd5c16064906617e4358738bfe59b66
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -209,7 +210,7 @@ pserver.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
+%{?with_acl:%patch10 -p1}
 
 %build
 %{__aclocal}
@@ -289,7 +290,8 @@ echo "Check your configration."
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README README.cvsacl ChangeLog doc/*.ps contrib
+%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README %{?with_acl:README.cvsacl}
+%doc ChangeLog doc/*.ps contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
