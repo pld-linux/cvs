@@ -5,10 +5,10 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	9
+Release:	10
 License:	GPL
 Group:		Development/Version Control
-Group(pl):	Programowanie/Zarz±dzanie Wersjami
+Group(pl):	Programowanie/Zarz±dzanie wersjami
 Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
@@ -87,7 +87,7 @@ saðlar.
 Summary:	rc-inetd config files to run CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
-Group(pl):	Programowanie/Zarz±dzanie Wersjami
+Group(pl):	Programowanie/Zarz±dzanie wersjami
 Requires:	rc-inetd
 Prereq:		cvs
 
