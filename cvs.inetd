@@ -6,4 +6,4 @@ FLAGS=nowait
 USER=cvs
 SERVER=tcpd
 DAEMON=/usr/bin/cvs
-DAEMONARGS="-f --allow-root=/home/cvsroot/ pserver"
+DAEMONARGS="-f --allow-root=/home/cvsroot pserver"
