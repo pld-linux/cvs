@@ -176,7 +176,7 @@ pserver.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p0
-%patch11 -p0
+%patch11 -p1
 
 %build
 rm -f missing
