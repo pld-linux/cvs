@@ -169,11 +169,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc *.gz doc/*.ps.gz contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
-%doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.gz
-%doc doc/*.ps.gz contrib
 
 %files pserver
 %defattr(644,root,root,755)
