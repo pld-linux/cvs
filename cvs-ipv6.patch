@@ -1,7 +1,7 @@
-diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
---- cvs-1.11.7.org/src/client.c	2003-09-30 10:55:57.000000000 +0200
-+++ cvs-1.11.7/src/client.c	2003-09-30 10:58:51.000000000 +0200
-@@ -80,7 +80,7 @@
+diff -urN cvs-1.11.2.org/src/client.c cvs-1.11.2/src/client.c
+--- cvs-1.11.2.org/src/client.c	Mon May 13 22:32:42 2002
++++ cvs-1.11.2/src/client.c	Mon May 13 23:18:44 2002
+@@ -82,7 +82,7 @@
  /* This is needed for GSSAPI encryption.  */
  static gss_ctx_id_t gcontext;
  
@@ -10,7 +10,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  
  # endif /* HAVE_GSSAPI */
  
-@@ -131,7 +131,7 @@
+@@ -135,7 +135,7 @@
  static size_t try_read_from_server PROTO ((char *, size_t));
  
  static void auth_server PROTO ((cvsroot_t *, struct buffer *, struct buffer *,
@@ -19,7 +19,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  
  /* We need to keep track of the list of directories we've sent to the
     server.  This list, along with the current CVSROOT, will help us
-@@ -3487,30 +3487,6 @@
+@@ -3646,30 +3646,6 @@
  
  
  #if defined (AUTH_CLIENT_SUPPORT) || defined (HAVE_KERBEROS) || defined (HAVE_GSSAPI)
@@ -50,7 +50,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  
  
  
-@@ -3685,34 +3661,59 @@
+@@ -3871,34 +3841,59 @@
      int do_gssapi;
  {
      int sock;
@@ -130,7 +130,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  
      if (verify_only)
      {
-@@ -3746,13 +3747,13 @@
+@@ -3930,13 +3925,13 @@
  
  
  static void
@@ -146,7 +146,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  {
      char *username;			/* the username we use to connect */
      char no_passwd = 0;			/* gets set if no password found */
-@@ -3782,7 +3783,7 @@
+@@ -3965,7 +3960,7 @@
  	    error (1, 0, "gserver currently only enabled for socket connections");
  	}
  
@@ -155,7 +155,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  	{
  	    error (1, 0,
  		    "authorization failed: server %s rejected access to %s",
-@@ -3798,7 +3799,7 @@
+@@ -3980,7 +3975,7 @@
  	char *begin      = NULL;
  	char *password   = NULL;
  	char *end        = NULL;
@@ -164,7 +164,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  	if (verify_only)
  	{
  	    begin = "BEGIN VERIFICATION REQUEST";
-@@ -3979,37 +3980,76 @@
+@@ -4117,37 +4112,76 @@
      int s;
      const char *portenv;
      int port;
@@ -262,7 +262,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  	int laddrlen;
  	KTEXT_ST ticket;
  	MSG_DAT msg_data;
-@@ -4084,10 +4124,10 @@
+@@ -4222,10 +4256,10 @@
   */
  #define BUFSIZE 1024
  static int
@@ -275,7 +275,7 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
  {
      char *str;
      char buf[BUFSIZE];
-@@ -4100,9 +4140,9 @@
+@@ -4238,9 +4272,9 @@
      if (send (sock, str, strlen (str), 0) < 0)
  	error (1, 0, "cannot send: %s", SOCK_STRERROR (SOCK_ERRNO));
  
@@ -287,10 +287,10 @@ diff -urN cvs-1.11.7.org/src/client.c cvs-1.11.7/src/client.c
      tok_in.length = strlen (buf);
      tok_in.value = buf;
      gss_import_name (&stat_min, &tok_in, GSS_C_NT_HOSTBASED_SERVICE,
-diff -urN cvs-1.11.7.org/src/cvs.h cvs-1.11.7/src/cvs.h
---- cvs-1.11.7.org/src/cvs.h	2003-09-30 10:55:57.000000000 +0200
-+++ cvs-1.11.7/src/cvs.h	2003-09-30 10:58:51.000000000 +0200
-@@ -366,6 +366,7 @@
+diff -urN cvs-1.11.2.org/src/cvs.h cvs-1.11.2/src/cvs.h
+--- cvs-1.11.2.org/src/cvs.h	Mon May 13 22:32:42 2002
++++ cvs-1.11.2/src/cvs.h	Mon May 13 22:32:57 2002
+@@ -365,6 +365,7 @@
  extern int really_quiet, quiet;
  extern int use_editor;
  extern int cvswrite;
@@ -298,9 +298,9 @@ diff -urN cvs-1.11.7.org/src/cvs.h cvs-1.11.7/src/cvs.h
  extern mode_t cvsumask;
  
  
-diff -urN cvs-1.11.7.org/src/main.c cvs-1.11.7/src/main.c
---- cvs-1.11.7.org/src/main.c	2003-09-30 10:55:57.000000000 +0200
-+++ cvs-1.11.7/src/main.c	2003-09-30 10:59:19.000000000 +0200
+diff -urN cvs-1.11.2.org/src/main.c cvs-1.11.2/src/main.c
+--- cvs-1.11.2.org/src/main.c	Mon May 13 22:32:42 2002
++++ cvs-1.11.2/src/main.c	Mon May 13 22:32:57 2002
 @@ -13,6 +13,7 @@
   */
  
@@ -326,16 +326,16 @@ diff -urN cvs-1.11.7.org/src/main.c cvs-1.11.7/src/main.c
      "    (specify --help-options for a list of options)\n",
      "  where command is add, admin, etc.\n",
      "    (specify --help-commands for a list of commands\n",
-@@ -406,7 +408,7 @@
+@@ -407,7 +409,7 @@
      int help = 0;		/* Has the user asked for help?  This
  				   lets us support the `cvs -H cmd'
  				   convention to give help for cmd. */
 -    static const char short_options[] = "+Qqrwtnvb:T:e:d:Hfz:s:xa";
-+    static const char short_options[] = "+Qqrwtnvb:T:e:d:Hfz:s:xa46";
++    static const char short_options[] = "+46Qqrwtnvb:T:e:d:Hfz:s:xa";
      static struct option long_options[] =
      {
          {"help", 0, NULL, 'H'},
-@@ -519,6 +521,12 @@
+@@ -520,6 +522,12 @@
  		/* --allow-root */
  		root_allow_add (optarg);
  		break;
@@ -348,10 +348,10 @@ diff -urN cvs-1.11.7.org/src/main.c cvs-1.11.7/src/main.c
  	    case 'Q':
  		really_quiet = 1;
  		/* FALL THROUGH */
-diff -urN cvs-1.11.7.org/src/server.c cvs-1.11.7/src/server.c
---- cvs-1.11.7.org/src/server.c	2003-09-30 10:55:57.000000000 +0200
-+++ cvs-1.11.7/src/server.c	2003-09-30 10:58:51.000000000 +0200
-@@ -5753,8 +5753,8 @@
+diff -urN cvs-1.11.2.org/src/server.c cvs-1.11.2/src/server.c
+--- cvs-1.11.2.org/src/server.c	Mon May 13 22:32:42 2002
++++ cvs-1.11.2/src/server.c	Mon May 13 22:32:57 2002
+@@ -5895,8 +5895,8 @@
  {
      int status;
      char instance[INST_SZ];
@@ -362,7 +362,7 @@ diff -urN cvs-1.11.7.org/src/server.c cvs-1.11.7/src/server.c
      int len;
      KTEXT_ST ticket;
      AUTH_DAT auth;
-@@ -5831,7 +5831,8 @@
+@@ -5985,7 +5985,8 @@
  gserver_authenticate_connection ()
  {
      char hostname[MAXHOSTNAMELEN];
@@ -372,7 +372,7 @@ diff -urN cvs-1.11.7.org/src/server.c cvs-1.11.7/src/server.c
      gss_buffer_desc tok_in, tok_out;
      char buf[1024];
      OM_uint32 stat_min, ret;
-@@ -5841,11 +5842,16 @@
+@@ -5995,11 +5996,16 @@
      gss_OID mechid;
  
      gethostname (hostname, sizeof hostname);
