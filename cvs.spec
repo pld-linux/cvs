@@ -45,8 +45,8 @@ CVS means Concurrent Version System; it is a version control system
 which can record the history of your files (usually, but not always,
 source code). CVS only stores the differences between versions,
 instead of every version of every file you've ever created. CVS also
-keeps a log of who, when and why changes occurred, among other
-aspects.
+keeps a log of who and when made some changes and why they occurred,
+among other aspects.
 
 CVS is very helpful for managing releases and controlling the
 concurrent editing of source files among multiple authors. Instead of
@@ -64,17 +64,24 @@ aus revisionskontrollierten Dateien. Diese Verzeichnisse und Dateien
 lassen sich zu einer Software-Release kombinieren. CVS bietet die
 Funktionen, die zur Verwaltung von Software-Releases und zur
 Überwachung der gleichzeitigen Bearbeitung von Quelldateien durch
-mehrere Software- Entwickler notwendig sind.
+mehrere Software-Entwickler notwendig sind.
 
 %description -l es
-CVS es un front end para el rcs(1) - revisión control system - que
-extiende la noción de control de revisión de una colectánea de archivo
-en un único directorio para una colección jerárquica de directorios
-que contiene archivos controlados por revisión. Estos directorios y
-archivos pueden ser combinados juntos para crear una release de
-software. CVS nos ofrece las funciones necesarias para administrar
-esta release de software y para controlar la edición concurrente de
-archivos fuente por múltiples programadores.
+CVS significa "Concurrent Version System" (sistema concurrente de
+control de versiones). Puede guardar la historia de sus ficheros
+(normalmente, pero no necesariamente, código fuente). CVS sólo guarda
+las diferencias entre las versiones, en vez de guardar cada una de las
+versiones de cada fichero que haya creado. CVS también mantiene un
+registro de quién y cuándo realizó un cambio, el porqué del cambio,
+etc.
+
+CVS es muy útil para manejar los releases y controlar la edición
+concurrente de los ficheros fuente entre varios autores. En vez de
+proveer control de versiones para una colección de ficheros en un solo
+directorio, CVS la provee para una colección jerárquica de directorios
+que consistan de ficheros de revisiones controladas. Esos directorios
+y ficheros pueden luego ser reunidos para formar un release de
+software.
 
 %description -l fr
 "CVS" signifie "Concurrent Version System". C'est un système de
@@ -155,6 +162,7 @@ CVS ÄÕÖÅ ËÏÒÉÓÎÁ ÄÌÑ ÏÒÇÁÎ¦ÚÁÃ¦À ÒÅÌ¦Ú¦× ÔÁ ËÅÒÕ×ÁÎÎÑ ÐÁÒÁÌÅÌØÎÏÀ
 
 %package pserver
 Summary:	rc-inetd config files to run CVS pserver
+Summary(es):	Ficheros de configuración de rc-inetd para un servidor CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
 PreReq:		%{name} = %{version}
@@ -173,6 +181,10 @@ Obsoletes:	cvs-nserver-pserver
 %description pserver
 Config files for rc-inetd that are necessary to run CVS in pserver
 mode.
+
+%description pserver -l es
+Los ficheros de configuración necesarios para ejecutar CVS en el modo
+de pserver.
 
 %description pserver -l pl
 Pliki konfiguracyjne rc-inetd niezbêdne do uruchomienia CVSa w trybie
