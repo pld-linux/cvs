@@ -277,7 +277,7 @@ if [ "$1" = "0" ]; then
 fi
 
 %triggerpostun -- cvs-pserver < 1.1.13-1
-echo "Warning: default cvsroot moved to /var/lib/cvsroot."
+echo "Warning: default cvsroot moved to %{_cvs_root}."
 echo "Check your configration."
 
 %files
