@@ -14,7 +14,7 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.11
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
@@ -30,6 +30,7 @@ Patch4:		%{name}-home_etc.patch
 Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
+Patch8:		%{name}-ssh.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -200,6 +201,7 @@ pserver.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 %{__aclocal}
