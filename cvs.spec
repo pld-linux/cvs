@@ -276,7 +276,7 @@ if [ "$1" = "0" ]; then
 	fi
 fi
 
-%triggerpostun -- phpMyAdmin < 1.1.13-1
+%triggerpostun -- cvs-pserver < 1.1.13-1
 echo "Warning: default cvsroot moved to /var/lib/cvsroot."
 echo "Check your configration."
 
