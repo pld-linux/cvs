@@ -9,11 +9,12 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
-Version:	1.11.2
-Release:	7
+Version:	1.11.4
+Release:	0.9
 License:	GPL
 Group:		Development/Version Control
-Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
+# active ftp only(?)
+Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
@@ -21,12 +22,9 @@ Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/%{name}-1.11.2-20020513-ipv6
 Patch3:		%{name}-zlib.patch
 Patch4:		%{name}-fixed_buffer.patch
 Patch5:		%{name}-cvspass.patch
-Patch6:		%{name}-libobj.patch
-Patch7:		%{name}-chmod.patch
-Patch8:		%{name}-home_etc.patch
-Patch9:		%{name}-pserver-dos.patch
-Patch10:	%{name}-ac.patch
-Patch11:	%{name}-newnline.patch
+Patch6:		%{name}-home_etc.patch
+Patch7:		%{name}-newnline.patch
+Patch8:		%{name}-no_libnsl.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -152,8 +150,8 @@ CVS дуже корисна для орган╕зац╕ю рел╕з╕в та керування паралельною
 Summary:	rc-inetd config files to run CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
+PreReq:		%{name} = %{version}
 Requires:	rc-inetd
-Prereq:		cvs
 
 %description pserver
 Config files for rc-inetd that are necessary to run CVS in pserver
@@ -174,9 +172,6 @@ pserver.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
-%patch10 -p0
-%patch11 -p1
 
 %build
 rm -f missing
@@ -200,6 +195,9 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 
 rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 mv -f $RPM_BUILD_ROOT%{_datadir}/cvs/contrib/rcs2log $RPM_BUILD_ROOT%{_bindir}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -233,9 +231,6 @@ if [ "$1" = "0" ]; then
 		/etc/rc.d/init.d/rc-inetd reload
 	fi
 fi
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
