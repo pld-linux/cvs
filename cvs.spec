@@ -10,7 +10,7 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS 
 Name:		cvs
 Version:	1.11.2
-Release:	4
+Release:	5
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
@@ -24,6 +24,7 @@ Patch5:		%{name}-cvspass.patch
 Patch6:		%{name}-libobj.patch
 Patch7:		%{name}-chmod.patch
 Patch8:		%{name}-home_etc.patch
+Patch9:		%{name}-pserver-dos.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -171,6 +172,7 @@ pserver.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 rm -f missing
@@ -195,9 +197,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 
 rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 mv -f $RPM_BUILD_ROOT%{_datadir}/cvs/contrib/rcs2log $RPM_BUILD_ROOT%{_bindir}
-
-gzip -9nf doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
-	contrib/{*.man,README,ChangeLog,intro.doc}
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -237,7 +236,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc/*.ps.gz contrib
+%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog doc/*.ps contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
