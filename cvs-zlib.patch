@@ -1,70 +1,54 @@
-diff -uNr cvs-1.10.8/Makefile.in cvs-1.10.8-zlib/Makefile.in
---- cvs-1.10.8/Makefile.in	Mon Apr 26 17:05:11 1999
-+++ cvs-1.10.8-zlib/Makefile.in	Wed May 10 10:20:51 2000
-@@ -94,7 +94,7 @@
- 
- ### Subdirectories to run make in for the primary targets.
+diff -ur cvs-1.11.1/Makefile.am cvs-1.11.1.zlib/Makefile.am
+--- cvs-1.11.1/Makefile.am	Wed Jan  3 16:50:41 2001
++++ cvs-1.11.1.zlib/Makefile.am	Wed May 30 21:46:41 2001
+@@ -17,7 +17,7 @@
+ ## Subdirectories to run make in for the primary targets.
  # Unix source subdirs, where we'll want to run lint and etags:
+ # This is a legacy variable from b4 Automake
 -USOURCE_SUBDIRS = lib zlib diff src
 +USOURCE_SUBDIRS = lib diff src
  # All other subdirs:
- SUBDIRS = ${USOURCE_SUBDIRS} man doc contrib tools \
+ SUBDIRS = $(USOURCE_SUBDIRS) man doc contrib tools \
  	windows-NT os2 emx vms
-@@ -187,21 +187,18 @@
- .PHONY: check
- check:
- 	cd lib ; $(MAKE) $(FLAGS_TO_PASS)
--	cd zlib ; $(MAKE) $(FLAGS_TO_PASS)
- 	cd diff ; $(MAKE) $(FLAGS_TO_PASS)
- 	cd src ; $(MAKE) $(FLAGS_TO_PASS) check
- 
- .PHONY: remotecheck
- remotecheck:
- 	cd lib ; $(MAKE) $(FLAGS_TO_PASS)
--	cd zlib ; $(MAKE) $(FLAGS_TO_PASS)
- 	cd diff ; $(MAKE) $(FLAGS_TO_PASS)
- 	cd src ; $(MAKE) $(FLAGS_TO_PASS) remotecheck
- 
- .PHONY: installcheck
- installcheck:
- 	cd lib ; $(MAKE) $(FLAGS_TO_PASS)
--	cd zlib ; $(MAKE) $(FLAGS_TO_PASS)
- 	cd diff ; $(MAKE) $(FLAGS_TO_PASS)
- 	cd src ; $(MAKE) $(FLAGS_TO_PASS) installcheck
- 
-diff -uNr cvs-1.10.8/configure.in cvs-1.10.8-zlib/configure.in
---- cvs-1.10.8/configure.in	Wed May 10 10:24:21 2000
-+++ cvs-1.10.8-zlib/configure.in	Wed May 10 10:23:51 2000
-@@ -258,6 +258,7 @@
+diff -ur cvs-1.11.1/configure.in cvs-1.11.1.zlib/configure.in
+--- cvs-1.11.1/configure.in	Wed Apr 25 23:51:25 2001
++++ cvs-1.11.1.zlib/configure.in	Wed May 30 21:48:59 2001
+@@ -300,6 +300,8 @@
    enable_server=yes
  fi])
  
 +AC_CHECK_LIB(z, zlibVersion)
++
  dnl The auth server needs to be able to check passwords against passwd
  dnl file entries, so we only #define AUTH_SERVER_SUPPORT if we can
  dnl find the crypt function. 
-@@ -302,7 +303,7 @@
-   cp ./src/options.h ./src/options.h-SAVED
- )
+@@ -366,8 +368,7 @@
+ 	  tools/Makefile \
+ 	  vms/Makefile \
+ 	  windows-NT/Makefile \
+-	  windows-NT/SCC/Makefile \
+-	  zlib/Makefile],
++	  windows-NT/SCC/Makefile],
+ 	  [chmod -f +x \
+ 	  contrib/clmerge \
+ 	  contrib/cln_hist \
+diff -ur cvs-1.11.1/src/Makefile.am cvs-1.11.1.zlib/src/Makefile.am
+--- cvs-1.11.1/src/Makefile.am	Tue Apr 24 20:14:53 2001
++++ cvs-1.11.1.zlib/src/Makefile.am	Wed May 30 21:47:19 2001
+@@ -20,7 +20,7 @@
+ # try and remove naming ocnflicts and fix Automake to allow particular includes
+ # to be attached only to particular object files.  Short term fix is either or.
+ ##INCLUDES = -I. -I.. -I$(srcdir) -I$(top_srcdir)/lib
+-INCLUDES = -I$(top_srcdir)/lib -I$(top_srcdir)/diff -I$(top_srcdir)/zlib $(includeopt)
++INCLUDES = -I$(top_srcdir)/lib -I$(top_srcdir)/diff $(includeopt)
  
--AC_OUTPUT(Makefile lib/Makefile src/Makefile zlib/Makefile diff/Makefile doc/Makefile \
-+AC_OUTPUT(Makefile lib/Makefile src/Makefile diff/Makefile doc/Makefile \
- 	  man/Makefile tools/Makefile \
- 	  contrib/Makefile \
- 	  windows-NT/Makefile windows-NT/SCC/Makefile \
-diff -uNr cvs-1.10.8/src/Makefile.in cvs-1.10.8-zlib/src/Makefile.in
---- cvs-1.10.8/src/Makefile.in	Tue Oct  6 19:04:30 1998
-+++ cvs-1.10.8-zlib/src/Makefile.in	Wed May 10 10:21:36 2000
-@@ -140,10 +140,10 @@
+ bin_PROGRAMS = cvs
+ bin_SCRIPTS = cvsbug
+@@ -95,7 +95,6 @@
+ cvs_LDADD = \
+ 	../diff/libdiff.a \
+ 	../lib/libcvs.a \
+-	../zlib/libz.a \
+ 	version.o
+ cvs_EXTRA_DIST = version.c
  
- # Linking rules.
- 
--$(PROGS): ../lib/libcvs.a ../zlib/libz.a ../diff/libdiff.a
-+$(PROGS): ../lib/libcvs.a ../diff/libdiff.a
- 
- cvs: $(OBJECTS)
--	$(CC) $(OBJECTS) ../lib/libcvs.a ../zlib/libz.a ../diff/libdiff.a $(LIBS) $(LDFLAGS) -o $@ 
-+	$(CC) $(OBJECTS) ../lib/libcvs.a ../diff/libdiff.a $(LIBS) $(LDFLAGS) -o $@ 
- 
- xlint: $(SOURCES)
- 	files= ; \
