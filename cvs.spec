@@ -8,13 +8,25 @@ Version:	1.11.1p1
 Release:	6
 License:	GPL
 Group:		Development/Version Control
+Group(cs):	Vıvojové prostøedky/Správ verzí
+Group(da):	Udvikling/Versionskontrol
 Group(de):	Entwicklung/Versionkontrolle
+Group(es):	Desarrollo/Control de Versiones
+Group(fr):	Development/Contrôle de version
+Group(is):	Şróunartól/Útgáfu Stıring
+Group(it):	Sviluppo/Controllo della versione
+Group(no):	Utvikling/Versjonskontroll
 Group(pl):	Programowanie/Zarz±dzanie wersjami
+Group(pt):	Desenvolvimento/Controlo de Versões
+Group(ru):	òÁÚÒÁÂÏÔËÁ/ëÏÎÔÒÏÌØ ×ÅÒÓÉÊ
+Group(sl):	Razvoj/Nadzor razlièic
+Group(sv):	Utveckling/Versionshantering
+Group(uk):	òÏÚÒÏÂËÁ/ëÅÒÕ×ÁÎÎÅ ×ÅÒÓ¦ÑÍÉ
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
-Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.1-20010427-ipv6.patch.gz
+Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/%{name}-1.11.1-20010427-ipv6.patch.gz
 Patch3:		%{name}-zlib.patch
 Patch4:		%{name}-no_new_am.patch
 Patch5:		%{name}-hash-in-Makefile.am.patch
@@ -73,9 +85,9 @@ système de contrôle de version.
 CVS jest nak³adk± na rcs (Revision Control System, czyli w wolnym
 t³umaczeniu system kontroli wersji zasobów), który rozszerza
 mo¿liwo¶ci rcs'a z narzêdzia do kontroli zbioru plików w pojedynczym
-katalogu o mo¿liwo¶æ kontroli zbioru hierarchicznie u³o¿onych katalogów
-z plikami. Z pomoc± CVS w ³atwy sposób mo¿na zarz±dzaæ kodem ¼ród³owym
-opracowywanym przez nawet bardzo du¿e zespo³y programistów
+katalogu o mo¿liwo¶æ kontroli zbioru hierarchicznie u³o¿onych
+katalogów z plikami. Z pomoc± CVS w ³atwy sposób mo¿na zarz±dzaæ kodem
+¼ród³owym opracowywanym przez nawet bardzo du¿e zespo³y programistów
 umo¿liwiaj±c ¶ledzenie i kontrolê wszystkich zmian w trakcie pracy nad
 projektami i wypuszczaniem pe³nych wersji oprogramowania (release).
 
@@ -93,8 +105,20 @@ sağlar.
 Summary:	rc-inetd config files to run CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
+Group(cs):	Vıvojové prostøedky/Správ verzí
+Group(da):	Udvikling/Versionskontrol
 Group(de):	Entwicklung/Versionkontrolle
+Group(es):	Desarrollo/Control de Versiones
+Group(fr):	Development/Contrôle de version
+Group(is):	Şróunartól/Útgáfu Stıring
+Group(it):	Sviluppo/Controllo della versione
+Group(no):	Utvikling/Versjonskontroll
 Group(pl):	Programowanie/Zarz±dzanie wersjami
+Group(pt):	Desenvolvimento/Controlo de Versões
+Group(ru):	òÁÚÒÁÂÏÔËÁ/ëÏÎÔÒÏÌØ ×ÅÒÓÉÊ
+Group(sl):	Razvoj/Nadzor razlièic
+Group(sv):	Utveckling/Versionshantering
+Group(uk):	òÏÚÒÏÂËÁ/ëÅÒÕ×ÁÎÎÅ ×ÅÒÓ¦ÑÍÉ
 Requires:	rc-inetd
 Prereq:		cvs
 
@@ -117,9 +141,10 @@ pserver.
 %patch6 -p1
 
 %build
+rm -f missing
 autoheader
 aclocal
-automake
+automake -a -c
 autoconf
 %configure \
 	--enable-server \
