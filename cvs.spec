@@ -13,9 +13,9 @@ Version:	1.11.6
 Release:	0.1
 License:	GPL
 Group:		Development/Version Control
-# active ftp only(?)
-Source0:	http://ftp.cvshome.org/%{name}-%{version}/%{name}-%{version}.tar.bz2
+# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.1/cvs-1.12.1.tar.bz2
 # Source0-md5:	06a5bbcd93a780a3bbec788deb1cf35b
+Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.inetd
 Patch0:		%{name}-info.patch
 Patch1:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/%{name}-1.11.2-20020513-ipv6.patch.gz
