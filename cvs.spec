@@ -287,7 +287,7 @@ echo "Check your configration."
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog doc/*.ps contrib
+%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README README.cvsacl ChangeLog doc/*.ps contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
