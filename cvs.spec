@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.11.1p1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Version Control
 Group(de):	Entwicklung/Versionkontrolle
@@ -129,7 +129,7 @@ install -d $RPM_BUILD_ROOT/{etc/sysconfig/rc-inetd,home/cvsroot}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 
 rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
-mv $RPM_BUILD_ROOT%{_datadir}/cvs/contrib $RPM_BUILD_ROOT%{_bindir}
+mv $RPM_BUILD_ROOT%{_datadir}/cvs/contrib/rcs2log $RPM_BUILD_ROOT%{_bindir}
 
 gzip -9nf doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
 	contrib/{*.man,README,ChangeLog,intro.doc}
