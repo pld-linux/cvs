@@ -4,7 +4,7 @@
  	    sleep (secs);
  	}
  
-+	/* Don't fork editor on server! It could occur if no comit message
++	/* Don't fork editor on server! It could occur if no commit message
 +	 * was passed. */
 +	use_editor = 0;
 +
