@@ -23,7 +23,7 @@
 +	sprintf(cfgdir, "%s/%s", dir, path);
 +    } else
 +	cfgdir = NULL;
-+    if ( cfgdir && (stat(path, &st) != -1) && S_ISDIR(st.st_mode) ) {
++    if ( cfgdir && (stat(cfgdir, &st) != -1) && S_ISDIR(st.st_mode) ) {
 +	path = xmalloc(strlen(cfgdir) + 1 + strlen(file)-isdot + 1);
 +	sprintf (path, "%s/%s", cfgdir, file+isdot);
 +    } else {
