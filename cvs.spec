@@ -4,13 +4,13 @@ Summary(fr):	Un système pour maintenir à jour des fichiers
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
-Version:	1.11.1
+Version:	1.11.1p1
 Release:	1
 License:	GPL
 Group:		Development/Version Control
 Group(de):	Entwicklung/Versionkontrolle
 Group(pl):	Programowanie/Zarz±dzanie wersjami
-Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
