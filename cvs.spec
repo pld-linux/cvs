@@ -180,8 +180,8 @@ pserver.
 
 %build
 rm -f missing
-aclocal
-autoheader
+%{__aclocal}
+%{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure \
