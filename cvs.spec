@@ -151,8 +151,8 @@ pserver.
 rm -f missing
 aclocal
 autoheader
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-server \
 	--enable-client
