@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.11.1p1
-Release:	5
+Release:	6
 License:	GPL
 Group:		Development/Version Control
 Group(de):	Entwicklung/Versionkontrolle
@@ -18,6 +18,7 @@ Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.1-20010427-ipv6.pat
 Patch3:		%{name}-zlib.patch
 Patch4:		%{name}-no_new_am.patch
 Patch5:		%{name}-hash-in-Makefile.am.patch
+Patch6:		%{name}-fixed_buffer.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -113,6 +114,7 @@ pserver.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 autoheader
