@@ -12,6 +12,7 @@ Group(pl):	Programowanie/Zarzadzanie wersjami
 Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
+Patch2:		cvs-1.10.6-v6-19990629-PLD.patch
 URL:		http://www.cyclic.com/
 Prereq:		/sbin/install-info
 Buildroot:	/tmp/%{name}-%{version}-root
@@ -67,6 +68,7 @@ için gereken iþlevleri saðlar.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
