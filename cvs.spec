@@ -210,7 +210,8 @@ pserver.
 	--enable-server \
 	--enable-client \
 	%{?with_kerberos5:--with-gssapi} \
-	--with-tmpdir=/tmp
+	--with-tmpdir=/tmp \
+	--with-editor=/bin/vi
 
 %{__make}
 
