@@ -15,6 +15,7 @@ License:	GPL
 Group:		Development/Version Control
 # active ftp only(?)
 Source0:	http://ftp.cvshome.org/%{name}-%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5: 8a1995f0f0b5f31950ba650a9244029c
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
