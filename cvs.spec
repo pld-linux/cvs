@@ -31,8 +31,8 @@ Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
 URL:		http://www.cyclic.com/
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1.5
 BuildRequires:	zlib-devel
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 Obsoletes:	cvs-nserver-client
