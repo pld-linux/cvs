@@ -70,7 +70,7 @@ için gereken iþlevleri saðlar.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure \
+./configure %{_target} \
 	--prefix=/usr \
 	--enable-server \
 	--enable-client
