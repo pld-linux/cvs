@@ -10,7 +10,7 @@ Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
 Version:	1.11.2
-Release:	6
+Release:	7
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
