@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.7
-Release:     	2
+Release:     	3
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
@@ -32,30 +32,6 @@ revision controlled files.
 
 These directories and files can then be combined together to form a software
 release.
-
-Install the cvs package if you need to use a version control system.
-
-%description -l fr
-"CVS" signifie "Concurrent Version System". C'est un système de comparaison
-de versions de fichiers, qui peut garder une trace des changements apportés
-à des fichiers (le plus souvent, les fichiers des sources d'un programme).
-CVS conserve seulement les différences, et non l'intégralité d'un fichier
-récent et d'un fichier plus ancien. A chaque modification d'un fichier, CVS
-garde (entre autres) le nom de la personne ayant fait la modification, la
-raison justifiant cette modification, et la date à laquelle celle-ci a eu
-lieu.
-
-CVS est très utile pour gérer la mise en commun des modifications apportées
-par plusieurs personnes travaillant en parallèle sur les mêmes fichiers. Au
-lieu de garder plusieurs versions des fichiers dans un seul répertoire, CVS
-crée une série de répertoires, chacun contenant une nouvelle version des
-fichiers. Ces répertoires et ces fichiers peuvent ensuite être regroupés
-pour former la version la plus à jour du logiciel.
-
-Installez ce package si vous avez besoin d'utiliser un système de contrôle
-de version.
-
-Vous pouvez également utiliser rcs en lieu et place de cvs.
 
 %description -l de
 CVS ist ein Frontend für das RCS(1)-Revisionskontrollsystem, das den Begriff
@@ -86,8 +62,6 @@ pour former la version la plus à jour du logiciel.
 
 Installez ce package si vous avez besoin d'utiliser un système de contrôle
 de version.
-
-Vous pouvez également utiliser rcs en lieu et place de cvs.
 
 %description -l pl
 CVS jest nak³adk± na rcs (Revision Control System, czyli w wolnym
