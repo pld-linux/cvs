@@ -13,7 +13,6 @@ Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.ta
 Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
 Patch2:		cvs-1.10.6-v6-19990629-PLD.patch
-Patch3:		cvs-login.patch
 URL:		http://www.cyclic.com/
 Prereq:		/usr/sbin/fix-info-dir
 Buildroot:	/tmp/%{name}-%{version}-root
@@ -114,7 +113,6 @@ için gereken iþlevleri saðlar.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 autoconf
