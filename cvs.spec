@@ -71,6 +71,7 @@ için gereken iþlevleri saðlar.
 %patch2 -p1
 
 %build
+autoconf
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure %{_target_platform} \
 	--prefix=%{_prefix} \
