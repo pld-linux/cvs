@@ -13,13 +13,13 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.15
-Release:	3
+Version:	1.11.16
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	63873ed6ae942b298cf1db15c85ea22e
+# Source0-md5:	dd1914374f95ac1f846505e590b106e6
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -167,7 +167,7 @@ Summary:	rc-inetd config files to run CVS pserver
 Summary(es):	Ficheros de configuración de rc-inetd para un servidor CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
 Group:		Development/Version Control
-PreReq:		%{name} = %{version}
+PreReq:		%{name} = %{version}-%{release}
 PreReq:		rc-inetd
 Requires(pre):	/usr/bin/getgid
 Requires(pre):	/bin/id
