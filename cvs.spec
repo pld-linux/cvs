@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.11.1p1
-Release:	6
+Release:	7
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
@@ -17,6 +17,8 @@ Patch3:		%{name}-zlib.patch
 Patch4:		%{name}-no_new_am.patch
 Patch5:		%{name}-hash-in-Makefile.am.patch
 Patch6:		%{name}-fixed_buffer.patch
+Patch7:		%{name}-cvspass.patch
+Patch8:		%{name}-timestamp.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -111,6 +113,8 @@ pserver.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p0
 
 %build
 rm -f missing
