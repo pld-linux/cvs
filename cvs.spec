@@ -13,7 +13,7 @@ Version:	1.11.2
 Release:	7
 License:	GPL
 Group:		Development/Version Control
-Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
