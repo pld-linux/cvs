@@ -15,7 +15,7 @@ Patch1:		cvs-info.patch
 Patch2:		http://www.misiek.eu.org/ipv6/cvs-ipv6-220200.patch.gz
 URL:		http://www.cyclic.com/
 Prereq:		/usr/sbin/fix-info-dir
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 CVS means Concurrent Version System; it is a version control system which
