@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.6
-Release:     	1
+Release:     	2
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -72,9 +72,8 @@ için gereken iþlevleri saðlar.
 
 %build
 autoconf
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix} \
+LDFLAGS="-s"; export LDFLAGS
+%configure \
 	--enable-server \
 	--enable-client
 make
@@ -83,6 +82,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 make install \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
+	bindir=$RPM_BUILD_ROOT%{_bindir} \
 	mandir=$RPM_BUILD_ROOT%{_mandir}
 make install-info \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
