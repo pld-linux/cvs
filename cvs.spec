@@ -33,7 +33,7 @@ Patch7:		%{name}-info.patch
 Patch8:		%{name}-ssh.patch
 Patch9:		%{name}-posix.patch
 # Access Control List Extension: http://cvsacl.sourceforge.net/
-Patch10:        %{name}-acl.patch
+Patch10:	%{name}-acl.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
