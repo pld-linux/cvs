@@ -1,0 +1,27 @@
+--- configure.in.org	Sun Aug  4 20:35:47 2002
++++ configure.in	Sun Aug  4 20:50:48 2002
+@@ -390,16 +390,6 @@
+ AC_OUTPUT([Makefile \
+ 	  cvs.spec \
+ 	  contrib/Makefile \
+-	  contrib/clmerge \
+-	  contrib/cln_hist \
+-	  contrib/commit_prep \
+-	  contrib/cvs_acls \
+-	  contrib/log \
+-	  contrib/log_accum \
+-	  contrib/mfpipe \
+-	  contrib/pvcs2rcs \
+-	  contrib/rcslock \
+-	  contrib/sccs2rcs \
+ 	  diff/Makefile \
+ 	  doc/Makefile \
+ 	  emx/Makefile \
+@@ -407,7 +397,6 @@
+ 	  man/Makefile \
+ 	  os2/Makefile \
+ 	  src/Makefile \
+-	  src/cvsbug \
+ 	  src/version.h \
+ 	  tools/Makefile \
+ 	  vms/Makefile \
