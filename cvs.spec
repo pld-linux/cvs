@@ -1,31 +1,33 @@
-Summary:     Concurrent Versioning System
-Summary(de): Concurrent-Versioning-System
-Summary(fr): CVS : Concurrent Versioning System
-Summary(pl): Concurrent Versioning System
-Summary(tr): Sürüm denetim sistemi
-Name:        cvs
-Version:     1.10.3
-Release:     3
-Copyright:   GPL
-Group:       Development/Version Control
-Source0:     http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
-Patch:       cvs-tmprace.patch
-URL:         http://www.cyclic.com/
-Prereq:      /sbin/install-info
-Buildroot:   /tmp/%{name}-%{version}-root
+Summary:	Concurrent Versioning System
+Summary(de):	Concurrent-Versioning-System
+Summary(fr):	CVS : Concurrent Versioning System
+Summary(pl):	Concurrent Versioning System
+Summary(tr):	Sürüm denetim sistemi
+Name:		cvs
+Version:	1.10.4
+Release:     	1d
+Copyright:	GPL
+Group:		Development/Version Control
+Group(pl):	Programowanie/Zarzadzanie wersjami
+Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
+Patch0:		cvs-tmprace.patch
+Patch1:		cvs-info.patch
+URL:		http://www.cyclic.com/
+Prereq:		/sbin/install-info
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 CVS is a front end to the rcs(1) revision control system which extends the
 notion of revision control from a collection of files in a single directory
 to a hierarchical collection of directories consisting of revision
-controlled files.  These directories and files can be combined together to
-form a software release.  CVS provides the functions necessary to manage
+controlled files. These directories and files can be combined together to
+form a software release. CVS provides the functions necessary to manage
 these software releases and to control the concurrent editing of source
 files among multiple software developers.
 
 %description -l de
 CVS ist ein Frontend für das RCS(1)-Revisionskontrollsystem, das den Begriff
-der Revisionskontrolle von einer Sammlung von Dateien in einem " "einzelnen
+der Revisionskontrolle von einer Sammlung von Dateien in einem einzelnen
 Verzeichnis auf eine ganze Hierarchie ausweitet, bestehend aus
 revisionskontrollierten Dateien. Diese Verzeichnisse und Dateien lassen sich
 zu einer Software-Release kombinieren. CVS bietet die Funktionen, die zur
@@ -63,7 +65,8 @@ için gereken iþlevleri saðlar.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
@@ -80,15 +83,12 @@ make install-info prefix=$RPM_BUILD_ROOT/usr
 
 strip $RPM_BUILD_ROOT/usr/bin/cvs
 
-gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*}
+gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*} doc/*.ps
+bzip2 -9 BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
 %post
-/sbin/install-info /usr/info/cvs.info.gz /etc/info-dir \
-	--section "Version Control:" --entry \
-	"* cvs: (cvs).                                   A version control system for multiple developers."
-/sbin/install-info /usr/info/cvsclient.info.gz /etc/info-dir \
-	--section "Version Control:" --entry \
-	"* cvsclient: (cvsclient).                       The CVS client/server protocol."
+/sbin/install-info /usr/info/cvs.info.gz /etc/info-dir
+/sbin/install-info /usr/info/cvsclient.info.gz /etc/info-dir
 
 %preun
 if [ $1 = 0 ]; then
@@ -100,14 +100,23 @@ fi
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
-%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog doc/*.ps
-%attr(755, root, root) /usr/bin/*
-%attr(644, root,  man) /usr/man/man[158]/*
-/usr/info/cvs*
+%defattr(644,root,root,755)
+%doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.bz2
+%doc doc/*.ps.gz
+
+%attr(755,root,root) /usr/bin/*
 %attr(  -, root, root) /usr/lib/cvs
 
+%attr(644,root, man) /usr/man/man[158]/*
+/usr/info/cvs*
+
 %changelog
+* Wed Jan 26 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.10.4-1d]
+- added compressing %doc,
+- added cvs-info.patch,
+- added Group(pl).
+
 * Wed Dec 23 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.10.3-3]
 - standarized {un}registering info pages,
