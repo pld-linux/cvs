@@ -10,7 +10,7 @@ Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
 Version:	1.11.6
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Development/Version Control
 # new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.1/cvs-1.12.1.tar.bz2
@@ -185,7 +185,8 @@ rm -f missing
 %{__automake}
 %configure \
 	--enable-server \
-	--enable-client
+	--enable-client \
+	--with-tmpdir=/tmp
 %{__make}
 
 %install
