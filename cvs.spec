@@ -81,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 make install prefix=$RPM_BUILD_ROOT/usr
 make install-info prefix=$RPM_BUILD_ROOT/usr
 
-strip $RPM_BUILD_ROOT/usr/bin/cvs
+strip $RPM_BUILD_ROOT%{_bindir}/cvs
 
 gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*} doc/*.ps \
 	BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
@@ -104,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.gz
 %doc doc/*.ps.gz
 
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) %{_bindir}/*
 %attr(  -, root, root) %{_libdir}/cvs
 
 %{_mandir}/man[158]/*
