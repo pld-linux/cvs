@@ -87,13 +87,13 @@ gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*} doc/*.ps \
 	BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
 %post
-/sbin/install-info /usr/info/cvs.info.gz /etc/info-dir
-/sbin/install-info /usr/info/cvsclient.info.gz /etc/info-dir
+/sbin/install-info %{_infodir}/cvs.info.gz /etc/info-dir
+/sbin/install-info %{_infodir}/cvsclient.info.gz /etc/info-dir
 
 %preun
 if [ "$1" = "0" ]; then
-	/sbin/install-info --delete /usr/info/cvs.info.gz /etc/info-dir
-	/sbin/install-info --delete /usr/info/cvsclient.info.gz /etc/info-dir
+	/sbin/install-info --delete %{_infodir}/cvs.info.gz /etc/info-dir
+	/sbin/install-info --delete %{_infodir}/cvsclient.info.gz /etc/info-dir
 fi
 
 %clean
@@ -107,8 +107,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 %attr(  -, root, root) /usr/lib/cvs
 
-/usr/man/man[158]/*
-/usr/info/cvs*
+%{_mandir}/man[158]/*
+%{_infodir}/cvs*
 
 %changelog
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
