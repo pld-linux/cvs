@@ -5,11 +5,12 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
 Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:	cvs.inetd
 Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
 Patch2:		http://www.misiek.eu.org/ipv6/cvs-ipv6-220200.patch.gz
@@ -75,6 +76,21 @@ CVS, bu yazýlým yayýnlarýnýn yönetilmesini ve kaynak dosyalarý bakýmýnýn
 birden çok yazýlým geliþtiricisi tarafýndan eþzamanlý olarak yapýlmasýný
 kontrol etmek için gereken iþlevleri saðlar.
 
+%package pserver
+Summary:	rc-inetd config files to run CVS pserver
+Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
+Group:		Development/Version Control
+Group(pl):	Programowanie/Zarz±dzanie Wersjami
+Requires:	rc-inetd
+Prereq:		cvs
+
+%description pserver
+Config files for rc-inetd that are necessary to run CVS in pserver mode.
+
+%description pserver -l pl
+Pliki konfiguracyjne rc-inetd niezbêdne do uruchomienia CVSa w trybie
+pserver.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -99,6 +115,10 @@ make install-info \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	infodir=$RPM_BUILD_ROOT%{_infodir}
 
+install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
+install -d $RPM_BUILD_ROOT/home/cvsroot
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
+
 gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
 	doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
@@ -107,6 +127,32 @@ gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
 
 %postun
 [ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+
+%pre pserver
+if [ "$1" = 1 ]; then
+	# Add user and group
+	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -d /home/cvsroot -u 15 -s /bin/false cvs 2>/dev/null
+	
+	# Initialise repository
+	%{_bindir}/cvs -d :local:/home/cvsroot init 
+	chown -R cvs.cvs /home/cvsroot/CVSROOT
+fi
+
+%post pserver
+if [ -f /var/lock/subsys/rc-inetd ]; then
+	/etc/rc.d/init.d/rc-inetd restart
+fi
+
+%postun pserver
+if [ "$1" = "0" ]; then
+	# Remove user and group
+	%{_sbindir}/userdel cvs 2>/dev/null
+	%{_sbindir}/groupdel cvs 2>/dev/null
+	if [ -f /var/lock/subsys/rc-inetd ]; then
+		/etc/rc.d/init.d/rc-inetd restart
+	fi
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -120,3 +166,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
+
+%files pserver
+%defattr(644,root,root,755)
+/etc/sysconfig/rc-inetd/cvs
+%attr(750,cvs,cvs) %dir /home/cvsroot
