@@ -3,7 +3,7 @@ SOCK_TYPE=stream
 PROTOCOL=tcp
 PORT=2401
 FLAGS=nowait
-USER=root
+USER=cvs
 SERVER=tcpd
 DAEMON=/usr/bin/cvs
 DAEMONARGS="-f --allow-root=/home/cvsroot/ pserver"
