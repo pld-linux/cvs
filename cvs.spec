@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.7
-Release:     	1
+Release:     	2
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -14,7 +14,7 @@ Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
 Patch2:		cvs-1.10.6-v6-19990629-PLD.patch
 URL:		http://www.cyclic.com/
-Prereq:		/sbin/install-info
+Prereq:		/usr/sbin/fix-info-dir
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -95,14 +95,10 @@ gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
 	doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
 %post
-/sbin/install-info %{_infodir}/cvs.info.gz /etc/info-dir
-/sbin/install-info %{_infodir}/cvsclient.info.gz /etc/info-dir
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%preun
-if [ "$1" = "0" ]; then
-	/sbin/install-info --delete %{_infodir}/cvs.info.gz /etc/info-dir
-	/sbin/install-info --delete %{_infodir}/cvsclient.info.gz /etc/info-dir
-fi
+%postun
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
