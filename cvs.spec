@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.5
-Release:     	2
+Release:     	3
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -83,15 +83,15 @@ make install-info prefix=$RPM_BUILD_ROOT/usr
 
 strip $RPM_BUILD_ROOT/usr/bin/cvs
 
-gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*} doc/*.ps
-gzip -9nf BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
+gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*} doc/*.ps \
+	BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog
 
 %post
 /sbin/install-info /usr/info/cvs.info.gz /etc/info-dir
 /sbin/install-info /usr/info/cvsclient.info.gz /etc/info-dir
 
 %preun
-if [ $1 = 0 ]; then
+if [ "$1" = "0" ]; then
 	/sbin/install-info --delete /usr/info/cvs.info.gz /etc/info-dir
 	/sbin/install-info --delete /usr/info/cvsclient.info.gz /etc/info-dir
 fi
@@ -111,6 +111,10 @@ rm -rf $RPM_BUILD_ROOT
 /usr/info/cvs*
 
 %changelog
+* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.10.5-3]
+- recompiles on new rpm.
+
 * Tue Mar  9 1999 Micha³ Kuratczyk <kura@pld.org.pl>
   [1.10.5-2]
 - gzipping documentation (instead bzipping)
