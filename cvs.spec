@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	kerberos5	# enable kerberos5 support
+#
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
 Summary(es):	Control de versiones en modo concurrente
@@ -9,13 +13,13 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.8
+Version:	1.11.10
 Release:	1
 License:	GPL
 Group:		Development/Version Control
-# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.1/cvs-1.12.1.tar.bz2
+# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.3/cvs-1.12.3.tar.bz2
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	e878928d534d7bd9e60e4d97807dd888
+# Source0-md5:	14cccf6230a16a02ac4037c785cd171c
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -27,21 +31,22 @@ Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
 URL:		http://www.cyclic.com/
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1.7.5
 BuildRequires:	zlib-devel
+%{?with_kerberos5:BuildRequires:	heimdal-devel}
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_cvs_root	/home/services/cvsroot
+%define		_cvs_root	/home/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
 which can record the history of your files (usually, but not always,
 source code). CVS only stores the differences between versions,
 instead of every version of every file you've ever created. CVS also
-keeps a log of who, when and why changes occurred, among other
-aspects.
+keeps a log of who and when made some changes and why they occurred,
+among other aspects.
 
 CVS is very helpful for managing releases and controlling the
 concurrent editing of source files among multiple authors. Instead of
@@ -59,17 +64,24 @@ aus revisionskontrollierten Dateien. Diese Verzeichnisse und Dateien
 lassen sich zu einer Software-Release kombinieren. CVS bietet die
 Funktionen, die zur Verwaltung von Software-Releases und zur
 Überwachung der gleichzeitigen Bearbeitung von Quelldateien durch
-mehrere Software- Entwickler notwendig sind.
+mehrere Software-Entwickler notwendig sind.
 
 %description -l es
-CVS es un front end para el rcs(1) - revisión control system - que
-extiende la noción de control de revisión de una colectánea de archivo
-en un único directorio para una colección jerárquica de directorios
-que contiene archivos controlados por revisión. Estos directorios y
-archivos pueden ser combinados juntos para crear una release de
-software. CVS nos ofrece las funciones necesarias para administrar
-esta release de software y para controlar la edición concurrente de
-archivos fuente por múltiples programadores.
+CVS significa "Concurrent Version System" (sistema concurrente de
+control de versiones). Puede guardar la historia de sus ficheros
+(normalmente, pero no necesariamente, código fuente). CVS sólo guarda
+las diferencias entre las versiones, en vez de guardar cada una de las
+versiones de cada fichero que haya creado. CVS también mantiene un
+registro de quién y cuándo realizó un cambio, el porqué del cambio,
+etc.
+
+CVS es muy útil para manejar los releases y controlar la edición
+concurrente de los ficheros fuente entre varios autores. En vez de
+proveer control de versiones para una colección de ficheros en un solo
+directorio, CVS la provee para una colección jerárquica de directorios
+que consistan de ficheros de revisiones controladas. Esos directorios
+y ficheros pueden luego ser reunidos para formar un release de
+software.
 
 %description -l fr
 "CVS" signifie "Concurrent Version System". C'est un système de
@@ -150,6 +162,7 @@ CVS ÄÕÖÅ ËÏÒÉÓÎÁ ÄÌÑ ÏÒÇÁÎ¦ÚÁÃ¦À ÒÅÌ¦Ú¦× ÔÁ ËÅÒÕ×ÁÎÎÑ ÐÁÒÁÌÅÌØÎÏÀ
 
 %package pserver
 Summary:	rc-inetd config files to run CVS pserver
+Summary(es):	Ficheros de configuración de rc-inetd para un servidor CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
 PreReq:		%{name} = %{version}
@@ -169,6 +182,10 @@ Obsoletes:	cvs-nserver-pserver
 Config files for rc-inetd that are necessary to run CVS in pserver
 mode.
 
+%description pserver -l es
+Los ficheros de configuración necesarios para ejecutar CVS en el modo
+de pserver.
+
 %description pserver -l pl
 Pliki konfiguracyjne rc-inetd niezbêdne do uruchomienia CVSa w trybie
 pserver.
@@ -184,6 +201,9 @@ pserver.
 %patch6 -p1
 %patch7 -p1
 
+# seems not-so-really needed yet
+%{__perl} -pi -e 's/AC_PREREQ\(2\.58\)/AC_PREREQ\(2.57\)/' configure.in
+
 %build
 %{__aclocal}
 %{__autoheader}
@@ -192,7 +212,9 @@ pserver.
 %configure \
 	--enable-server \
 	--enable-client \
+	%{?with_kerberos5:--with-gssapi} \
 	--with-tmpdir=/tmp
+
 %{__make}
 
 %install
