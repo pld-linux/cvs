@@ -7,7 +7,7 @@ Summary(pt_BR):	Controle de versУes em modo concorrente
 Summary(ru):	Система управления версиями
 Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
-Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS 
+Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
 Version:	1.11.2
 Release:	6
