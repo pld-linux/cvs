@@ -14,13 +14,13 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.18
-Release:	3
+Version:	1.11.19
+Release:	1
 License:	GPL
 Group:		Development/Version Control
-# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
-Source0:	http://ccvs.cvshome.org/files/documents/19/534/%{name}-%{version}.tar.bz2
-# Source0-md5:	1dd5c16064906617e4358738bfe59b66
+# new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
+Source0:	https://www.cvshome.org/files/documents/19/742/%{name}-%{version}.tar.bz2
+# Source0-md5:	ac3f9459d0bb5ed9acd6091902267594
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -35,7 +35,7 @@ Patch8:		%{name}-ssh.patch
 Patch9:		%{name}-posix.patch
 # Access Control List Extension: http://cvsacl.sourceforge.net/
 Patch10:	%{name}-acl.patch
-URL:		http://www.cyclic.com/
+URL:		http://www.cvshome.org/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
