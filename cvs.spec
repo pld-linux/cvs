@@ -13,13 +13,13 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.10
-Release:	2
+Version:	1.11.11
+Release:	1
 License:	GPL
 Group:		Development/Version Control
-# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.3/cvs-1.12.3.tar.bz2
+# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	14cccf6230a16a02ac4037c785cd171c
+# Source0-md5:	e2ceb57c06dc532d0156bdba687073c9
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -32,7 +32,7 @@ Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf >= 2.58
-BuildRequires:	automake >= 1.7.5
+BuildRequires:	automake >= 1.7.9
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
