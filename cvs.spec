@@ -5,11 +5,12 @@ Summary(pl): Concurrent Versioning System
 Summary(tr): Sürüm denetim sistemi
 Name:        cvs
 Version:     1.10.1
-Release:     1
+Release:     2
 Copyright:   GPL
 Group:       Development/Version Control
 Source0:     http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:     rcs2log.sh
+Patch:       cvs-tmprace.patch
 URL:         http://www.cyclic.com/
 Prereq:      /sbin/install-info
 Buildroot:   /tmp/%{name}-%{version}-root
@@ -63,6 +64,7 @@ için gereken iþlevleri saðlar.
 
 %prep
 %setup -q
+%patch -p1
 cp -f %{SOURCE1} contrib
 
 %build
@@ -102,6 +104,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(  -, root, root) /usr/lib/cvs
 
 %changelog
+* Sun Sep  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.10.1-2]
+- fix race conditions in cvsbug/rcs2log.
+
 * Thu Sep  3 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.10.1-1]
 - removed "Requires: rcs",
