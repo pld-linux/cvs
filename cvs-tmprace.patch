@@ -1,0 +1,15 @@
+--- cvs-1.10/src/cvsbug.sh.jbj	Mon Aug 31 13:43:39 1998
++++ cvs-1.10/src/cvsbug.sh	Mon Aug 31 14:02:41 1998
+@@ -85,9 +85,9 @@
+ 
+ [ -z "$TMPDIR" ] && TMPDIR=/tmp
+ 
+-TEMP=$TMPDIR/p$$
+-BAD=$TMPDIR/pbad$$
+-REF=$TMPDIR/pf$$
++TEMP="/bin/mktemp $TMPDIR/p.XXXXXX"
++BAD="/bin/mktemp $TMPDIR/pbad.XXXXXX"
++REF="/bin/mktemp $TMPDIR/pf.XXXXXX"
+ 
+ if [ -z "$LOGNAME" -a -n "$USER" ]; then
+   LOGNAME=$USER
