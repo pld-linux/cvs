@@ -9,12 +9,12 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
-Version:	1.11.4
-Release:	0.9
+Version:	1.11.5
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 # active ftp only(?)
-Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.cvshome.org/files/19/10/%{name}-%{version}.tar.bz2
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
