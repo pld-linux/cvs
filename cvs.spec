@@ -13,13 +13,13 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.18
-Release:	2
+Version:	1.11.19
+Release:	0.1
 License:	GPL
 Group:		Development/Version Control
-# new feature release: http://ftp.cvshome.org/release/feature/cvs-1.12.5/cvs-1.12.5.tar.bz2
-Source0:	http://ccvs.cvshome.org/files/documents/19/534/%{name}-%{version}.tar.bz2
-# Source0-md5:	1dd5c16064906617e4358738bfe59b66
+# new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
+Source0:	https://www.cvshome.org/files/documents/19/742/%{name}-%{version}.tar.bz2
+# Source0-md5:	ac3f9459d0bb5ed9acd6091902267594
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -30,11 +30,12 @@ Patch4:		%{name}-home_etc.patch
 Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
-URL:		http://www.cyclic.com/
+URL:		http://www.cvshome.org/
 # should be 2.58/1.7.9 resp.
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1.7.6
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
+BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -184,8 +185,8 @@ Config files for rc-inetd that are necessary to run CVS in pserver
 mode.
 
 %description pserver -l es
-Los ficheros de configuración necesarios para ejecutar CVS en el modo
-de pserver.
+Los ficheros de configuración rc-inetd necesarios para ejecutar CVS
+en el modo de pserver.
 
 %description pserver -l pl
 Pliki konfiguracyjne rc-inetd niezbêdne do uruchomienia CVSa w trybie
