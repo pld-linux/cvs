@@ -4,8 +4,8 @@ Summary(fr):	CVS : Concurrent Versioning System
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
-Version:	1.10.6
-Release:     	2
+Version:	1.10.7
+Release:     	1
 Copyright:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarzadzanie wersjami
@@ -74,6 +74,7 @@ için gereken iþlevleri saðlar.
 autoconf
 LDFLAGS="-s"; export LDFLAGS
 %configure \
+	--enable-ipv6 \
 	--enable-server \
 	--enable-client
 make
