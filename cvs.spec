@@ -8,7 +8,7 @@ Version:	1.10.7
 Release:     	2
 Copyright:	GPL
 Group:		Development/Version Control
-Group(pl):	Programowanie/Zarzadzanie wersjami
+Group(pl):	Programowanie/Zarz±dzanie Wersjami
 Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:		cvs-tmprace.patch
 Patch1:		cvs-info.patch
