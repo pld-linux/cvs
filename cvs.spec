@@ -14,7 +14,7 @@ Release:	1
 License:	GPL
 Group:		Development/Version Control
 # active ftp only(?)
-Source0:	http://ftp.cvshome.org/files/19/10/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.cvshome.org/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
