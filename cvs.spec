@@ -149,7 +149,7 @@ if [ "$1" = 1 ]; then
 	chown -R cvs.cvs /home/cvsroot/CVSROOT
 fi
 if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd restart
+	/etc/rc.d/init.d/rc-inetd reload
 fi
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
@@ -159,7 +159,7 @@ if [ "$1" = "0" ]; then
 	%{_sbindir}/userdel cvs 2>/dev/null
 	%{_sbindir}/groupdel cvs 2>/dev/null
 	if [ -f /var/lock/subsys/rc-inetd ]; then
-		/etc/rc.d/init.d/rc-inetd restart
+		/etc/rc.d/init.d/rc-inetd reload
 	fi
 fi
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
