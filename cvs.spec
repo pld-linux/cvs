@@ -25,6 +25,7 @@ Patch6:		%{name}-libobj.patch
 Patch7:		%{name}-chmod.patch
 Patch8:		%{name}-home_etc.patch
 Patch9:		%{name}-pserver-dos.patch
+Patch10:	%{name}-ac.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -173,6 +174,7 @@ pserver.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p0
 
 %build
 rm -f missing
