@@ -4,19 +4,19 @@ Summary(fr):	Un système pour maintenir à jour des fichiers
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
-Version:	1.10.8
-Release:	11
+Version:	1.11
+Release:	1
 License:	GPL
 Group:		Development/Version Control
-Group(pl):	Programowanie/Zarz±dzanie wersjami
 Group(de):	Entwicklung/Versionkontrolle
-Source0:	http://download.cyclic.com/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
+Group(pl):	Programowanie/Zarz±dzanie wersjami
+Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
 Patch2:		http://www.misiek.eu.org/ipv6/%{name}-ipv6-220200.patch.gz
-Patch3:		%{name}-auth.patch
-Patch4:		%{name}-zlib.patch
+Patch3:		%{name}-zlib.patch
+Patch4:		%{name}-DESTDIR.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	zlib-devel
@@ -88,8 +88,8 @@ saðlar.
 Summary:	rc-inetd config files to run CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
-Group(pl):	Programowanie/Zarz±dzanie wersjami
 Group(de):	Entwicklung/Versionkontrolle
+Group(pl):	Programowanie/Zarz±dzanie wersjami
 Requires:	rc-inetd
 Prereq:		cvs
 
@@ -112,7 +112,6 @@ pserver.
 %build
 autoheader
 autoconf
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-server \
 	--enable-client
@@ -120,13 +119,8 @@ LDFLAGS="-s"; export LDFLAGS
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	bindir=$RPM_BUILD_ROOT%{_bindir} \
-	mandir=$RPM_BUILD_ROOT%{_mandir}
-%{__make} install-info \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	infodir=$RPM_BUILD_ROOT%{_infodir}
+%{__make} install install-info \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
 install -d $RPM_BUILD_ROOT/home/cvsroot
@@ -135,6 +129,7 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/cvs
 gzip -9nf $RPM_BUILD_ROOT{%{_infodir}/cvs*,%{_mandir}/man{1,5,8}/*} \
 	doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
 	contrib/{*.man,README,ChangeLog,intro.doc}
+
 rm -f contrib/{.cvsignore,Makefile*,*.pl,*.sh,*.csh}
 
 %pre pserver
