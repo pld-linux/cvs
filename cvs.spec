@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	5
+Release:	6
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
@@ -148,18 +148,16 @@ fi
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
+if [ "$1" = "0" ]; then
+	# Remove user and group
+	%{_sbindir}/userdel cvs 2>/dev/null
+	%{_sbindir}/groupdel cvs 2>/dev/null
+fi
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %post pserver
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd restart
-fi
-
-%postun
-if [ "$1" = "0" ]; then
-	# Remove user and group
-	%{_sbindir}/userdel cvs 2>/dev/null
-	%{_sbindir}/groupdel cvs 2>/dev/null
 fi
 
 %postun pserver
