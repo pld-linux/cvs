@@ -114,7 +114,7 @@ LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-server \
 	--enable-client
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
