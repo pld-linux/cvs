@@ -2,10 +2,12 @@ Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
 Summary(fr):	Un systХme pour maintenir Ю jour des fichiers
 Summary(pl):	Concurrent Versioning System
+Summary(ru):	Система управления версиями
 Summary(tr):	SЭrЭm denetim sistemi
+Summary(uk):	Система керування верс╕ями
 Name:		cvs
 Version:	1.11.2
-Release:	0.5
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
@@ -32,7 +34,9 @@ which can record the history of your files (usually, but not always,
 source code). CVS only stores the differences between versions,
 instead of every version of every file you've ever created. CVS also
 keeps a log of who, when and why changes occurred, among other
-aspects. CVS is very helpful for managing releases and controlling the
+aspects.
+
+CVS is very helpful for managing releases and controlling the
 concurrent editing of source files among multiple authors. Instead of
 providing version control for a collection of files in a single
 directory, CVS provides version control for a hierarchical collection
@@ -58,15 +62,16 @@ sources d'un programme). CVS conserve seulement les diffИrences, et
 non l'intИgralitИ d'un fichier rИcent et d'un fichier plus ancien. A
 chaque modification d'un fichier, CVS garde (entre autres) le nom de
 la personne ayant fait la modification, la raison justifiant cette
-modification, et la date Ю laquelle celle-ci a eu lieu. CVS est trХs
-utile pour gИrer la mise en commun des modifications apportИes par
-plusieurs personnes travaillant en parallХle sur les mЙmes fichiers.
-Au lieu de garder plusieurs versions des fichiers dans un seul
-rИpertoire, CVS crИe une sИrie de rИpertoires, chacun contenant une
-nouvelle version des fichiers. Ces rИpertoires et ces fichiers peuvent
-ensuite Йtre regroupИs pour former la version la plus Ю jour du
-logiciel. Installez ce package si vous avez besoin d'utiliser un
-systХme de contrТle de version.
+modification, et la date Ю laquelle celle-ci a eu lieu.
+
+CVS est trХs utile pour gИrer la mise en commun des modifications
+apportИes par plusieurs personnes travaillant en parallХle sur les
+mЙmes fichiers. Au lieu de garder plusieurs versions des fichiers dans
+un seul rИpertoire, CVS crИe une sИrie de rИpertoires, chacun
+contenant une nouvelle version des fichiers. Ces rИpertoires et ces
+fichiers peuvent ensuite Йtre regroupИs pour former la version la plus
+Ю jour du logiciel. Installez ce package si vous avez besoin
+d'utiliser un systХme de contrТle de version.
 
 %description -l pl
 CVS jest nakЁadk╠ na rcs (Revision Control System, czyli w wolnym
@@ -78,6 +83,20 @@ katalogСw z plikami. Z pomoc╠ CVS w Ёatwy sposСb mo©na zarz╠dzaФ kodem
 umo©liwiaj╠c ╤ledzenie i kontrolЙ wszystkich zmian w trakcie pracy nad
 projektami i wypuszczaniem peЁnych wersji oprogramowania (release).
 
+%description -l ru
+CVS (Concurrent Version System) - это система управления версиями,
+которая умеет записать историю ваших файлов (обычно, но не всегда, это
+исходные тексты). CVS сохраняет только различия между версиями вместо
+каждой версии каждого файла, которая была когда-либо создана. Также
+CVS хранит протокол того, кто, когда и зачем что-либо изменил.
+
+CVS очень полезна для организации релизов и управления параллельной
+правкой исходных файлов несколькими авторами. Вместо предоставления
+управления версиями набора файлов в одном каталоге CVS предоставляет
+управление версиями иерархического набора каталогов, состоящих из
+файлов, версиями которых надо управллять. Эти файлы и каталоги могут
+быть собраны вместе для формирования релиза ПО.
+
 %description -l tr
 CVS (Concurrent Versioning System), tek bir dizindeki dosya
 topluluПunun sЭrЭm denetimini, denetimi yapЩlmЩЧ dizinlerin hiyerarЧik
@@ -87,6 +106,20 @@ getirilebilir. CVS, bu yazЩlЩm yayЩnlarЩnЩn yЖnetilmesini ve kaynak
 dosyalarЩ bakЩmЩnЩn birden Гok yazЩlЩm geliЧtiricisi tarafЩndan
 eЧzamanlЩ olarak yapЩlmasЩnЩ kontrol etmek iГin gereken iЧlevleri
 saПlar.
+
+%description -l uk
+CVS (Concurrent Version System) - це система керування верс╕ями, яка
+вм╕╓ записати ╕стор╕ю ваших файл╕в (зазвичай, але не завжди, це
+вих╕дн╕ тексти). CVS збер╕га╓ т╕льки р╕зницю м╕ж верс╕ями зам╕сть
+кожно╖ верс╕╖ кожного файлу, яка була колись створена. Також CVS
+збер╕га╓ протокол того, хто, коли ╕ нав╕що щось зм╕нив.
+
+CVS дуже корисна для орган╕зац╕ю рел╕з╕в та керування паралельною
+правкою виз╕дних файл╕в к╕лькома авторами. Зам╕сть надання можливост╕
+керування верс╕ями набору файл╕в в одному каталоз╕, CVS нада╓
+можлив╕сть керування ╕╓рарх╕чним набором каталог╕в, що складаються з
+файл╕в, верс╕ями котрих треба керувати. Ц╕ файли та каталоги можуть
+бути з╕бран╕ разом для формування рел╕зу ПЗ.
 
 %package pserver
 Summary:	rc-inetd config files to run CVS pserver
@@ -107,7 +140,7 @@ pserver.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-#%patch2 -p1
+%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
@@ -116,10 +149,10 @@ pserver.
 
 %build
 rm -f missing
-autoheader
 aclocal
-automake -a -c -f
+autoheader
 autoconf
+automake -a -c -f
 %configure \
 	--enable-server \
 	--enable-client
