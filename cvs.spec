@@ -18,7 +18,8 @@ Group:		Development/Version Control
 Source0:	http://ftp.cvshome.org/release/stable/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:	%{name}.inetd
 Patch0:		%{name}-info.patch
-Patch1:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/%{name}-1.11.2-20020513-ipv6.patch.gz
+# based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
+Patch1:		%{name}-ipv6.patch
 Patch2:		%{name}-zlib.patch
 Patch3:		%{name}-fixed_buffer.patch
 Patch4:		%{name}-cvspass.patch
@@ -168,7 +169,7 @@ pserver.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
