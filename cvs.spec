@@ -191,8 +191,8 @@ Config files for rc-inetd that are necessary to run CVS in pserver
 mode.
 
 %description pserver -l es
-Los ficheros de configuración necesarios para ejecutar CVS en el modo
-de pserver.
+Los ficheros de configuración rc-inetd necesarios para ejecutar CVS
+en el modo de pserver.
 
 %description pserver -l pl
 Pliki konfiguracyjne rc-inetd niezbêdne do uruchomienia CVSa w trybie
