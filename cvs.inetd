@@ -1,0 +1,9 @@
+SERVICE_NAME=cvspserver
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=2401
+FLAGS=nowait
+USER=root
+SERVER=tcpd
+DAEMON=/usr/bin/cvs
+DAEMONARGS="-f --allow-root=/home/cvsroot/ pserver"
