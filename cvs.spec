@@ -5,14 +5,14 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.11.2
-Release:	1
+Release:	0.5
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
-Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/%{name}-1.11.1-20010427-ipv6.patch.gz
+Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/%{name}-1.11.2-20020513-ipv6.patch.gz
 Patch3:		%{name}-zlib.patch
 Patch4:		%{name}-fixed_buffer.patch
 Patch5:		%{name}-cvspass.patch
@@ -107,7 +107,7 @@ pserver.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-#%patch2 -p1, to get
+%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
