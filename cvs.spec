@@ -153,7 +153,14 @@ Summary:	rc-inetd config files to run CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
 Group:		Development/Version Control
 PreReq:		%{name} = %{version}
-Requires:	rc-inetd
+PreReq:		rc-inetd
+Requires(pre):	/usr/bin/getgid
+Requires(pre):	/bin/id
+Requires(pre):	/usr/sbin/groupadd
+Requires(pre):	/usr/sbin/useradd
+Requires(post):	fileutils
+Requires(postun):	/usr/sbin/userdel
+Requires(postun):	/usr/sbin/groupdel
 Obsoletes:	cvs-nserver-common
 Obsoletes:	cvs-nserver-nserver
 Obsoletes:	cvs-nserver-pserver
@@ -211,14 +218,25 @@ rm -rf $RPM_BUILD_ROOT
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %pre pserver
-if [ "$1" = 1 ]; then
-	# Add user and group
-	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
-	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -d %{_cvs_root} -u 52 -s /bin/false cvs 2>/dev/null
+if [ -n "`/usr/bin/getgid cvs`" ]; then
+	if [ "`/usr/bin/getgid cvs`" != "52" ]; then
+		echo "Error: group cvs doesn't have gid=52. Correct this before installing cvs." 1>&2
+		exit 1
+	fi
+else
+	/usr/sbin/groupadd -f -g 52 cvs 1>&2
+fi
+if [ -n "`/bin/id -u cvs 2>/dev/null`" ]; then
+	if [ "`/bin/id -u cvs`" != "52" ]; then
+		echo "Error: user cvs doesn't have uid=52. Correct this before installing cvs." 1>&2
+		exit 1
+	fi
+else
+	/usr/sbin/useradd -g cvs -d %{_cvs_root} -u 52 -s /bin/false cvs 1>&2
 fi
 
 %post pserver
-if [ "$1" = 1 ]; then
+if [ "$1" = "1" ]; then
 	# Initialise repository
 	%{_bindir}/cvs -d :local:%{_cvs_root} init
 	chown -R cvs:cvs %{_cvs_root}/CVSROOT
@@ -230,8 +248,8 @@ fi
 %postun pserver
 if [ "$1" = "0" ]; then
 	# Remove user and group
-	%{_sbindir}/userdel cvs 2>/dev/null
-	%{_sbindir}/groupdel cvs 2>/dev/null
+	/usr/sbin/userdel cvs 2>/dev/null
+	/usr/sbin/groupdel cvs 2>/dev/null
 	if [ -f /var/lock/subsys/rc-inetd ]; then
 		/etc/rc.d/init.d/rc-inetd reload
 	fi
