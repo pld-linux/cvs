@@ -4,8 +4,8 @@ Summary(fr):	Un système pour maintenir à jour des fichiers
 Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
-Version:	1.11.1p1
-Release:	7
+Version:	1.11.2
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
@@ -14,11 +14,10 @@ Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
 Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/%{name}-1.11.1-20010427-ipv6.patch.gz
 Patch3:		%{name}-zlib.patch
-Patch4:		%{name}-no_new_am.patch
-Patch5:		%{name}-hash-in-Makefile.am.patch
-Patch6:		%{name}-fixed_buffer.patch
-Patch7:		%{name}-cvspass.patch
-Patch8:		%{name}-timestamp.patch
+Patch4:		%{name}-fixed_buffer.patch
+Patch5:		%{name}-cvspass.patch
+Patch6:		%{name}-libobj.patch
+Patch7:		%{name}-chmod.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -108,13 +107,12 @@ pserver.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1, to get
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p0
 
 %build
 rm -f missing
@@ -126,7 +124,6 @@ autoconf
 	--enable-server \
 	--enable-client
 %{__make}
-%{!?_without_tests: %{__make} check }
 
 %install
 rm -rf $RPM_BUILD_ROOT
