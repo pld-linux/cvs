@@ -1,10 +1,13 @@
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
+Summary(es):	Control de versiones en modo concurrente
 Summary(fr):	Un système pour maintenir à jour des fichiers
 Summary(pl):	Concurrent Versioning System
+Summary(pt_BR):	Controle de versões em modo concorrente
 Summary(ru):	óÉÓÔÅÍÁ ÕĞÒÁ×ÌÅÎÉÑ ×ÅÒÓÉÑÍÉ
 Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
+Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS 
 Name:		cvs
 Version:	1.11.2
 Release:	4
@@ -55,6 +58,16 @@ Funktionen, die zur Verwaltung von Software-Releases und zur
 Überwachung der gleichzeitigen Bearbeitung von Quelldateien durch
 mehrere Software- Entwickler notwendig sind.
 
+%description -l es
+CVS es un front end para el rcs(1) - revisión control system - que
+extiende la noción de control de revisión de una colectánea de archivo
+en un único directorio para una colección jerárquica de directorios
+que contiene archivos controlados por revisión. Estos directorios y
+archivos pueden ser combinados juntos para crear una release de
+software. CVS nos ofrece las funciones necesarias para administrar
+esta release de software y para controlar la edición concurrente de
+archivos fuente por múltiples programadores.
+
 %description -l fr
 "CVS" signifie "Concurrent Version System". C'est un système de
 comparaison de versions de fichiers, qui peut garder une trace des
@@ -83,6 +96,16 @@ katalogów z plikami. Z pomoc± CVS w ³atwy sposób mo¿na zarz±dzaæ kodem
 ¼ród³owym opracowywanym przez nawet bardzo du¿e zespo³y programistów
 umo¿liwiaj±c ¶ledzenie i kontrolê wszystkich zmian w trakcie pracy nad
 projektami i wypuszczaniem pe³nych wersji oprogramowania (release).
+
+%description -l pt_BR
+CVS é um front end para o rcs(1) - revision control system - que
+estende a noção de controle de revisão de uma coletânea de arquivo em
+um único diretório para uma coleção hierárquica de diretórios que
+contém arquivos controlados por revisão. Esses diretórios e arquivos
+podem ser combinados juntos para criar uma release de software. CVS
+oferece as funções necessárias para administrar essas release de
+software e para controlar a edição concorrente de arquivos fonte por
+múltiplos programadores.
 
 %description -l ru
 CVS (Concurrent Version System) - ÜÔÏ ÓÉÓÔÅÍÁ ÕĞÒÁ×ÌÅÎÉÑ ×ÅÒÓÉÑÍÉ,
