@@ -115,9 +115,3 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
-
-%changelog
-* Sun May 30 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.10.6-1]
-- based on RH spec,
-- spec rewrited by PLD team.
