@@ -10,7 +10,7 @@ Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
 Version:	1.11.5
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # active ftp only(?)
@@ -32,7 +32,7 @@ BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_cvs_root	/home/services/cvsroot
+%define		_cvs_root	/home/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
