@@ -10,7 +10,7 @@ Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS 
 Name:		cvs
 Version:	1.11.2
-Release:	5
+Release:	6
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.cvshome.org/pub/%{name}-1.11.1/%{name}-%{version}.tar.gz
@@ -26,6 +26,7 @@ Patch7:		%{name}-chmod.patch
 Patch8:		%{name}-home_etc.patch
 Patch9:		%{name}-pserver-dos.patch
 Patch10:	%{name}-ac.patch
+Patch11:	%{name}-newnline.patch
 URL:		http://www.cyclic.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -175,6 +176,7 @@ pserver.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p0
+%patch11 -p0
 
 %build
 rm -f missing
@@ -189,8 +191,7 @@ autoheader
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
-install -d $RPM_BUILD_ROOT%{_cvs_root}
+install -d $RPM_BUILD_ROOT{/etc/sysconfig/rc-inetd,%{_cvs_root}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
