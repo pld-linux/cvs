@@ -33,7 +33,7 @@ BuildRequires:	automake
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define _cvs_root /home/cvsroot
+%define _cvs_root /home/services/cvsroot
 
 %description
 CVS means Concurrent Version System; it is a version control system
