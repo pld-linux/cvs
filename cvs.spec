@@ -84,10 +84,10 @@ gzip -9nf $RPM_BUILD_ROOT/usr/{info/cvs*,man/man{1,5,8}/*}
 
 %post
 /sbin/install-info /usr/info/cvs.info.gz /etc/info-dir \
-	--entry --section "Version Control:" \
+	--section "Version Control:" --entry \
 	"* cvs: (cvs).                                   A version control system for multiple developers."
 /sbin/install-info /usr/info/cvsclient.info.gz /etc/info-dir \
-	--entry --section "Version Control:" \
+	--section "Version Control:" --entry \
 	"* cvsclient: (cvsclient).                       The CVS client/server protocol."
 
 %preun
