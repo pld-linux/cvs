@@ -211,7 +211,7 @@ mv -f $RPM_BUILD_ROOT%{_datadir}/cvs/contrib/rcs2log $RPM_BUILD_ROOT%{_bindir}
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
-	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d %{_cvs_root} -u 52 -s /bin/false cvs 2>/dev/null
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -d %{_cvs_root} -u 52 -s /bin/false cvs 2>/dev/null
 fi
 
 %post pserver
