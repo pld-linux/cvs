@@ -164,7 +164,7 @@ diff -urN cvs-1.11.9.org/src/client.c cvs-1.11.9/src/client.c
  	if (verify_only)
  	{
  	    begin = "BEGIN VERIFICATION REQUEST";
-@@ -3979,37 +3980,76 @@
+@@ -3979,36 +3980,75 @@
      int s;
      const char *portenv;
      int port;
@@ -183,8 +183,7 @@ diff -urN cvs-1.11.9.org/src/client.c cvs-1.11.9/src/client.c
  
 -    hp = init_sockaddr (&sin, root->hostname, port);
 -
--    hname = xmalloc (strlen (hp->h_name) + 1);
--    strcpy (hname, hp->h_name);
+-    hname = xstrdup (hp->h_name);
 -  
 -    if (trace)
 +    sprintf (pbuf, "%u", port);
@@ -248,8 +247,7 @@ diff -urN cvs-1.11.9.org/src/client.c cvs-1.11.9/src/client.c
 +	    }
 +	}
 +	getnameinfo(res->ai_addr, res->ai_addrlen, hbuf, sizeof(hbuf), NULL, 0, 0);
-+	hname = xmalloc (strlen (hbuf) + 1);
-+	strcpy (hname, hbuf);
++	hname = xstrdup (hbuf);
 +	/* success */
 +	break;
 +    }
