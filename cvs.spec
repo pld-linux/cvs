@@ -14,7 +14,7 @@ Source0:	ftp://ftp.cvshome.org/pub/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-tmprace.patch
 Patch1:		%{name}-info.patch
-Patch2:		http://www.misiek.eu.org/ipv6/%{name}-ipv6-220200.patch.gz
+Patch2:		http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11-20001103-ipv6.patch.gz
 Patch3:		%{name}-zlib.patch
 Patch4:		%{name}-DESTDIR.patch
 URL:		http://www.cyclic.com/
