@@ -5,7 +5,7 @@ Summary(pl):	Concurrent Versioning System
 Summary(tr):	Sürüm denetim sistemi
 Name:		cvs
 Version:	1.10.8
-Release:	7
+Release:	8
 License:	GPL
 Group:		Development/Version Control
 Group(pl):	Programowanie/Zarz±dzanie Wersjami
@@ -170,7 +170,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%attr(750,cvs,cvs) %dir /home/cvsroot
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
 %doc {BUGS,FAQ,MINOR-BUGS,NEWS,PROJECTS,TODO,README,ChangeLog}.gz
@@ -178,4 +177,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files pserver
 %defattr(644,root,root,755)
+%attr(750,cvs,cvs) %dir /home/cvsroot
 /etc/sysconfig/rc-inetd/cvs
