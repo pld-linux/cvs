@@ -163,7 +163,7 @@ CVS дуже корисна для орган╕зац╕ю рел╕з╕в та керування паралельною
 %package pserver
 Summary:	rc-inetd config files to run CVS pserver
 Summary(es):	Ficheros de configuraciСn de rc-inetd para un servidor CVS pserver
-Summary(pl):	Pliki konfiguracyjne rc-ineta do postawienia pservera CVS
+Summary(pl):	Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
 Group:		Development/Version Control
 PreReq:		%{name} = %{version}
 PreReq:		rc-inetd
