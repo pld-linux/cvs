@@ -24,6 +24,8 @@ BuildRequires:	automake
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define _cvs_root /home/cvsroot
+
 %description
 CVS means Concurrent Version System; it is a version control system
 which can record the history of your files (usually, but not always,
@@ -124,7 +126,8 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{etc/sysconfig/rc-inetd,home/cvsroot}
+install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
+install -d $RPM_BUILD_ROOT%{_cvs_root}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -147,14 +150,14 @@ gzip -9nf doc/*.ps BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog \
 if [ "$1" = 1 ]; then
 	# Add user and group
 	getgid cvs >/dev/null 2>&1 || %{_sbindir}/groupadd -f -g 52 cvs
-	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d /home/cvsroot -u 52 -s /bin/false cvs 2>/dev/null
+	id -u cvs >/dev/null 2>&1 || %{_sbindir}/useradd -g cvs -m -d %{_cvs_root} -u 52 -s /bin/false cvs 2>/dev/null
 fi
 
 %post pserver
 if [ "$1" = 1 ]; then
 	# Initialise repository
-	%{_bindir}/cvs -d :local:/home/cvsroot init 
-	chown -R cvs.cvs /home/cvsroot/CVSROOT
+	%{_bindir}/cvs -d :local:%{_cvs_root} init 
+	chown -R cvs.cvs %{_cvs_root}/CVSROOT
 fi
 if [ -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload
@@ -182,5 +185,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files pserver
 %defattr(644,root,root,755)
-%attr(770,root,cvs) %dir /home/cvsroot
+%attr(770,root,cvs) %dir %{_cvs_root}
 %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/cvs
