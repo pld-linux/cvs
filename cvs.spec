@@ -39,7 +39,7 @@ URL:		http://www.cvshome.org/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
-BuildRequires:	rpmbuild(macros) >= 1.159
+BuildRequires:	rpmbuild(macros) >= 1.202
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
@@ -250,22 +250,8 @@ rm -rf $RPM_BUILD_ROOT
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %pre pserver
-if [ -n "`/usr/bin/getgid cvs`" ]; then
-	if [ "`/usr/bin/getgid cvs`" != "52" ]; then
-		echo "Error: group cvs doesn't have gid=52. Correct this before installing cvs." 1>&2
-		exit 1
-	fi
-else
-	/usr/sbin/groupadd -f -g 52 cvs 1>&2
-fi
-if [ -n "`/bin/id -u cvs 2>/dev/null`" ]; then
-	if [ "`/bin/id -u cvs`" != "52" ]; then
-		echo "Error: user cvs doesn't have uid=52. Correct this before installing cvs." 1>&2
-		exit 1
-	fi
-else
-	/usr/sbin/useradd -g cvs -d %{_cvs_root} -u 52 -s /bin/false cvs 1>&2
-fi
+%groupadd -f -g 52 cvs
+%useradd -g cvs -d %{_cvs_root} -u 52 -s /bin/false cvs
 
 %post pserver
 if [ "$1" = "1" ]; then
