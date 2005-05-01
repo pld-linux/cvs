@@ -1,0 +1,5 @@
+- disabled DoS feature in pserver (passing no commit message from client
+  caused locking module and spawning editor on server - forever...);
+  credits: orzech for noticing vi on cvs's process list ;)
+- new %doc
+- release 5
