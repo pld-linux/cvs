@@ -1,0 +1,5 @@
+- Update to this versin is importand on cvs servers where exist Ro accout.
+  Previous version have bug which allow tag files withut RO access.
+- release 1,
+- merge translations from KSI,
+- enable ipv6 patch.
