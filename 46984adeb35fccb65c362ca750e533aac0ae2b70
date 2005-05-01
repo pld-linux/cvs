@@ -1,0 +1,2 @@
+- cvs-pserver pre/postinstall scripts use /etc/rc.d/init.d/rc-inetd reload
+  now
