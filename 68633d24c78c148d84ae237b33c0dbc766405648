@@ -1,0 +1,6 @@
+- release 2,
+- move rcs2log to %{_bindir},
+- regenerate ac/am/lt files for make spec ac 2.50 ready,
+- aded no_new_am patch for remove require am >= 1.4a on rebuild am files
+  (we have now 1.4 pl4 and now am >= 1.4a is requires for produce bzipped2
+  tara ball on "make dist").
