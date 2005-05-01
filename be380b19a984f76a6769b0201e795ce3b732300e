@@ -1,0 +1,4 @@
+- remove cvs usage in cvs %pre
+- added -m option to useradd
+- moved contribs to %doc/contrib/ subdir and cleanup it
+- moved /home/cvsroot from pserver to cvs package (user is cvs created by cvs)
