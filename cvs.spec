@@ -192,8 +192,8 @@ Config files for rc-inetd that are necessary to run CVS in pserver
 mode.
 
 %description pserver -l es
-Los ficheros de configuración rc-inetd necesarios para ejecutar CVS
-en el modo de pserver.
+Los ficheros de configuración rc-inetd necesarios para ejecutar CVS en
+el modo de pserver.
 
 %description pserver -l pl
 Pliki konfiguracyjne rc-inetd niezbêdne do uruchomienia CVSa w trybie
@@ -287,4 +287,4 @@ echo "Check your configration."
 %files pserver
 %defattr(644,root,root,755)
 %attr(770,root,cvs) %dir %{_cvs_root}
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/cvs
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/cvs
