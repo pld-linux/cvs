@@ -15,7 +15,7 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.20
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
@@ -38,7 +38,7 @@ Patch10:	%{name}-acl.patch
 URL:		http://www.cvshome.org/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
-%{?with_kerberos5:BuildRequires:	heimdal-devel}
+%{?with_kerberos5:BuildRequires:	heimdal-devel >= 0.7}
 BuildRequires:	rpmbuild(macros) >= 1.202
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
