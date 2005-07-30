@@ -13,13 +13,13 @@ Summary(tr):	SЭrЭm denetim sistemi
 Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
-Version:	1.11.19
-Release:	1
+Version:	1.11.20
+Release:	1.1
 License:	GPL
 Group:		Development/Version Control
 # new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
-Source0:	https://www.cvshome.org/files/documents/19/742/%{name}-%{version}.tar.bz2
-# Source0-md5:	ac3f9459d0bb5ed9acd6091902267594
+Source0:	https://ccvs.cvshome.org/files/documents/19/861/%{name}-%{version}.tar.bz2
+# Source0-md5:	9e215c0ee3bb7dfb76515d7cd81a3742
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
