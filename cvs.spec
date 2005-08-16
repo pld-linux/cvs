@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_with	kerberos5	# enable kerberos5 support
+%bcond_without	acl		# enable ACL support
 #
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
@@ -14,9 +15,9 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.20
-Release:	1.1
+Release:	1.2
 License:	GPL
-Group:		Development/Version Control
+Group:		DevAelopment/Version Control
 # new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
 Source0:	https://ccvs.cvshome.org/files/documents/19/861/%{name}-%{version}.tar.bz2
 # Source0-md5:	9e215c0ee3bb7dfb76515d7cd81a3742
@@ -30,6 +31,8 @@ Patch4:		%{name}-home_etc.patch
 Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
+# Access Control List Extension: http://cvsacl.sourceforge.net/
+Patch8:		%{name}-acl.patch
 URL:		http://www.cvshome.org/
 # should be 2.58/1.7.9 resp.
 BuildRequires:	autoconf >= 2.57
@@ -202,6 +205,7 @@ pserver.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%{?with_acl:%patch8 -p1}
 
 # seems not-so-really needed yet
 %{__perl} -pi -e 's/(AC_PREREQ)\(2\.58\)/$1\(2.57\)/;s/(AM_INIT_AUTOMAKE.*)1\.7\.9/${1}1.7.6/' configure.in
@@ -281,7 +285,8 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README ChangeLog doc/*.ps contrib
+%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README %{?with_acl:README.cvsacl}
+%doc ChangeLog doc/*.ps contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
