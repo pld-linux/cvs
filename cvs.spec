@@ -15,7 +15,7 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.20
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Version Control
 # new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
@@ -35,6 +35,7 @@ Patch8:		%{name}-ssh.patch
 Patch9:		%{name}-posix.patch
 # Access Control List Extension: http://cvsacl.sourceforge.net/
 Patch10:	%{name}-acl.patch
+Patch11:	%{name}-CAN_2005_2693.patch
 URL:		http://www.cvshome.org/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -212,6 +213,7 @@ pserver.
 %patch8 -p1
 %patch9 -p1
 %{?with_acl:%patch10 -p1}
+%patch11 -p1
 
 %build
 %{__aclocal}
