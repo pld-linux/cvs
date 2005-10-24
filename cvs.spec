@@ -32,9 +32,10 @@ Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
 Patch8:		%{name}-ssh.patch
 Patch9:		%{name}-posix.patch
+Patch10:	%{name}-CAN_2005_2693.patch
 # Access Control List Extension: http://cvsacl.sourceforge.net/
-Patch10:	%{name}-acl.patch
-Patch11:	%{name}-CAN_2005_2693.patch
+Patch11:	%{name}-acl.patch
+Patch12:	%{name}-acl-fixes.patch
 URL:		http://www.non-gnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -211,8 +212,9 @@ pserver.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%{?with_acl:%patch10 -p1}
-%patch11 -p1
+%patch10 -p1
+%{?with_acl:%patch11 -p1}
+%{?with_acl:%patch12 -p1}
 
 %build
 %{__aclocal}
