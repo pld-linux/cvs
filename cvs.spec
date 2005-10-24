@@ -14,13 +14,12 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.20
-Release:	3
+Version:	1.11.21
+Release:	1
 License:	GPL
 Group:		Development/Version Control
-# new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
-Source0:	https://ccvs.cvshome.org/files/documents/19/861/%{name}-%{version}.tar.bz2
-# Source0-md5:	9e215c0ee3bb7dfb76515d7cd81a3742
+Source0:	ftp://ftp.gnu.org/non-gnu/cvs/%{name}-%{version}.tar.bz2
+# Source0-md5:	54dd9eeb0648c9eef680df7cb26c710e
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -36,7 +35,7 @@ Patch9:		%{name}-posix.patch
 # Access Control List Extension: http://cvsacl.sourceforge.net/
 Patch10:	%{name}-acl.patch
 Patch11:	%{name}-CAN_2005_2693.patch
-URL:		http://www.cvshome.org/
+URL:		http://www.non-gnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
 %{?with_kerberos5:BuildRequires:	heimdal-devel >= 0.7}
@@ -281,7 +280,7 @@ echo "Check your configration."
 %files
 %defattr(644,root,root,755)
 %doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README %{?with_acl:README.cvsacl}
-%doc ChangeLog doc/*.ps contrib
+%doc ChangeLog doc/*.pdf contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
