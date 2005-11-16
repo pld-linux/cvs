@@ -18,7 +18,8 @@ Version:	1.11.21
 Release:	1
 License:	GPL
 Group:		Development/Version Control
-Source0:	ftp://ftp.gnu.org/non-gnu/cvs/%{name}-%{version}.tar.bz2
+# new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/stable/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	54dd9eeb0648c9eef680df7cb26c710e
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
@@ -33,7 +34,7 @@ Patch7:		%{name}-info.patch
 Patch8:		%{name}-ssh.patch
 Patch9:		%{name}-posix.patch
 Patch10:	%{name}-CAN_2005_2693.patch
-# Access Control List Extension: http://cvsacl.sourceforge.net/
+# Access Control List Extension: http://cvsacl.sourceforge.net/ (UNMAINTAINED UGLY CODE, SHOULD DIE)
 Patch11:	%{name}-acl.patch
 Patch12:	%{name}-acl-fixes.patch
 URL:		http://www.non-gnu.org/cvs/
