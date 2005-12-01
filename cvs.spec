@@ -1,7 +1,6 @@
 #
 # Conditional build:
 %bcond_without	kerberos5	# disable kerberos5 support
-%bcond_without	acl		# disable ACL support
 #
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
@@ -15,7 +14,7 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.21
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
@@ -34,9 +33,6 @@ Patch7:		%{name}-info.patch
 Patch8:		%{name}-ssh.patch
 Patch9:		%{name}-posix.patch
 Patch10:	%{name}-CAN_2005_2693.patch
-# Access Control List Extension: http://cvsacl.sourceforge.net/ (UNMAINTAINED UGLY CODE, SHOULD DIE)
-Patch11:	%{name}-acl.patch
-Patch12:	%{name}-acl-fixes.patch
 URL:		http://www.non-gnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -214,8 +210,6 @@ pserver.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%{?with_acl:%patch11 -p1}
-%{?with_acl:%patch12 -p1}
 
 %build
 %{__aclocal}
@@ -282,7 +276,7 @@ echo "Check your configration."
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README %{?with_acl:README.cvsacl}
+%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README
 %doc ChangeLog doc/*.pdf contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
