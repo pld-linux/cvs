@@ -1,7 +1,6 @@
 #
 # Conditional build:
 %bcond_with	kerberos5	# enable kerberos5 support
-%bcond_without	acl		# enable ACL support
 #
 Summary:	Concurrent Versioning System
 Summary(de):	Concurrent-Versioning-System
@@ -14,13 +13,13 @@ Summary(tr):	Sürüm denetim sistemi
 Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
-Version:	1.11.20
-Release:	1.2
+Version:	1.11.21
+Release:	1.1
 License:	GPL
-Group:		DevAelopment/Version Control
-# new feature release: https://www.cvshome.org/files/documents/19/610/cvs-1.12.11.tar.bz2
-Source0:	https://ccvs.cvshome.org/files/documents/19/861/%{name}-%{version}.tar.bz2
-# Source0-md5:	9e215c0ee3bb7dfb76515d7cd81a3742
+Group:		Development/Version Control
+# new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/stable/%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	54dd9eeb0648c9eef680df7cb26c710e
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -31,12 +30,12 @@ Patch4:		%{name}-home_etc.patch
 Patch5:		%{name}-newnline.patch
 Patch6:		%{name}-no_libnsl.patch
 Patch7:		%{name}-info.patch
-# Access Control List Extension: http://cvsacl.sourceforge.net/
-Patch8:		%{name}-acl.patch
-URL:		http://www.cvshome.org/
-# should be 2.58/1.7.9 resp.
+Patch8:		%{name}-ssh.patch
+Patch9:		%{name}-posix.patch
+Patch10:	%{name}-CAN_2005_2693.patch
+URL:		http://www.non-gnu.org/cvs/
 BuildRequires:	autoconf >= 2.57
-BuildRequires:	automake >= 1.7.6
+BuildRequires:	automake >= 1:1.7.6
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
@@ -170,7 +169,7 @@ Summary:	rc-inetd config files to run CVS pserver
 Summary(es):	Ficheros de configuración de rc-inetd para un servidor CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
 Group:		Development/Version Control
-PreReq:		%{name} = %{version}
+PreReq:		%{name} = %{version}-%{release}
 PreReq:		rc-inetd
 Requires(pre):	/usr/bin/getgid
 Requires(pre):	/bin/id
@@ -188,8 +187,8 @@ Config files for rc-inetd that are necessary to run CVS in pserver
 mode.
 
 %description pserver -l es
-Los ficheros de configuración rc-inetd necesarios para ejecutar CVS
-en el modo de pserver.
+Los ficheros de configuración rc-inetd necesarios para ejecutar CVS en
+el modo de pserver.
 
 %description pserver -l pl
 Pliki konfiguracyjne rc-inetd niezbêdne do uruchomienia CVSa w trybie
@@ -205,7 +204,9 @@ pserver.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%{?with_acl:%patch8 -p1}
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 # seems not-so-really needed yet
 %{__perl} -pi -e 's/(AC_PREREQ)\(2\.58\)/$1\(2.57\)/;s/(AM_INIT_AUTOMAKE.*)1\.7\.9/${1}1.7.6/' configure.in
@@ -218,7 +219,8 @@ pserver.
 %configure \
 	--enable-server \
 	--enable-client \
-	%{?with_kerberos5:--with-gssapi} \
+	--enable-rootcommit \
+	--with%{!?with_kerberos5:out}-gssapi \
 	--with-tmpdir=/tmp \
 	--with-editor=/bin/vi
 
@@ -285,8 +287,8 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README %{?with_acl:README.cvsacl}
-%doc ChangeLog doc/*.ps contrib
+%doc BUGS FAQ MINOR-BUGS NEWS PROJECTS TODO README
+%doc ChangeLog doc/*.pdf contrib
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man[158]/*
 %{_infodir}/cvs*
@@ -294,4 +296,4 @@ fi
 %files pserver
 %defattr(644,root,root,755)
 %attr(770,root,cvs) %dir %{_cvs_root}
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/cvs
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/cvs
