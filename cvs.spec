@@ -32,6 +32,7 @@ Patch6:		%{name}-info.patch
 Patch7:		%{name}-ssh.patch
 Patch8:		%{name}-posix.patch
 Patch9:		%{name}-CAN_2005_2693.patch
+Patch10:	%{name}-cvspass.patch
 URL:		http://www.non-gnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -208,6 +209,7 @@ pserver.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %build
 %{__aclocal}
