@@ -1,0 +1,1 @@
+- -cvspass.patch removed - causes segfault when .cvspass is not accessible:
