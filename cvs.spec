@@ -14,7 +14,7 @@ Summary(uk):	óÉÓÔÅÍÁ ËÅÒÕ×ÁÎÎÑ ×ÅÒÓ¦ÑÍÉ
 Summary(zh_CN):	²¢·¢µÄ°æ±¾¹ÜÀíÏµÍ³CVS
 Name:		cvs
 Version:	1.11.21
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Version Control
 # new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
@@ -25,14 +25,13 @@ Source1:	%{name}.inetd
 Patch0:		%{name}-ipv6.patch
 Patch1:		%{name}-zlib.patch
 Patch2:		%{name}-fixed_buffer.patch
-Patch3:		%{name}-cvspass.patch
-Patch4:		%{name}-home_etc.patch
-Patch5:		%{name}-newnline.patch
-Patch6:		%{name}-no_libnsl.patch
-Patch7:		%{name}-info.patch
-Patch8:		%{name}-ssh.patch
-Patch9:		%{name}-posix.patch
-Patch10:	%{name}-CAN_2005_2693.patch
+Patch3:		%{name}-home_etc.patch
+Patch4:		%{name}-newnline.patch
+Patch5:		%{name}-no_libnsl.patch
+Patch6:		%{name}-info.patch
+Patch7:		%{name}-ssh.patch
+Patch8:		%{name}-posix.patch
+Patch9:		%{name}-CAN_2005_2693.patch
 URL:		http://www.non-gnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -209,7 +208,6 @@ pserver.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
 
 %build
 %{__aclocal}
