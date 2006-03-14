@@ -37,7 +37,7 @@ URL:		http://www.non-gnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
 %{?with_kerberos5:BuildRequires:	heimdal-devel >= 0.7}
-BuildRequires:	rpmbuild(macros) >= 1.202
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 Obsoletes:	cvs-nserver-client
@@ -170,15 +170,15 @@ Summary:	rc-inetd config files to run CVS pserver
 Summary(es):	Ficheros de configuración de rc-inetd para un servidor CVS pserver
 Summary(pl):	Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
 Group:		Development/Version Control
-PreReq:		%{name} = %{version}-%{release}
-PreReq:		rc-inetd
-Requires(pre):	/usr/bin/getgid
+Requires(post):	fileutils
+Requires(postun):	/usr/sbin/groupdel
+Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
+Requires(pre):	/usr/bin/getgid
 Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
-Requires(post):	fileutils
-Requires(postun):	/usr/sbin/userdel
-Requires(postun):	/usr/sbin/groupdel
+Requires:	%{name} = %{version}-%{release}
+Requires:	rc-inetd
 Provides:	group(cvs)
 Provides:	user(cvs)
 Obsoletes:	cvs-nserver-common
@@ -257,17 +257,13 @@ if [ "$1" = "1" ]; then
 	%{_bindir}/cvs -d :local:%{_cvs_root} init
 	chown -R cvs:cvs %{_cvs_root}/CVSROOT
 fi
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
-fi
+%service -q rc-inetd reload
 
 %postun pserver
 if [ "$1" = "0" ]; then
 	%userremove cvs
 	%groupremove cvs
-	if [ -f /var/lock/subsys/rc-inetd ]; then
-		/etc/rc.d/init.d/rc-inetd reload
-	fi
+	%service -q rc-inetd reload
 fi
 
 %triggerpostun -- cvs-pserver < 1.1.13-1
