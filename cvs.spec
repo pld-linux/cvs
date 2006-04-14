@@ -14,7 +14,7 @@ Summary(uk):	Система керування верс╕ями
 Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
 Name:		cvs
 Version:	1.11.21
-Release:	3
+Release:	4
 License:	GPL
 Group:		Development/Version Control
 # new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
