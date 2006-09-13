@@ -33,7 +33,7 @@ Patch7:		%{name}-ssh.patch
 Patch8:		%{name}-posix.patch
 Patch9:		%{name}-CAN_2005_2693.patch
 Patch10:	%{name}-cvspass.patch
-URL:		http://www.non-gnu.org/cvs/
+URL:		http://www.nongnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
 %{?with_kerberos5:BuildRequires:	heimdal-devel >= 0.7}
