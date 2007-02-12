@@ -3,15 +3,15 @@
 %bcond_without	kerberos5	# disable kerberos5 support
 #
 Summary:	Concurrent Versioning System
-Summary(de.UTF-8):   Concurrent-Versioning-System
-Summary(es.UTF-8):   Control de versiones en modo concurrente
-Summary(fr.UTF-8):   Un système pour maintenir à jour des fichiers
-Summary(pl.UTF-8):   Concurrent Versioning System
-Summary(pt_BR.UTF-8):   Controle de versões em modo concorrente
-Summary(ru.UTF-8):   Система управления версиями
-Summary(tr.UTF-8):   Sürüm denetim sistemi
-Summary(uk.UTF-8):   Система керування версіями
-Summary(zh_CN.UTF-8):   并发的版本管理系统CVS
+Summary(de.UTF-8):	Concurrent-Versioning-System
+Summary(es.UTF-8):	Control de versiones en modo concurrente
+Summary(fr.UTF-8):	Un système pour maintenir à jour des fichiers
+Summary(pl.UTF-8):	Concurrent Versioning System
+Summary(pt_BR.UTF-8):	Controle de versões em modo concorrente
+Summary(ru.UTF-8):	Система управления версиями
+Summary(tr.UTF-8):	Sürüm denetim sistemi
+Summary(uk.UTF-8):	Система керування версіями
+Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
 Version:	1.11.21
 Release:	5
@@ -167,8 +167,8 @@ CVS дуже корисна для організацію релізів та к
 
 %package pserver
 Summary:	rc-inetd config files to run CVS pserver
-Summary(es.UTF-8):   Ficheros de configuración de rc-inetd para un servidor CVS pserver
-Summary(pl.UTF-8):   Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
+Summary(es.UTF-8):	Ficheros de configuración de rc-inetd para un servidor CVS pserver
+Summary(pl.UTF-8):	Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
 Group:		Development/Version Control
 Requires(post):	fileutils
 Requires(postun):	/usr/sbin/groupdel
