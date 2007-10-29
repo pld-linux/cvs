@@ -14,7 +14,7 @@ Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
 Version:	1.11.22
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 # new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
@@ -39,7 +39,7 @@ BuildRequires:	automake >= 1:1.7.9
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
-Obsoletes:	cvs-nserver-client
+Conflicts:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_cvs_root	/var/lib/cvs
