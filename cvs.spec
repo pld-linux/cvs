@@ -13,25 +13,21 @@ Summary(tr.UTF-8):	Sürüm denetim sistemi
 Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
-Version:	1.11.22
-Release:	2
+Version:	1.12.13
+Release:	1
 License:	GPL
 Group:		Development/Version Control
-# new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
-Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/stable/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	f24043a640509aff1aa28871dd345762
+Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	956ab476ce276c2d19d583e227dbdbea
 Source1:	%{name}.inetd
-# based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
-Patch0:		%{name}-ipv6.patch
-Patch1:		%{name}-zlib.patch
-Patch2:		%{name}-fixed_buffer.patch
-Patch3:		%{name}-home_etc.patch
-Patch4:		%{name}-newnline.patch
-Patch5:		%{name}-no_libnsl.patch
-Patch6:		%{name}-info.patch
-Patch7:		%{name}-posix.patch
-Patch8:		%{name}-CAN_2005_2693.patch
-Patch9:		%{name}-cvspass.patch
+Patch1:		%{name}-fixed_buffer.patch
+Patch2:		%{name}-home_etc.patch
+Patch3:		%{name}-newnline.patch
+Patch4:		%{name}-no_libnsl.patch
+Patch5:		%{name}-info.patch
+Patch6:		%{name}-posix.patch
+Patch7:		%{name}-CAN_2005_2693.patch
+Patch8:		%{name}-cvspass.patch
 URL:		http://www.nongnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -198,7 +194,6 @@ pserver.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -207,14 +202,16 @@ pserver.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 
 %build
-%{__aclocal}
+rm aclocal.m4
+%{__aclocal} -I m4
 %{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure \
+	--with-external-zlib \
+	--enable-encryption \
 	--enable-server \
 	--enable-client \
 	--enable-rootcommit \
