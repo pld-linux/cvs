@@ -7,7 +7,7 @@ diff -urN cvs-1.12.13.org/src/filesubr.c cvs-1.12.13/src/filesubr.c
  {
 -    char *path = Xasprintf ("%s/%s", dir, file);
 +    char *path;
-+    char *path,*cfgdir;
++    char *cfgdir;
 +    struct stat st;
 +    int isdot = (*file == '.');
 +
