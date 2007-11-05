@@ -1,37 +1,29 @@
---- cvs-1.11.4/src/filesubr.c.orig	Tue Sep 24 22:47:09 2002
-+++ cvs-1.11.4/src/filesubr.c	Fri Jan 17 20:59:20 2003
-@@ -18,6 +18,7 @@
-    file system semantics.  */
- 
- #include <assert.h>
-+#include <sys/stat.h>
- #include "cvs.h"
- 
- static int deep_remove_dir PROTO((const char *path));
-@@ -969,8 +970,24 @@
-     const char *dir;
-     const char *file;
+diff -urN cvs-1.12.13.org/src/filesubr.c cvs-1.12.13/src/filesubr.c
+--- cvs-1.12.13.org/src/filesubr.c	2005-09-28 17:25:59.000000000 +0200
++++ cvs-1.12.13/src/filesubr.c	2007-11-05 20:47:46.928468198 +0100
+@@ -832,7 +832,24 @@
+ char *
+ strcat_filename_onto_homedir (const char *dir, const char *file)
  {
--    char *path = xmalloc (strlen (dir) + 1 + strlen(file) + 1);
--    sprintf (path, "%s/%s", dir, file);
+-    char *path = Xasprintf ("%s/%s", dir, file);
++    char *path;
 +    char *path,*cfgdir;
 +    struct stat st;
 +    int isdot = (*file == '.');
 +
 +    if ( (path = getenv("CONFIG_DIR")) && path[0] ) {
-+	cfgdir = xmalloc(strlen(dir) + 1 + strlen(path) + 1);
-+	sprintf(cfgdir, "%s/%s", dir, path);
++	    cfgdir = xmalloc(strlen(dir) + 1 + strlen(path) + 1);
++	    sprintf(cfgdir, "%s/%s", dir, path);
 +    } else
-+	cfgdir = NULL;
++	    cfgdir = NULL;
 +    if ( cfgdir && (stat(cfgdir, &st) != -1) && S_ISDIR(st.st_mode) ) {
-+	path = xmalloc(strlen(cfgdir) + 1 + strlen(file)-isdot + 1);
-+	sprintf (path, "%s/%s", cfgdir, file+isdot);
++	    path = Xasprintf ("%s/%s", cfgdir, file+isdot);
 +    } else {
-+        path = xmalloc (strlen (dir) + 1 + strlen(file) + 1);
-+	sprintf (path, "%s/%s", dir, file);
++	    path = Xasprintf ("%s/%s", dir, file);
 +    }
 +    if (cfgdir)
-+	free(cfgdir);
++	    free(cfgdir);
++   
      return path;
  }
  
