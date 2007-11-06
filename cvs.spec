@@ -265,6 +265,8 @@ pserver.
 %patch125 -p1
 %patch126 -p1
 
+rm -rf zlib && sed -i -e 's#zlib/Makefile##g' configure.in
+
 # broken implementation, never use
 rm lib/getcwd.c
 
