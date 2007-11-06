@@ -14,7 +14,7 @@ Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
 Version:	1.12.13
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
@@ -28,6 +28,36 @@ Patch5:		%{name}-info.patch
 Patch6:		%{name}-posix.patch
 Patch7:		%{name}-CAN_2005_2693.patch
 Patch8:		%{name}-cvspass.patch
+
+# patches from debian
+Patch100:	%{name}-debian-64bit-crash.patch
+Patch101:	%{name}-debian-check-method-crash.patch
+Patch102:	%{name}-debian-cvsbug.patch
+Patch103:	%{name}-debian-cvspass.patch
+Patch104:	%{name}-debian-cvsrc.patch
+Patch105:	%{name}-debian-date-format.patch
+Patch106:	%{name}-debian-dsa-ext-pwd.patch
+Patch107:	%{name}-debian-ext-exp.patch
+Patch108:	%{name}-debian-extra-tags.patch
+Patch109:	%{name}-debian-flag-conflicted-copies.patch
+Patch110:	%{name}-debian-homedir.patch
+Patch111:	%{name}-debian-import-n-X.patch
+Patch112:	%{name}-debian-info.patch
+Patch113:	%{name}-debian-keyword-alnum.patch
+Patch114:	%{name}-debian-l-opt.patch
+Patch115:	%{name}-debian-newlines-commit-template.patch
+Patch116:	%{name}-debian-normalize-roots.patch
+Patch117:	%{name}-debian-pam.patch
+Patch118:	%{name}-debian-parseopts.patch
+Patch119:	%{name}-debian-perms.patch
+Patch120:	%{name}-debian-rcs2log-sort.patch
+Patch121:	%{name}-debian-repouid.patch
+Patch122:	%{name}-debian-rsc2log.patch
+Patch123:	%{name}-debian-R-warning.patch
+Patch124:	%{name}-debian-server-wrapper.patch
+Patch125:	%{name}-debian-sparc.patch
+Patch126:	%{name}-debian-zlib-read-compressed.patch
+
 URL:		http://www.nongnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
@@ -202,6 +232,34 @@ pserver.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+
+%patch100 -p1
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
+%patch104 -p1
+%patch105 -p1
+%patch106 -p1
+%patch107 -p1
+%patch108 -p1
+%patch109 -p1
+%patch110 -p1
+%patch111 -p1
+%patch112 -p1
+%patch113 -p1
+%patch114 -p1
+%patch115 -p1
+%patch116 -p1
+%patch117 -p1
+%patch118 -p1
+%patch119 -p1
+%patch120 -p1
+%patch121 -p1
+%patch122 -p1
+%patch123 -p1
+%patch124 -p1
+%patch125 -p1
+%patch126 -p1
 
 %build
 rm aclocal.m4
