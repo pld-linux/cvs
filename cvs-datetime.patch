@@ -1,0 +1,15 @@
+diff -urN cvs-1.12.13.org/src/status.c cvs-1.12.13/src/status.c
+--- cvs-1.12.13.org/src/status.c	2005-09-22 20:38:28.000000000 +0200
++++ cvs-1.12.13/src/status.c	2007-11-06 09:55:55.830920982 +0100
+@@ -213,8 +213,9 @@
+ 	cvs_output ("   Working revision:\t", 0);
+ 	cvs_output (vers->vn_user, 0);
+ 
+-	/* Only add the UTC timezone if there is a time to use. */
+-	if (!server_active && strlen (vers->ts_rcs) > 0)
++	/* Only add the UTC timezone if there is a time to use.
++	 * ts_rcs sometimes contains only "=" character so we check len > 1 */
++	if (!server_active && strlen (vers->ts_rcs) > 1)
+ 	{
+ 	    /* Convert from the asctime() format to ISO 8601 */
+ 	    char *buf;
