@@ -1,0 +1,24 @@
+diff -urN cvs-1.12.13.org/m4/getcwd.m4 cvs-1.12.13/m4/getcwd.m4
+--- cvs-1.12.13.org/m4/getcwd.m4	2005-07-12 17:39:37.000000000 +0200
++++ cvs-1.12.13/m4/getcwd.m4	2007-11-06 22:47:20.181252446 +0100
+@@ -41,20 +39,6 @@
+ 
+ AC_DEFUN([gl_FUNC_GETCWD],
+ [
+-  AC_REQUIRE([gl_FUNC_GETCWD_NULL])
+-
+-  case $gl_cv_func_getcwd_null in
+-  yes) gl_FUNC_GETCWD_PATH_MAX;;
+-  esac
+-
+-  case $gl_cv_func_getcwd_null,$gl_cv_func_getcwd_path_max in
+-  yes,yes) ;;
+-  *)
+-    AC_LIBOBJ([getcwd])
+-    AC_DEFINE([__GETCWD_PREFIX], [[rpl_]],
+-      [Define to rpl_ if the getcwd replacement function should be used.])
+-    gl_PREREQ_GETCWD;;
+-  esac
+ ])
+ 
+ # Prerequisites of lib/getcwd.c.
