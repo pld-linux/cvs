@@ -1,0 +1,24 @@
+--- cvs-1.12.13.orig/debian/patches/11_check_method_crash
++++ cvs-1.12.13/debian/patches/11_check_method_crash
+@@ -0,0 +1,21 @@
++#
++# Do a basic sanity check on the method in the CVSROOT - don't crash
++# if one is not specified! Bug#274020
++#
++# Patch from Steve McIntyre <steve@einval.com>
++diff -ruN cvs-1.12.13-old/src/root.c cvs-1.12.13/src/root.c
++--- cvs-1.12.13-old/src/root.c	2005-09-25 08:38:29.000000000 +0800
+++++ cvs-1.12.13/src/root.c	2006-02-26 17:48:32.000000000 +0800
++@@ -535,6 +535,12 @@
++ 	    method = "";
++ #endif /* defined (CLIENT_SUPPORT) || defined (SERVER_SUPPORT) */
++ 
+++    if (NULL == method)
+++	{
+++	    error (0, 0, "Missing method in CVSROOT.");
+++	    goto error_exit;
+++	}
+++
++ 	/* Now we have an access method -- see if it's valid. */
++ 
++ 	if (!strcasecmp (method, "local"))

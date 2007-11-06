@@ -1,0 +1,24 @@
+--- cvs-1.12.13.orig/debian/patches/61_remove_-R_warning
++++ cvs-1.12.13/debian/patches/61_remove_-R_warning
+@@ -0,0 +1,21 @@
++#
++# Turn off read-only warning that breaks pserver client access. Doh!
++# Closes: #319467, #264019
++# Patch by Steve McIntyre <steve@einval.com>
++diff -ruN cvs-1.12.13-old/src/main.c cvs-1.12.13/src/main.c
++--- cvs-1.12.13-old/src/main.c	2005-10-02 23:17:21.000000000 +0800
+++++ cvs-1.12.13/src/main.c	2006-02-26 18:23:04.000000000 +0800
++@@ -764,13 +764,6 @@
++     if (argc < 1)
++ 	usage (usg);
++ 
++-    if (readonlyfs && !really_quiet) {
++-	error (0, 0,
++-	       "WARNING: Read-only repository access mode selected via `cvs -R'.\n\
++-Using this option to access a repository which some users write to may\n\
++-cause intermittent sandbox corruption.");
++-    }
++-
++     /* Calculate the cvs global session ID */
++ 
++     {

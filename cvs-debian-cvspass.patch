@@ -1,0 +1,22 @@
+--- cvs-1.12.13.orig/debian/patches/65_login_cvspass_message
++++ cvs-1.12.13/debian/patches/65_login_cvspass_message
+@@ -0,0 +1,19 @@
++# Print a clearer message if ~/.cvspass does not exist when cvs login is
++#  called. Closes: #168163.
++#
++# Patch by Steve McIntyre <steve@einval.com>
++diff -ruN cvs-1.12.13-old/src/login.c cvs-1.12.13/src/login.c
++--- cvs-1.12.13-old/src/login.c	2005-05-14 05:47:28.000000000 +0800
+++++ cvs-1.12.13/src/login.c	2006-02-26 21:31:17.000000000 +0800
++@@ -309,7 +309,10 @@
++     fp = CVS_FOPEN (passfile, "r");
++     if (fp == NULL)
++     {
++-	error (0, errno, "warning: failed to open %s for reading", passfile);
+++    if (errno == ENOENT)
+++        error (0, 0, "CVS password file %s does not exist - creating a new file", passfile);
+++    else
+++        error (0, errno, "warning: failed to open %s for reading", passfile);
++ 	goto process;
++     }
++ 
