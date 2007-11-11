@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	kerberos5	# disable kerberos5 support
+%bcond_without	krb5	# disable krb5 support
 #
 Summary:	Concurrent Versioning System
 Summary(de.UTF-8):	Concurrent-Versioning-System
@@ -14,7 +14,7 @@ Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
 Version:	1.12.13
-Release:	5
+Release:	6
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
@@ -22,14 +22,13 @@ Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{versi
 Source1:	%{name}.inetd
 Patch1:		%{name}-fixed_buffer.patch
 Patch2:		%{name}-home_etc.patch
-Patch3:		%{name}-newnline.patch
-Patch4:		%{name}-no_libnsl.patch
-Patch5:		%{name}-info.patch
-Patch6:		%{name}-posix.patch
-Patch7:		%{name}-CAN_2005_2693.patch
-Patch8:		%{name}-cvspass.patch
-Patch9:		%{name}-datetime.patch
-Patch10:	%{name}-getcwd.patch
+Patch3:		%{name}-no_libnsl.patch
+Patch4:		%{name}-info.patch
+Patch5:		%{name}-posix.patch
+Patch6:		%{name}-CAN_2005_2693.patch
+Patch7:		%{name}-cvspass.patch
+Patch8:		%{name}-datetime.patch
+Patch9	:	%{name}-getcwd.patch
 
 # patches from debian
 Patch100:	%{name}-debian-64bit-crash.patch
@@ -59,7 +58,7 @@ Patch122:	%{name}-debian-rsc2log.patch
 URL:		http://www.nongnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
-%{?with_kerberos5:BuildRequires:	krb5-devel}
+%{?with_krb5:BuildRequires:	krb5-devel}
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
@@ -231,7 +230,6 @@ pserver.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
 
 %patch100 -p1
 %patch101 -p1
@@ -275,7 +273,7 @@ rm aclocal.m4
 	--enable-server \
 	--enable-client \
 	--enable-rootcommit \
-	--with%{!?with_kerberos5:out}-gssapi \
+	--with%{!?with_krb5:out}-gssapi \
 	--with-tmpdir=/tmp \
 	--with-rsh=%{_bindir}/ssh \
 	--with-editor=/bin/vi
