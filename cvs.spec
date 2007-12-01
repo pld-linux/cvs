@@ -62,6 +62,7 @@ BuildRequires:	automake >= 1:1.7.9
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
+Provides:	cvs-client
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
