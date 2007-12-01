@@ -28,7 +28,7 @@ Patch5:		%{name}-posix.patch
 Patch6:		%{name}-CAN_2005_2693.patch
 Patch7:		%{name}-cvspass.patch
 Patch8:		%{name}-datetime.patch
-Patch9	:	%{name}-getcwd.patch
+Patch9:		%{name}-getcwd.patch
 
 # patches from debian
 Patch100:	%{name}-debian-64bit-crash.patch
@@ -62,7 +62,7 @@ BuildRequires:	automake >= 1:1.7.9
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
-Conflicts:	cvs-nserver-client
+Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_cvs_root	/var/lib/cvs
