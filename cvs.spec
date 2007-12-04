@@ -63,6 +63,7 @@ BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 Provides:	cvs-client = %{version}
+Obsoletes:	cvs-client
 Obsoletes:	cvs-nserver-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
