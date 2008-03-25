@@ -1,0 +1,18 @@
+--- cvs/configure.in~	2008-03-25 19:48:31.245284246 +0100
++++ cvs/configure.in	2008-03-25 19:53:55.421291334 +0100
+@@ -180,15 +180,6 @@
+ AC_CHECK_MEMBERS([struct stat.st_rdev])
+ 
+ AC_FUNC_FSEEKO
+-if test $ac_cv_func_fseeko = no; then
+-    AC_LIBOBJ(fseeko)
+-    AC_LIBOBJ(ftello)
+-fi
+-
+-# Replace functions with versions in lib/ when they can't be found.
+-AC_REPLACE_FUNCS(\
+-	waitpid \
+-)
+ 
+ #
+ # Special hack for a SunOS 5.7 (aka Solaris 7) select() problem.
