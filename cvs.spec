@@ -3,15 +3,15 @@
 %bcond_without	kerberos5	# disable kerberos5 support
 #
 Summary:	Concurrent Versioning System
-Summary(de):	Concurrent-Versioning-System
-Summary(es):	Control de versiones en modo concurrente
-Summary(fr):	Un systХme pour maintenir Ю jour des fichiers
-Summary(pl):	Concurrent Versioning System
-Summary(pt_BR):	Controle de versУes em modo concorrente
-Summary(ru):	Система управления версиями
-Summary(tr):	SЭrЭm denetim sistemi
-Summary(uk):	Система керування верс╕ями
-Summary(zh_CN):	╡╒╥╒╣д╟Ф╠╬╧эюМо╣мЁCVS
+Summary(de.UTF-8):	Concurrent-Versioning-System
+Summary(es.UTF-8):	Control de versiones en modo concurrente
+Summary(fr.UTF-8):	Un systц╗me pour maintenir ц═ jour des fichiers
+Summary(pl.UTF-8):	Concurrent Versioning System
+Summary(pt_BR.UTF-8):	Controle de versц╣es em modo concorrente
+Summary(ru.UTF-8):	п║п╦я│я┌п╣п╪п╟ я┐п©я─п╟п╡п╩п╣п╫п╦я▐ п╡п╣я─я│п╦я▐п╪п╦
+Summary(tr.UTF-8):	Sц╪rц╪m denetim sistemi
+Summary(uk.UTF-8):	п║п╦я│я┌п╣п╪п╟ п╨п╣я─я┐п╡п╟п╫п╫я▐ п╡п╣я─я│я√я▐п╪п╦
+Summary(zh_CN.UTF-8):	Е╧╤Е▐▒Г └Г┴┬Ф°╛Г╝║Г░├ГЁ╩Г╩÷CVS
 Name:		cvs
 Version:	1.11.21
 Release:	5
@@ -61,114 +61,114 @@ of directories consisting of revision controlled files. These
 directories and files can then be combined together to form a software
 release.
 
-%description -l de
-CVS ist ein Frontend fЭr das RCS(1)-Revisionskontrollsystem, das den
+%description -l de.UTF-8
+CVS ist ein Frontend fц╪r das RCS(1)-Revisionskontrollsystem, das den
 Begriff der Revisionskontrolle von einer Sammlung von Dateien in einem
 einzelnen Verzeichnis auf eine ganze Hierarchie ausweitet, bestehend
 aus revisionskontrollierten Dateien. Diese Verzeichnisse und Dateien
 lassen sich zu einer Software-Release kombinieren. CVS bietet die
 Funktionen, die zur Verwaltung von Software-Releases und zur
-эberwachung der gleichzeitigen Bearbeitung von Quelldateien durch
+ц°berwachung der gleichzeitigen Bearbeitung von Quelldateien durch
 mehrere Software-Entwickler notwendig sind.
 
-%description -l es
+%description -l es.UTF-8
 CVS significa "Concurrent Version System" (sistema concurrente de
 control de versiones). Puede guardar la historia de sus ficheros
-(normalmente, pero no necesariamente, cСdigo fuente). CVS sСlo guarda
+(normalmente, pero no necesariamente, cцЁdigo fuente). CVS sцЁlo guarda
 las diferencias entre las versiones, en vez de guardar cada una de las
-versiones de cada fichero que haya creado. CVS tambiИn mantiene un
-registro de quiИn y cuАndo realizС un cambio, el porquИ del cambio,
+versiones de cada fichero que haya creado. CVS tambiц╘n mantiene un
+registro de quiц╘n y cuц║ndo realizцЁ un cambio, el porquц╘ del cambio,
 etc.
 
-CVS es muy Зtil para manejar los releases y controlar la ediciСn
+CVS es muy ц╨til para manejar los releases y controlar la ediciцЁn
 concurrente de los ficheros fuente entre varios autores. En vez de
-proveer control de versiones para una colecciСn de ficheros en un solo
-directorio, CVS la provee para una colecciСn jerАrquica de directorios
+proveer control de versiones para una colecciцЁn de ficheros en un solo
+directorio, CVS la provee para una colecciцЁn jerц║rquica de directorios
 que consistan de ficheros de revisiones controladas. Esos directorios
 y ficheros pueden luego ser reunidos para formar un release de
 software.
 
-%description -l fr
-"CVS" signifie "Concurrent Version System". C'est un systХme de
+%description -l fr.UTF-8
+"CVS" signifie "Concurrent Version System". C'est un systц╗me de
 comparaison de versions de fichiers, qui peut garder une trace des
-changements apportИs Ю des fichiers (le plus souvent, les fichiers des
-sources d'un programme). CVS conserve seulement les diffИrences, et
-non l'intИgralitИ d'un fichier rИcent et d'un fichier plus ancien. A
+changements apportц╘s ц═ des fichiers (le plus souvent, les fichiers des
+sources d'un programme). CVS conserve seulement les diffц╘rences, et
+non l'intц╘gralitц╘ d'un fichier rц╘cent et d'un fichier plus ancien. A
 chaque modification d'un fichier, CVS garde (entre autres) le nom de
 la personne ayant fait la modification, la raison justifiant cette
-modification, et la date Ю laquelle celle-ci a eu lieu.
+modification, et la date ц═ laquelle celle-ci a eu lieu.
 
-CVS est trХs utile pour gИrer la mise en commun des modifications
-apportИes par plusieurs personnes travaillant en parallХle sur les
-mЙmes fichiers. Au lieu de garder plusieurs versions des fichiers dans
-un seul rИpertoire, CVS crИe une sИrie de rИpertoires, chacun
-contenant une nouvelle version des fichiers. Ces rИpertoires et ces
-fichiers peuvent ensuite Йtre regroupИs pour former la version la plus
-Ю jour du logiciel. Installez ce package si vous avez besoin
-d'utiliser un systХme de contrТle de version.
+CVS est trц╗s utile pour gц╘rer la mise en commun des modifications
+apportц╘es par plusieurs personnes travaillant en parallц╗le sur les
+mц╙mes fichiers. Au lieu de garder plusieurs versions des fichiers dans
+un seul rц╘pertoire, CVS crц╘e une sц╘rie de rц╘pertoires, chacun
+contenant une nouvelle version des fichiers. Ces rц╘pertoires et ces
+fichiers peuvent ensuite ц╙tre regroupц╘s pour former la version la plus
+ц═ jour du logiciel. Installez ce package si vous avez besoin
+d'utiliser un systц╗me de contrц╢le de version.
 
-%description -l pl
-CVS jest nakЁadk╠ na rcs (Revision Control System, czyli w wolnym
-tЁumaczeniu system kontroli wersji zasobСw), ktСry rozszerza
-mo©liwo╤ci rcs'a z narzЙdzia do kontroli zbioru plikСw w pojedynczym
-katalogu o mo©liwo╤Ф kontroli zbioru hierarchicznie uЁo©onych
-katalogСw z plikami. Z pomoc╠ CVS w Ёatwy sposСb mo©na zarz╠dzaФ kodem
-╪rСdЁowym opracowywanym przez nawet bardzo du©e zespoЁy programistСw
-umo©liwiaj╠c ╤ledzenie i kontrolЙ wszystkich zmian w trakcie pracy nad
-projektami i wypuszczaniem peЁnych wersji oprogramowania (release).
+%description -l pl.UTF-8
+CVS jest nakе┌adkд┘ na rcs (Revision Control System, czyli w wolnym
+tе┌umaczeniu system kontroli wersji zasobцЁw), ktцЁry rozszerza
+moе╪liwoе⌡ci rcs'a z narzд≥dzia do kontroli zbioru plikцЁw w pojedynczym
+katalogu o moе╪liwoе⌡д┤ kontroli zbioru hierarchicznie uе┌oе╪onych
+katalogцЁw z plikami. Z pomocд┘ CVS w е┌atwy sposцЁb moе╪na zarzд┘dzaд┤ kodem
+е╨rцЁdе┌owym opracowywanym przez nawet bardzo duе╪e zespoе┌y programistцЁw
+umoе╪liwiajд┘c е⌡ledzenie i kontrolд≥ wszystkich zmian w trakcie pracy nad
+projektami i wypuszczaniem peе┌nych wersji oprogramowania (release).
 
-%description -l pt_BR
-CVS И um front end para o rcs(1) - revision control system - que
-estende a noГЦo de controle de revisЦo de uma coletБnea de arquivo em
-um Зnico diretСrio para uma coleГЦo hierАrquica de diretСrios que
-contИm arquivos controlados por revisЦo. Esses diretСrios e arquivos
+%description -l pt_BR.UTF-8
+CVS ц╘ um front end para o rcs(1) - revision control system - que
+estende a noц╖цёo de controle de revisцёo de uma coletц╒nea de arquivo em
+um ц╨nico diretцЁrio para uma coleц╖цёo hierц║rquica de diretцЁrios que
+contц╘m arquivos controlados por revisцёo. Esses diretцЁrios e arquivos
 podem ser combinados juntos para criar uma release de software. CVS
-oferece as funГУes necessАrias para administrar essas release de
-software e para controlar a ediГЦo concorrente de arquivos fonte por
-mЗltiplos programadores.
+oferece as funц╖ц╣es necessц║rias para administrar essas release de
+software e para controlar a ediц╖цёo concorrente de arquivos fonte por
+mц╨ltiplos programadores.
 
-%description -l ru
-CVS (Concurrent Version System) - это система управления версиями,
-которая умеет записать историю ваших файлов (обычно, но не всегда, это
-исходные тексты). CVS сохраняет только различия между версиями вместо
-каждой версии каждого файла, которая была когда-либо создана. Также
-CVS хранит протокол того, кто, когда и зачем что-либо изменил.
+%description -l ru.UTF-8
+CVS (Concurrent Version System) - я█я┌п╬ я│п╦я│я┌п╣п╪п╟ я┐п©я─п╟п╡п╩п╣п╫п╦я▐ п╡п╣я─я│п╦я▐п╪п╦,
+п╨п╬я┌п╬я─п╟я▐ я┐п╪п╣п╣я┌ п╥п╟п©п╦я│п╟я┌я▄ п╦я│я┌п╬я─п╦я▌ п╡п╟я┬п╦я┘ я└п╟п╧п╩п╬п╡ (п╬п╠я▀я┤п╫п╬, п╫п╬ п╫п╣ п╡я│п╣пЁп╢п╟, я█я┌п╬
+п╦я│я┘п╬п╢п╫я▀п╣ я┌п╣п╨я│я┌я▀). CVS я│п╬я┘я─п╟п╫я▐п╣я┌ я┌п╬п╩я▄п╨п╬ я─п╟п╥п╩п╦я┤п╦я▐ п╪п╣п╤п╢я┐ п╡п╣я─я│п╦я▐п╪п╦ п╡п╪п╣я│я┌п╬
+п╨п╟п╤п╢п╬п╧ п╡п╣я─я│п╦п╦ п╨п╟п╤п╢п╬пЁп╬ я└п╟п╧п╩п╟, п╨п╬я┌п╬я─п╟я▐ п╠я▀п╩п╟ п╨п╬пЁп╢п╟-п╩п╦п╠п╬ я│п╬п╥п╢п╟п╫п╟. п╒п╟п╨п╤п╣
+CVS я┘я─п╟п╫п╦я┌ п©я─п╬я┌п╬п╨п╬п╩ я┌п╬пЁп╬, п╨я┌п╬, п╨п╬пЁп╢п╟ п╦ п╥п╟я┤п╣п╪ я┤я┌п╬-п╩п╦п╠п╬ п╦п╥п╪п╣п╫п╦п╩.
 
-CVS очень полезна для организации релизов и управления параллельной
-правкой исходных файлов несколькими авторами. Вместо предоставления
-управления версиями набора файлов в одном каталоге CVS предоставляет
-управление версиями иерархического набора каталогов, состоящих из
-файлов, версиями которых надо управллять. Эти файлы и каталоги могут
-быть собраны вместе для формирования релиза ПО.
+CVS п╬я┤п╣п╫я▄ п©п╬п╩п╣п╥п╫п╟ п╢п╩я▐ п╬я─пЁп╟п╫п╦п╥п╟я├п╦п╦ я─п╣п╩п╦п╥п╬п╡ п╦ я┐п©я─п╟п╡п╩п╣п╫п╦я▐ п©п╟я─п╟п╩п╩п╣п╩я▄п╫п╬п╧
+п©я─п╟п╡п╨п╬п╧ п╦я│я┘п╬п╢п╫я▀я┘ я└п╟п╧п╩п╬п╡ п╫п╣я│п╨п╬п╩я▄п╨п╦п╪п╦ п╟п╡я┌п╬я─п╟п╪п╦. п▓п╪п╣я│я┌п╬ п©я─п╣п╢п╬я│я┌п╟п╡п╩п╣п╫п╦я▐
+я┐п©я─п╟п╡п╩п╣п╫п╦я▐ п╡п╣я─я│п╦я▐п╪п╦ п╫п╟п╠п╬я─п╟ я└п╟п╧п╩п╬п╡ п╡ п╬п╢п╫п╬п╪ п╨п╟я┌п╟п╩п╬пЁп╣ CVS п©я─п╣п╢п╬я│я┌п╟п╡п╩я▐п╣я┌
+я┐п©я─п╟п╡п╩п╣п╫п╦п╣ п╡п╣я─я│п╦я▐п╪п╦ п╦п╣я─п╟я─я┘п╦я┤п╣я│п╨п╬пЁп╬ п╫п╟п╠п╬я─п╟ п╨п╟я┌п╟п╩п╬пЁп╬п╡, я│п╬я│я┌п╬я▐я┴п╦я┘ п╦п╥
+я└п╟п╧п╩п╬п╡, п╡п╣я─я│п╦я▐п╪п╦ п╨п╬я┌п╬я─я▀я┘ п╫п╟п╢п╬ я┐п©я─п╟п╡п╩п╩я▐я┌я▄. п╜я┌п╦ я└п╟п╧п╩я▀ п╦ п╨п╟я┌п╟п╩п╬пЁп╦ п╪п╬пЁя┐я┌
+п╠я▀я┌я▄ я│п╬п╠я─п╟п╫я▀ п╡п╪п╣я│я┌п╣ п╢п╩я▐ я└п╬я─п╪п╦я─п╬п╡п╟п╫п╦я▐ я─п╣п╩п╦п╥п╟ п÷п·.
 
-%description -l tr
+%description -l tr.UTF-8
 CVS (Concurrent Versioning System), tek bir dizindeki dosya
-topluluПunun sЭrЭm denetimini, denetimi yapЩlmЩЧ dizinlerin hiyerarЧik
-topluluПuna geniЧleten rcs(1) sЭrЭm denetim sisteminin Жn yЭzЭdЭr. Bu
-dizin ve dosyalar, bir yazЩlЩm yayЩnЩ oluЧturma amacЩyla biraraya
-getirilebilir. CVS, bu yazЩlЩm yayЩnlarЩnЩn yЖnetilmesini ve kaynak
-dosyalarЩ bakЩmЩnЩn birden Гok yazЩlЩm geliЧtiricisi tarafЩndan
-eЧzamanlЩ olarak yapЩlmasЩnЩ kontrol etmek iГin gereken iЧlevleri
-saПlar.
+topluluд÷unun sц╪rц╪m denetimini, denetimi yapд╠lmд╠е÷ dizinlerin hiyerarе÷ik
+topluluд÷una geniе÷leten rcs(1) sц╪rц╪m denetim sisteminin ц╤n yц╪zц╪dц╪r. Bu
+dizin ve dosyalar, bir yazд╠lд╠m yayд╠nд╠ oluе÷turma amacд╠yla biraraya
+getirilebilir. CVS, bu yazд╠lд╠m yayд╠nlarд╠nд╠n yц╤netilmesini ve kaynak
+dosyalarд╠ bakд╠mд╠nд╠n birden ц╖ok yazд╠lд╠m geliе÷tiricisi tarafд╠ndan
+eе÷zamanlд╠ olarak yapд╠lmasд╠nд╠ kontrol etmek iц╖in gereken iе÷levleri
+saд÷lar.
 
-%description -l uk
-CVS (Concurrent Version System) - це система керування верс╕ями, яка
-вм╕╓ записати ╕стор╕ю ваших файл╕в (зазвичай, але не завжди, це
-вих╕дн╕ тексти). CVS збер╕га╓ т╕льки р╕зницю м╕ж верс╕ями зам╕сть
-кожно╖ верс╕╖ кожного файлу, яка була колись створена. Також CVS
-збер╕га╓ протокол того, хто, коли ╕ нав╕що щось зм╕нив.
+%description -l uk.UTF-8
+CVS (Concurrent Version System) - я├п╣ я│п╦я│я┌п╣п╪п╟ п╨п╣я─я┐п╡п╟п╫п╫я▐ п╡п╣я─я│я√я▐п╪п╦, я▐п╨п╟
+п╡п╪я√я■ п╥п╟п©п╦я│п╟я┌п╦ я√я│я┌п╬я─я√я▌ п╡п╟я┬п╦я┘ я└п╟п╧п╩я√п╡ (п╥п╟п╥п╡п╦я┤п╟п╧, п╟п╩п╣ п╫п╣ п╥п╟п╡п╤п╢п╦, я├п╣
+п╡п╦я┘я√п╢п╫я√ я┌п╣п╨я│я┌п╦). CVS п╥п╠п╣я─я√пЁп╟я■ я┌я√п╩я▄п╨п╦ я─я√п╥п╫п╦я├я▌ п╪я√п╤ п╡п╣я─я│я√я▐п╪п╦ п╥п╟п╪я√я│я┌я▄
+п╨п╬п╤п╫п╬я≈ п╡п╣я─я│я√я≈ п╨п╬п╤п╫п╬пЁп╬ я└п╟п╧п╩я┐, я▐п╨п╟ п╠я┐п╩п╟ п╨п╬п╩п╦я│я▄ я│я┌п╡п╬я─п╣п╫п╟. п╒п╟п╨п╬п╤ CVS
+п╥п╠п╣я─я√пЁп╟я■ п©я─п╬я┌п╬п╨п╬п╩ я┌п╬пЁп╬, я┘я┌п╬, п╨п╬п╩п╦ я√ п╫п╟п╡я√я┴п╬ я┴п╬я│я▄ п╥п╪я√п╫п╦п╡.
 
-CVS дуже корисна для орган╕зац╕ю рел╕з╕в та керування паралельною
-правкою виз╕дних файл╕в к╕лькома авторами. Зам╕сть надання можливост╕
-керування верс╕ями набору файл╕в в одному каталоз╕, CVS нада╓
-можлив╕сть керування ╕╓рарх╕чним набором каталог╕в, що складаються з
-файл╕в, верс╕ями котрих треба керувати. Ц╕ файли та каталоги можуть
-бути з╕бран╕ разом для формування рел╕зу ПЗ.
+CVS п╢я┐п╤п╣ п╨п╬я─п╦я│п╫п╟ п╢п╩я▐ п╬я─пЁп╟п╫я√п╥п╟я├я√я▌ я─п╣п╩я√п╥я√п╡ я┌п╟ п╨п╣я─я┐п╡п╟п╫п╫я▐ п©п╟я─п╟п╩п╣п╩я▄п╫п╬я▌
+п©я─п╟п╡п╨п╬я▌ п╡п╦п╥я√п╢п╫п╦я┘ я└п╟п╧п╩я√п╡ п╨я√п╩я▄п╨п╬п╪п╟ п╟п╡я┌п╬я─п╟п╪п╦. п≈п╟п╪я√я│я┌я▄ п╫п╟п╢п╟п╫п╫я▐ п╪п╬п╤п╩п╦п╡п╬я│я┌я√
+п╨п╣я─я┐п╡п╟п╫п╫я▐ п╡п╣я─я│я√я▐п╪п╦ п╫п╟п╠п╬я─я┐ я└п╟п╧п╩я√п╡ п╡ п╬п╢п╫п╬п╪я┐ п╨п╟я┌п╟п╩п╬п╥я√, CVS п╫п╟п╢п╟я■
+п╪п╬п╤п╩п╦п╡я√я│я┌я▄ п╨п╣я─я┐п╡п╟п╫п╫я▐ я√я■я─п╟я─я┘я√я┤п╫п╦п╪ п╫п╟п╠п╬я─п╬п╪ п╨п╟я┌п╟п╩п╬пЁя√п╡, я┴п╬ я│п╨п╩п╟п╢п╟я▌я┌я▄я│я▐ п╥
+я└п╟п╧п╩я√п╡, п╡п╣я─я│я√я▐п╪п╦ п╨п╬я┌я─п╦я┘ я┌я─п╣п╠п╟ п╨п╣я─я┐п╡п╟я┌п╦. п╕я√ я└п╟п╧п╩п╦ я┌п╟ п╨п╟я┌п╟п╩п╬пЁп╦ п╪п╬п╤я┐я┌я▄
+п╠я┐я┌п╦ п╥я√п╠я─п╟п╫я√ я─п╟п╥п╬п╪ п╢п╩я▐ я└п╬я─п╪я┐п╡п╟п╫п╫я▐ я─п╣п╩я√п╥я┐ п÷п≈.
 
 %package pserver
 Summary:	rc-inetd config files to run CVS pserver
-Summary(es):	Ficheros de configuraciСn de rc-inetd para un servidor CVS pserver
-Summary(pl):	Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
+Summary(es.UTF-8):	Ficheros de configuraciцЁn de rc-inetd para un servidor CVS pserver
+Summary(pl.UTF-8):	Pliki konfiguracyjne rc-inetd do postawienia pservera CVS
 Group:		Development/Version Control
 Requires(post):	fileutils
 Requires(postun):	/usr/sbin/groupdel
@@ -189,12 +189,12 @@ Obsoletes:	cvs-nserver-pserver
 Config files for rc-inetd that are necessary to run CVS in pserver
 mode.
 
-%description pserver -l es
-Los ficheros de configuraciСn rc-inetd necesarios para ejecutar CVS en
+%description pserver -l es.UTF-8
+Los ficheros de configuraciцЁn rc-inetd necesarios para ejecutar CVS en
 el modo de pserver.
 
-%description pserver -l pl
-Pliki konfiguracyjne rc-inetd niezbЙdne do uruchomienia CVSa w trybie
+%description pserver -l pl.UTF-8
+Pliki konfiguracyjne rc-inetd niezbд≥dne do uruchomienia CVSa w trybie
 pserver.
 
 %prep
