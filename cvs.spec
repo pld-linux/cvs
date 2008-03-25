@@ -29,6 +29,7 @@ Patch6:		%{name}-CAN_2005_2693.patch
 Patch7:		%{name}-cvspass.patch
 Patch8:		%{name}-datetime.patch
 Patch9:		%{name}-getcwd.patch
+Patch10:	%{name}-ac.patch
 
 # patches from debian
 Patch100:	%{name}-debian-64bit-crash.patch
@@ -232,6 +233,7 @@ pserver.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 %patch100 -p1
 %patch101 -p1
@@ -270,6 +272,8 @@ rm aclocal.m4
 %{__autoconf}
 %{__automake}
 %configure \
+	--enable-pam \
+	--with-hardcoded-pam-service-name=cvs \
 	--with-external-zlib \
 	--enable-encryption \
 	--enable-server \
