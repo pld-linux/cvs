@@ -14,7 +14,7 @@ Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
 Version:	1.12.13
-Release:	8
+Release:	9
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
@@ -30,6 +30,7 @@ Patch7:		%{name}-cvspass.patch
 Patch8:		%{name}-datetime.patch
 Patch9:		%{name}-getcwd.patch
 Patch10:	%{name}-ac.patch
+Patch11:	%{name}-printf-n.patch
 
 # patches from debian
 Patch100:	%{name}-debian-64bit-crash.patch
@@ -236,6 +237,7 @@ pserver.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %patch100 -p1
 %patch101 -p1
