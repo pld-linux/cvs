@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	krb5	# disable krb5 support
+%bcond_without	kerberos5	# disable kerberos V support
 #
 Summary:	Concurrent Versioning System
 Summary(de.UTF-8):	Concurrent-Versioning-System
@@ -14,7 +14,7 @@ Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
 Version:	1.12.13
-Release:	9
+Release:	10
 License:	GPL
 Group:		Development/Version Control
 Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
@@ -60,7 +60,7 @@ Patch122:	%{name}-debian-rsc2log.patch
 URL:		http://www.nongnu.org/cvs/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake >= 1:1.7.9
-%{?with_krb5:BuildRequires:	krb5-devel}
+%{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
@@ -283,7 +283,7 @@ rm aclocal.m4
 	--enable-server \
 	--enable-client \
 	--enable-rootcommit \
-	--with%{!?with_krb5:out}-gssapi \
+	--with%{!?with_kerberos5:out}-gssapi \
 	--with-tmpdir=/tmp \
 	--with-rsh=%{_bindir}/ssh \
 	--with-editor=/bin/vi
