@@ -14,10 +14,10 @@ Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
 Version:	1.12.13
-Release:	12
+Release:	13
 License:	GPL
 Group:		Development/Version Control
-Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	956ab476ce276c2d19d583e227dbdbea
 Source1:	%{name}.inetd
 Patch1:		%{name}-fixed_buffer.patch
@@ -65,6 +65,7 @@ BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
+Suggests:	vim-syntax-spec
 Provides:	cvs-client = %{version}
 Provides:	cvs-gnu-client = %{version}
 Obsoletes:	cvs-client
@@ -207,9 +208,9 @@ Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
 Requires:	%{name} = %{version}-%{release}
 Requires:	rc-inetd
+Provides:	cvs-gnu-pserver = %{version}-%{release}
 Provides:	group(cvs)
 Provides:	user(cvs)
-Provides:	cvs-gnu-pserver = %{version}-%{release}
 Obsoletes:	cvs-nserver-common
 Obsoletes:	cvs-nserver-nserver
 Obsoletes:	cvs-nserver-pserver
