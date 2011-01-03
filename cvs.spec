@@ -65,7 +65,6 @@ BuildRequires:	pam-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
-Suggests:	vim-syntax-spec
 Provides:	cvs-client = %{version}
 Provides:	cvs-gnu-client = %{version}
 Obsoletes:	cvs-client
