@@ -13,13 +13,13 @@ Summary(tr.UTF-8):	Sürüm denetim sistemi
 Summary(uk.UTF-8):	Система керування версіями
 Summary(zh_CN.UTF-8):	并发的版本管理系统CVS
 Name:		cvs
-Version:	1.11.21
-Release:	6
+Version:	1.11.23
+Release:	1
 License:	GPL
 Group:		Development/Version Control
 # new: ftp://ftp.gnu.org/non-gnu/cvs/source/feature/%{version}/%{name}-%{version}.tar.bz2
 Source0:	ftp://ftp.gnu.org/non-gnu/cvs/source/stable/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	54dd9eeb0648c9eef680df7cb26c710e
+# Source0-md5:	0213ea514e231559d6ff8f80a34117f0
 Source1:	%{name}.inetd
 # based on:	http://www.t17.ds.pwr.wroc.pl/~misiek/ipv6/cvs-1.11.2-20020513-ipv6.patch.gz
 Patch0:		%{name}-ipv6.patch
@@ -29,7 +29,6 @@ Patch3:		%{name}-home_etc.patch
 Patch4:		%{name}-newnline.patch
 Patch5:		%{name}-no_libnsl.patch
 Patch6:		%{name}-info.patch
-Patch7:		%{name}-ssh.patch
 Patch8:		%{name}-posix.patch
 Patch9:		%{name}-CAN_2005_2693.patch
 Patch10:	%{name}-cvspass.patch
@@ -208,7 +207,6 @@ pserver.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
@@ -224,6 +222,7 @@ pserver.
 	--enable-rootcommit \
 	--with%{!?with_kerberos5:out}-gssapi \
 	--with-tmpdir=/tmp \
+	--with-rsh=%{_bindir}/ssh \
 	--with-editor=/bin/vi
 
 %{__make}
