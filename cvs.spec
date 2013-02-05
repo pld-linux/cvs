@@ -32,6 +32,7 @@ Patch9:		%{name}-getcwd.patch
 Patch10:	%{name}-ac.patch
 Patch11:	%{name}-printf-n.patch
 Patch12:	%{name}-am.patch
+Patch13:	%{name}-format-security.patch
 
 # patches from debian
 Patch100:	%{name}-debian-64bit-crash.patch
@@ -241,6 +242,7 @@ pserver.
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %patch100 -p1
 %patch101 -p1

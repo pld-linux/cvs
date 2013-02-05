@@ -1,0 +1,24 @@
+diff -urN cvs-1.12.13/diff/diff3.c cvs-1.12.13.new/diff/diff3.c
+--- cvs-1.12.13/diff/diff3.c	2004-10-09 17:51:52.000000000 +0200
++++ cvs-1.12.13.new/diff/diff3.c	2013-02-05 21:38:47.024405045 +0100
+@@ -1503,7 +1503,7 @@
+ 	      line = 0;
+ 	      do
+ 		{
+-		  printf_output (line_prefix);
++		  printf_output ("%s", line_prefix);
+ 		  cp = D_RELNUM (ptr, realfile, line);
+ 		  length = D_RELLEN (ptr, realfile, line);
+ 		  write_output (cp, length);
+diff -urN cvs-1.12.13/src/main.c cvs-1.12.13.new/src/main.c
+--- cvs-1.12.13/src/main.c	2013-02-05 21:33:06.000000000 +0100
++++ cvs-1.12.13.new/src/main.c	2013-02-05 21:43:02.996351658 +0100
+@@ -1475,7 +1475,7 @@
+ {
+     (void) fprintf (stderr, *cpp++, program_name, cvs_cmd_name);
+     for (; *cpp; cpp++)
+-	(void) fprintf (stderr, *cpp);
++	(void) fputs (*cpp, stderr);
+     exit (EXIT_FAILURE);
+ }
+ 
