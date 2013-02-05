@@ -1,0 +1,12 @@
+diff -urN cvs-1.12.13/configure.in cvs-1.12.13.new/configure.in
+--- cvs-1.12.13/configure.in	2013-02-05 21:29:43.000000000 +0100
++++ cvs-1.12.13.new/configure.in	2013-02-05 21:31:50.083330475 +0100
+@@ -23,7 +23,7 @@
+ AC_PREREQ(2.59)
+ 
+ AC_PREFIX_PROGRAM(cvs)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_MAINTAINER_MODE
+ 
+ dnl This needs to be called to enable certain system extensions before calling
