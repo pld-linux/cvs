@@ -16,6 +16,18 @@
  @end direntry
  
  @comment The titlepage section does not appear in the Info file.
+@@ -107,9 +107,9 @@
+ @sp 4
+ @comment The title is printed in a large font.
+ @center @titlefont{Version Management}
+-@sp
++@sp 1
+ @center @titlefont{with}
+-@sp
++@sp 1
+ @center @titlefont{CVS}
+ @sp 2
+ @center for @sc{cvs} @value{VERSION}
 --- cvs-1.11.7/doc/cvsclient.texi.orig	2001-09-05 23:26:49.000000000 +0200
 +++ cvs-1.11.7/doc/cvsclient.texi	2003-10-10 22:14:43.796493256 +0200
 @@ -3,9 +3,9 @@
