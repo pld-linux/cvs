@@ -1,7 +1,7 @@
-diff -burN cvs-1.11.21.orig/src/login.c cvs-1.11.21/src/login.c
---- cvs-1.11.21.orig/src/login.c	2006-01-13 23:13:53.072883256 +0100
-+++ cvs-1.11.21/src/login.c	2006-01-13 23:15:29.033295056 +0100
-@@ -313,9 +313,25 @@
+diff -urNp -x '*.orig' cvs-1.12.13.org/src/login.c cvs-1.12.13/src/login.c
+--- cvs-1.12.13.org/src/login.c	2005-05-13 23:47:28.000000000 +0200
++++ cvs-1.12.13/src/login.c	2023-02-02 09:01:00.365363622 +0100
+@@ -309,9 +309,25 @@ internal error: can only call password_e
      fp = CVS_FOPEN (passfile, "r");
      if (fp == NULL)
      {
@@ -26,4 +26,4 @@ diff -burN cvs-1.11.21.orig/src/login.c cvs-1.11.21/src/login.c
 +    }
  
      /* Check each line to see if we have this entry already. */
-     line = 0;
+     line = 0L;

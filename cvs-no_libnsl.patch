@@ -1,7 +1,8 @@
---- cvs-1.11.4/configure.in.orig	Fri Jan 17 19:46:05 2003
-+++ cvs-1.11.4/configure.in	Fri Jan 17 19:55:47 2003
-@@ -272,13 +272,12 @@
- AC_FUNC_MMAP
+diff -urNp -x '*.orig' cvs-1.12.13.org/configure.in cvs-1.12.13/configure.in
+--- cvs-1.12.13.org/configure.in	2005-10-03 15:34:45.000000000 +0200
++++ cvs-1.12.13/configure.in	2023-02-02 09:00:39.745239468 +0100
+@@ -514,13 +514,12 @@ dnl for debugging code
+ CVS_FUNC_PRINTF_PTR
  
  # Try to find connect and gethostbyname.
 -AC_CHECK_LIB(nsl, main)
@@ -13,5 +14,5 @@
 -AC_SEARCH_LIBS(gethostbyname, netinet)
 +AC_SEARCH_LIBS(gethostbyname, netinet nsl)
  
+ AC_SUBST(cvs_client_objects)
  
- dnl
