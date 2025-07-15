@@ -251,7 +251,7 @@ pserver.
 %patch -P104 -p1
 %patch -P105 -p1
 # undefined reference to getpwline
-#%patch106 -p1
+#%%patch106 -p1
 %patch -P107 -p2
 %patch -P108 -p1
 %patch -P109 -p1
